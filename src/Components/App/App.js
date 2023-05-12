@@ -1,36 +1,32 @@
 import './App.css';
-import { Route, NavLink, Switch, Redirect } from 'react-router-dom/cjs/react-router-dom.min';
+import { Route, Switch, Redirect } from 'react-router-dom/cjs/react-router-dom.min';
 import Login from '../Login/Login';
 import HouseForm from '../HouseForm/HouseForm';
 import ChoreForm from '../ChoreForm/ChoreForm';
 import Dashboard from '../Dashboard/Dashboard';
 
 function App() {
+
 	return (
 		<main>
 			<Switch>
 				<Route exact path="/">
-					<h1>To-Do Guru</h1>
+					<Login />
 					<input
 					type="text"
 					placeholder="Name of Household"
 					/>
-					<button>Submit</button>
 				</Route>
 
-				<Route exact path="/Login">
-					<Login />
-				</Route>
-
-				<Route exact path="/HouseForm">
+				<Route exact path="/houseform">
 					<HouseForm />
 				</Route>
 
-				<Route exact path="/ChoreForm">
+				<Route exact path="/choreform">
 					<ChoreForm />
 				</Route>
 
-				<Route exact path="/Dashboard">
+				<Route exact path="/dashboard">
 					<Dashboard />
 				</Route>
 
