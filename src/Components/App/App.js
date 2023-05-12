@@ -18,6 +18,22 @@ function App() {
 					<button>Submit</button>
 				</Route>
 
+				<Route exact path="/Login">
+					<Login />
+				</Route>
+
+				<Route exact path="/HouseForm">
+					<HouseForm />
+				</Route>
+
+				<Route exact path="/ChoreForm">
+					<ChoreForm />
+				</Route>
+
+				<Route exact path="/Dashboard">
+					<Dashboard />
+				</Route>
+
 				<Route path="*">
 					<Redirect from="*" to="/" />
 				</Route>
