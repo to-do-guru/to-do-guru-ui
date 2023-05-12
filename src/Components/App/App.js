@@ -1,5 +1,9 @@
 import './App.css';
 import { Route, NavLink, Switch, Redirect } from 'react-router-dom/cjs/react-router-dom.min';
+import Login from '../Login/Login';
+import HouseForm from '../HouseForm/HouseForm';
+import ChoreForm from '../ChoreForm/ChoreForm';
+import Dashboard from '../Dashboard/Dashboard';
 
 function App() {
 	return (
