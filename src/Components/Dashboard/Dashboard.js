@@ -27,7 +27,8 @@ const [dayOfWeek, setDayOfWeek] = useState("Monday")
 			</NavLink>
             <button>Get me a new schedule</button>
             <NavLink to="/choreform">
-                <button>Edit Chore List</button>
+            {/*this edit chore will run a function, not sure where it will live yet*/}.
+            <button>Edit Chore List</button>
             </NavLink>
             <NavLink to="/houseform">
                 <button>Edit Household</button>

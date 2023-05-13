@@ -5,7 +5,7 @@ import HouseForm from '../HouseForm/HouseForm';
 import ChoreForm from '../ChoreForm/ChoreForm';
 import Dashboard from '../Dashboard/Dashboard';
 
-function App() {
+const App = ()  => {
 
 	return (
 		<main>
