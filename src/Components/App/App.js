@@ -1,11 +1,11 @@
 import './App.css';
-import { Route, Switch, Redirect } from 'react-router-dom/cjs/react-router-dom.min';
+import { Route, Switch, Redirect} from "react-router-dom";
 import Login from '../Login/Login';
 import HouseForm from '../HouseForm/HouseForm';
 import ChoreForm from '../ChoreForm/ChoreForm';
 import Dashboard from '../Dashboard/Dashboard';
 
-function App() {
+const App = ()  => {
 
 	return (
 		<main>

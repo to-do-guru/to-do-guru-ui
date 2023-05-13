@@ -1,10 +1,12 @@
 import './ChoreCard.css';
 
-function ChoreCard() {
+const ChoreCard = ({member, chore, duration}) => {
     return (
-        <>
-            <h1>I AM A ChoreCard</h1>
-        </>
+        <div className='chore-card'>
+            <h3>{member}'s Chore:</h3>
+            <h2>{chore}</h2>
+            <p>{duration} minutes</p>
+        </div>
     );
 }
 
