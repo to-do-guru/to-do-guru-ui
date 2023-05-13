@@ -79,34 +79,39 @@ const Dashboard = () => {
   });
 
   return (
-    <>
+    <div className="dashboard">
       <h1>I AM A Dashboard</h1>
 
-      <button onClick={() => setDayOfWeek("Monday")}>Monday</button>
-      <button onClick={() => setDayOfWeek("Tuesday")}>Tuesday</button>
-      <button onClick={() => setDayOfWeek("Wednesday")}>Wedesday</button>
-      <button onClick={() => setDayOfWeek("Thursday")}>Thursday</button>
-      <button onClick={() => setDayOfWeek("Friday")}>Friday</button>
-      <button onClick={() => setDayOfWeek("Saturday")}>Saturday</button>
-      <button onClick={() => setDayOfWeek("Sunday")}>Sunday</button>
+      <div className="week">
+        <button onClick={() => setDayOfWeek("Monday")}>Monday</button>
+        <button onClick={() => setDayOfWeek("Tuesday")}>Tuesday</button>
+        <button onClick={() => setDayOfWeek("Wednesday")}>Wedesday</button>
+        <button onClick={() => setDayOfWeek("Thursday")}>Thursday</button>
+        <button onClick={() => setDayOfWeek("Friday")}>Friday</button>
+        <button onClick={() => setDayOfWeek("Saturday")}>Saturday</button>
+        <button onClick={() => setDayOfWeek("Sunday")}>Sunday</button>
+      </div>
 
       <section className="chore-container">
         {choreCards}
         {chores.length === 0 && 
           <p>"You have the day off, no chores today!"</p>}
       </section>
-      <NavLink to="/">
-        <button>Log Out</button>
-      </NavLink>
-      {/*this button below will run a function, not sure where it will live yet*/}
-      <button>Get me a new schedule</button>
-      <NavLink to="/choreform">
-        <button>Edit Chore List</button>
-      </NavLink>
-      <NavLink to="/houseform">
-        <button>Edit Household</button>
-      </NavLink>
-    </>
+
+      <nav>
+        <NavLink to="/">
+          <button>Log Out</button>
+        </NavLink>
+        {/*this button below will run a function, not sure where it will live yet*/}
+        <button>Get me a new schedule</button>
+        <NavLink to="/choreform">
+          <button>Edit Chore List</button>
+        </NavLink>
+        <NavLink to="/houseform">
+          <button>Edit Household</button>
+        </NavLink>
+      </nav>
+    </div>
   );
 };
 

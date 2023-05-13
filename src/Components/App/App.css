@@ -1,0 +1,14 @@
+body, html, main {
+  margin: 0;
+  height: 100%;
+  background-color: aliceblue;
+  font-family: 'Quicksand', sans-serif;
+}
+
+button {
+  cursor: pointer;
+  border: 1px black solid;
+  background: none;
+  margin-top: 10%;
+  font-family: 'Quicksand', sans-serif;
+}
