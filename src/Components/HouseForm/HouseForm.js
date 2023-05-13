@@ -1,5 +1,5 @@
 import './HouseForm.css';
-import { NavLink } from 'react-router-dom/cjs/react-router-dom.min';
+import { NavLink } from 'react-router-dom';
 
 function HouseForm() {
     return (

@@ -1,6 +1,6 @@
 import "./Dashboard.css";
 import ChoreCard from "../ChoreCard/ChoreCard";
-import { NavLink } from "react-router-dom/cjs/react-router-dom.min";
+import { NavLink } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 const Dashboard = () => {
