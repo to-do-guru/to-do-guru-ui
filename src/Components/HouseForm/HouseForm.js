@@ -9,7 +9,6 @@ function HouseForm() {
         membersNames: {},
         membersInputs: ['newInput']
     });
-
     const [memberNum, setMemberNum] = useState(1);
 
     const changeMemberName = (key, value) => {
@@ -26,13 +25,21 @@ function HouseForm() {
         setMemberNum(num);
     }
 
-    const createMemberInputs = input.membersInputs.map((member, index) => 
+    const checkValidity = () => {
+        const keys = Object.keys(input.membersNames);
+        return keys.length < input.membersInputs.length ? false : true;
+    }
+
+    
+
+    const memberInputs = input.membersInputs.map((member, index) => 
         <input 
             key={index}
             type='text'
             name={`memberName${index}`}
             placeholder='Name of Chore-Doer'
             onChange={(e) => changeMemberName(e.target.name, e.target.value)}
+            required
         />
     )
 
@@ -46,6 +53,7 @@ function HouseForm() {
                     placeholder='Name Your Household'
                     value={input.houseName}
                     onChange={(e) => setInput({...input, houseName: e.target.value})}
+                    required
                 />
                 <label>
                     How many chore-doers are there?
@@ -58,11 +66,8 @@ function HouseForm() {
                         onChange={(e) => changeNumOfInputs(e.target.value)}
                     />
                 </label>
-                {createMemberInputs}
-                <button onClick={(event) => {
-                    event.preventDefault();
-                    console.log(input)
-                    }}>Submit
+                {memberInputs}
+                <button onClick={submitForm}>Submit
                 </button>
             </form>
             <NavLink to="/dashboard">

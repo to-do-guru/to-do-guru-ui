@@ -83,7 +83,6 @@ function ChoreForm() {
                             max='240'
                             value={input.choreDuration}
                             onChange={(e) => setInput({...input, choreDuration: e.target.value})}
-                            required
                         />
                     </label>
                     <button onClick={submitForm}>Add Chore!
