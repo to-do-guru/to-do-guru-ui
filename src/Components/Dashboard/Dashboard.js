@@ -6,6 +6,21 @@ import { useState } from 'react';
 const Dashboard = () => {
 
 const [dayOfWeek, setDayOfWeek] = useState("Monday")
+const [chores, setChores] = useState([])
+
+const choreCards = chores.map(chore => {
+    return (
+        <ChoreCard
+        member={chore.member}
+        chore={chore.chore}
+        duration={chore.duration}
+        />
+    )
+})
+
+const changeDay = () => {
+
+}
 
     return (
         <>
@@ -19,15 +34,15 @@ const [dayOfWeek, setDayOfWeek] = useState("Monday")
             <button onClick={setDayOfWeek("Saturday")}>Saturday</button>
             <button onClick={setDayOfWeek("Sunday")}>Sunday</button>
 
-            <div>
-                <ChoreCard />
-            </div>
+            <section className='chore-container'>
+                {choreCards}
+            </section>
             <NavLink to="/">
 				<button>Log Out</button>
 			</NavLink>
+            {/*this button below will run a function, not sure where it will live yet*/}.
             <button>Get me a new schedule</button>
             <NavLink to="/choreform">
-            {/*this edit chore will run a function, not sure where it will live yet*/}.
             <button>Edit Chore List</button>
             </NavLink>
             <NavLink to="/houseform">
