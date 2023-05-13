@@ -39,7 +39,7 @@ function HouseForm() {
     return (
         <>
             <h1>Edit your Household!</h1>
-            <form>
+            <form className='house-form'>
                 <input 
                     type='text'
                     name='householdName'

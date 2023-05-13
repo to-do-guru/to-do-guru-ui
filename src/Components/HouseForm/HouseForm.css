@@ -1,0 +1,11 @@
+.house-form {
+    display: flex;
+    flex-direction: column;
+    height: 50vh;
+    width: 40vw;
+    align-items: center;
+}
+
+input {
+    margin: 1vh 0;
+}
