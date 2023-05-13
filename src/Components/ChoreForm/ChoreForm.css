@@ -1,0 +1,10 @@
+.chore-form-container {
+    display: flex;
+    width: 80vw;
+    justify-content: space-around;
+}
+
+.chore-form {
+    display: flex;
+    flex-direction: column;
+}
