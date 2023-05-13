@@ -12,4 +12,3 @@ const ChoreCard = ({member, chore, duration}) => {
 }
 
 export default ChoreCard;
-
