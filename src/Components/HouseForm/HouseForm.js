@@ -4,9 +4,9 @@ import { NavLink } from 'react-router-dom';
 function HouseForm() {
     return (
         <>
-            <h1>I AM A HouseForm</h1>
-            <NavLink to="/choreform">
-				<button>Continue</button>
+            <h1>Edit your Household!</h1>
+            <NavLink to="/dashboard">
+				<button>See Schedule</button>
 			</NavLink>
         </>
     );

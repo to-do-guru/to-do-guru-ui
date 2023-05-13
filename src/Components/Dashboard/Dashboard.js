@@ -55,12 +55,14 @@ const Dashboard = () => {
     },
   ];
 
+  const householdName = "Turing Fam"
+
   const [dayOfWeek, setDayOfWeek] = useState("Monday");
   const [chores, setChores] = useState([]);
 
   useEffect(() => {
     filterChores();
-    //eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dayOfWeek]);
 
   const filterChores = () => {
@@ -80,7 +82,7 @@ const Dashboard = () => {
 
   return (
     <>
-      <h1>I AM A Dashboard</h1>
+      <h1>{householdName}'s Chore Schedule</h1>
 
       <button onClick={() => setDayOfWeek("Monday")}>Monday</button>
       <button onClick={() => setDayOfWeek("Tuesday")}>Tuesday</button>
