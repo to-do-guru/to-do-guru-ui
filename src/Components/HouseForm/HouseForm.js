@@ -7,11 +7,23 @@ function HouseForm() {
     const [input, setInput] = useState({
         houseName: '',
         membersNames: {},
-        membersInputs: []
+        membersInputs: ['newInput']
     });
+
+    const [memberNum, setMemberNum] = useState(1);
 
     const changeMemberName = (key, value) => {
         setInput({...input, membersNames:{...input.membersNames, [key]: value}});
+    }
+
+    const changeNumOfInputs = (num) => {
+        if(num > memberNum) {
+            setInput({...input, membersInputs: [...input.membersInputs, 'newInput']});
+        } else {
+            const reducedArray = input.membersInputs.slice(0, -1);
+            setInput({...input, membersInputs: reducedArray});
+        }
+        setMemberNum(num);
     }
 
     const createMemberInputs = input.membersInputs.map((member, index) => 
@@ -42,8 +54,8 @@ function HouseForm() {
                         step='1'
                         min='1'
                         max='10'
-                        value={input.membersInputs.length}
-                        onChange={() => setInput({...input, membersInputs: [...input.membersInputs, 'newInput']})}
+                        value={memberNum}
+                        onChange={(e) => changeNumOfInputs(e.target.value)}
                     />
                 </label>
                 {createMemberInputs}
