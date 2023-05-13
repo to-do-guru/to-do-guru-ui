@@ -1,12 +1,72 @@
 import './Dashboard.css';
 import ChoreCard from '../ChoreCard/ChoreCard';
 import { NavLink } from 'react-router-dom/cjs/react-router-dom.min';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 const Dashboard = () => {
 
+const dummyData = [
+          {
+            member: "Steve",
+            chore: "Wash Dishes",
+            duration: 30,
+            day: "Monday"
+          },
+          {
+            member: "Jenny",
+            chore: "Laundry",
+            duration: 60,
+            day: "Monday"
+          },
+          {
+            member: "Steve",
+            chore: "Wash Dishes",
+            duration: 30,
+            day: "Wednesday"
+          },
+          {
+            member: "Jenny",
+            chore: "Sweep Floor",
+            duration: 30,
+            day: "Thursday"
+          },
+          {
+            member: "Steve",
+            chore: "Wash Dishes",
+            duration: 30,
+            day: "Friday"
+          },
+          {
+            member: "Jenny",
+            chore: "Take Out Trash",
+            duration: 15,
+            day: "Saturday"
+          },
+          {
+            member: "Steve",
+            chore: "Mow Lawn",
+            duration: 120,
+            day: "Saturday"
+          },
+          {
+            member: "Jenny",
+            chore: "Wash Dishes",
+            duration: 30,
+            day: "Sunday"
+          }
+        ]
+      
+
 const [dayOfWeek, setDayOfWeek] = useState("Monday")
 const [chores, setChores] = useState([])
+
+useEffect(() => {
+    filterChores()
+}, [])
+
+const filterChores = () => {
+    setChores(dummyData.filter(chore => chore.day === dayOfWeek))
+}
 
 const choreCards = chores.map(chore => {
     return (
@@ -18,9 +78,9 @@ const choreCards = chores.map(chore => {
     )
 })
 
-const changeDay = () => {
+// const changeDay = () => {
 
-}
+// }
 
     return (
         <>
