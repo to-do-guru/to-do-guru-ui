@@ -62,7 +62,8 @@ const [chores, setChores] = useState([])
 
 useEffect(() => {
     filterChores()
-}, [])
+    console.log("useEffect runs")
+}, [dayOfWeek])
 
 const filterChores = () => {
     setChores(dummyData.filter(chore => chore.day === dayOfWeek))
@@ -86,13 +87,13 @@ const choreCards = chores.map(chore => {
         <>
             <h1>I AM A Dashboard</h1>
 
-            <button onClick={setDayOfWeek("Monday")}>Monday</button>
-            <button onClick={setDayOfWeek("Tuesday")}>Tuesday</button>
-            <button onClick={setDayOfWeek("Wednesday")}>Wedesday</button>
-            <button onClick={setDayOfWeek("Thursday")}>Thursday</button>
-            <button onClick={setDayOfWeek("Friday")}>Friday</button>
-            <button onClick={setDayOfWeek("Saturday")}>Saturday</button>
-            <button onClick={setDayOfWeek("Sunday")}>Sunday</button>
+            <button onClick={() => setDayOfWeek("Monday")}>Monday</button>
+            <button onClick={() => setDayOfWeek("Tuesday")}>Tuesday</button>
+            <button onClick={() => setDayOfWeek("Wednesday")}>Wedesday</button>
+            <button onClick={() => setDayOfWeek("Thursday")}>Thursday</button>
+            <button onClick={() => setDayOfWeek("Friday")}>Friday</button>
+            <button onClick={() => setDayOfWeek("Saturday")}>Saturday</button>
+            <button onClick={() => setDayOfWeek("Sunday")}>Sunday</button>
 
             <section className='chore-container'>
                 {choreCards}
