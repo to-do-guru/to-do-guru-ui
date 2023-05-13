@@ -24,9 +24,31 @@ function ChoreForm() {
         { value: 'Friday', label: 'Friday' },
         { value: 'Saturday', label: 'Saturday' },
         { value: 'Sunday', label: 'Sunday' }
-    ]
+    ];
 
-    const choreItems = chores.map((chore, index) => <li key={index}>{chore}</li>)
+    const choreItems = chores.map((chore, index) => <li key={index}>{chore}</li>);
+
+    const submitForm = (event) => {
+        if(input.choreName && choreDays) {
+            event.preventDefault();
+            setChores([...chores, input.choreName]);
+            const data = {
+                name: input.choreName,
+                duration: input.choreDuration,
+                days: choreDays.map(chore => chore.value)
+            }
+            console.log(data)
+            clearForm();
+        }
+    }
+
+    const clearForm = () => {
+        setInput({
+            choreName: '',
+            choreDuration: 15
+        });
+        setChoreDays(null);
+    }
 
     return (
         <>
@@ -39,6 +61,7 @@ function ChoreForm() {
                             type='text'
                             value={input.choreName}
                             onChange={(e) => setInput({...input, choreName: e.target.value})}
+                            required
                         />
                     </label>
                     <label>
@@ -48,6 +71,7 @@ function ChoreForm() {
                             options={daysOfTheWeek}
                             value={choreDays}
                             onChange={setChoreDays}
+                            required
                         />
                     </label>
                     <label>
@@ -59,17 +83,10 @@ function ChoreForm() {
                             max='240'
                             value={input.choreDuration}
                             onChange={(e) => setInput({...input, choreDuration: e.target.value})}
+                            required
                         />
                     </label>
-                    <button onClick={(event) => {
-                        event.preventDefault();
-                        setChores([...chores, input.choreName]);
-                        setInput({
-                            choreName: '',
-                            choreDuration: 15
-                        });
-                        setChoreDays(null);
-                        }}>Add Chore!
+                    <button onClick={submitForm}>Add Chore!
                     </button>
                 </form>
                 <aside className='chore-list'>
