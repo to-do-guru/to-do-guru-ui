@@ -14,7 +14,7 @@ const App = ()  => {
 					<Login />
 					<input
 					type="text"
-					placeholder="Name of Household"
+					placeholder="Username/Email"
 					/>
 				</Route>
 
