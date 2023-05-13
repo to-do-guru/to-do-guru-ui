@@ -61,7 +61,9 @@ function HouseForm() {
                 {createMemberInputs}
                 <button onClick={(event) => {
                     event.preventDefault();
-                    console.log(input)}}>Submit</button>
+                    console.log(input)
+                    }}>Submit
+                </button>
             </form>
             <NavLink to="/dashboard">
 				<button>See Schedule</button>

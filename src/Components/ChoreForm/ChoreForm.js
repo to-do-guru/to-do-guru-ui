@@ -41,6 +41,20 @@ function ChoreForm() {
                             options={daysOfTheWeek}
                         />
                     </label>
+                    <label>
+                        Amount of time this chore takes in minutes:
+                        <input 
+                            type='number'
+                            step='15'
+                            min='15'
+                            max='240'
+                        />
+                    </label>
+                    <button onClick={(event) => {
+                        event.preventDefault();
+                        console.log('new chore!');
+                        }}>Add Chore!
+                    </button>
                 </form>
                 <aside className='chore-list'>
                     <h2>Your Chores:</h2>

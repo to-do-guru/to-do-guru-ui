@@ -2,6 +2,7 @@
     display: flex;
     width: 80vw;
     justify-content: space-around;
+    margin: 5vh 0;
 }
 
 .chore-form {
