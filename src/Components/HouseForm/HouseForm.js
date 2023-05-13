@@ -30,7 +30,28 @@ function HouseForm() {
         return keys.length < input.membersInputs.length ? false : true;
     }
 
-    
+    const submitForm = (event) => {
+        const check = checkValidity()
+        if(input.houseName && check) {
+            event.preventDefault();
+            const data = {
+                name: input.houseName,
+                members: input.membersNames
+            }
+            console.log(data)
+            clearForm();
+        }
+    }
+
+    const clearForm = () => {
+        setInput({
+            houseName: '',
+            membersNames: {},
+            membersInputs: ['newInput']
+        });
+        setMemberNum(1);
+        // There is a bug where the first input field to enter a household members name isn't clearing
+    }
 
     const memberInputs = input.membersInputs.map((member, index) => 
         <input 
