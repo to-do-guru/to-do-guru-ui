@@ -86,7 +86,7 @@ const Dashboard = () => {
 
       <button onClick={() => setDayOfWeek("Monday")}>Monday</button>
       <button onClick={() => setDayOfWeek("Tuesday")}>Tuesday</button>
-      <button onClick={() => setDayOfWeek("Wednesday")}>Wedesday</button>
+      <button onClick={() => setDayOfWeek("Wednesday")}>Wednesday</button>
       <button onClick={() => setDayOfWeek("Thursday")}>Thursday</button>
       <button onClick={() => setDayOfWeek("Friday")}>Friday</button>
       <button onClick={() => setDayOfWeek("Saturday")}>Saturday</button>

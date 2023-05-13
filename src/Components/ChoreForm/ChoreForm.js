@@ -9,7 +9,12 @@ function ChoreForm() {
         'Wash Dishes',
         'Laundry',
         'Sweep Floor'
-    ])
+    ]);
+    const [input, setInput] = useState({
+        choreName: '',
+        choreDuration: 15
+    });
+    const [choreDays, setChoreDays] = useState(null);
 
     const daysOfTheWeek = [
         { value: 'Monday', label: 'Monday' },
@@ -32,6 +37,8 @@ function ChoreForm() {
                         Chore Name:
                         <input 
                             type='text'
+                            value={input.choreName}
+                            onChange={(e) => setInput({...input, choreName: e.target.value})}
                         />
                     </label>
                     <label>
@@ -39,6 +46,8 @@ function ChoreForm() {
                         <Select
                             isMulti 
                             options={daysOfTheWeek}
+                            value={choreDays}
+                            onChange={setChoreDays}
                         />
                     </label>
                     <label>
@@ -48,11 +57,18 @@ function ChoreForm() {
                             step='15'
                             min='15'
                             max='240'
+                            value={input.choreDuration}
+                            onChange={(e) => setInput({...input, choreDuration: e.target.value})}
                         />
                     </label>
                     <button onClick={(event) => {
                         event.preventDefault();
-                        console.log('new chore!');
+                        setChores([...chores, input.choreName]);
+                        setInput({
+                            choreName: '',
+                            choreDuration: 15
+                        });
+                        setChoreDays(null);
                         }}>Add Chore!
                     </button>
                 </form>
