@@ -81,7 +81,7 @@ const Dashboard = () => {
   });
 
   const daysOfWeek = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
-  const weekButtons = daysOfWeek.map(day => <button className="day-btn" onClick={() => setDayOfWeek(day)}>{day}</button>)
+  const weekButtons = daysOfWeek.map(day => <button key={day} className="day-btn" onClick={() => setDayOfWeek(day)}>{day}</button>)
 
   return (
     <div className="dashboard">

@@ -2,6 +2,9 @@
   border: 2px solid black;
   margin: 1% 3%;
   padding: 2%;
-  width: 300px;
+  width: 250px;
   text-align: center;
+  color: aliceblue;
+  text-shadow: 2px 2px 5px black;
+  font-size: larger;
 }
