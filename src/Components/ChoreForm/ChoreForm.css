@@ -13,3 +13,21 @@
 .chore-div {
   display: flex;
 }
+
+.chore-list {
+  background-color: white;
+  border: 1px black solid;
+  padding: 2%;
+  width: 40%;
+  margin-right: -3%;
+  margin-left: 2%;
+  text-align: center;
+}
+
+li {
+  font-size: 15pt;
+  text-align: left;
+  padding: 2%;
+  border-bottom: solid black 1px;
+  width: 75%;
+}
