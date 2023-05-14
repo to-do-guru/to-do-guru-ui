@@ -1,6 +1,7 @@
 .chore-card {
   border: 2px solid black;
-  margin: 10px;
-  width: 30vw;
+  margin: 1% 3%;
+  padding: 2%;
+  width: 300px;
   text-align: center;
 }
