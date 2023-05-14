@@ -58,15 +58,17 @@ function ChoreForm() {
         <form className='chore-form'>
           <label>
             Chore Name:
+          </label>
             <input 
+              className='edit-chore'
               type='text'
               value={input.choreName}
               onChange={(e) => setInput({...input, choreName: e.target.value})}
               required
             />
-          </label>
           <label>
             Days of the week for this chore:
+          </label>
             <Select
               isMulti 
               options={daysOfTheWeek}
@@ -74,10 +76,11 @@ function ChoreForm() {
               onChange={setChoreDays}
               required
             />
-          </label>
           <label>
             Amount of time this chore takes in minutes:
+          </label>
             <input 
+              className='edit-chore'
               type='number'
               step='15'
               min='15'
@@ -85,8 +88,6 @@ function ChoreForm() {
               value={input.choreDuration}
               onChange={(e) => setInput({...input, choreDuration: e.target.value})}
             />
-          </label>
-          <button onClick={submitForm}>Add Chore!</button>
         </form>
         <aside className='chore-list'>
           <h2>Your Chores:</h2>
@@ -95,8 +96,9 @@ function ChoreForm() {
           </ol>
         </aside>
       </div>
+      <button className='chore-btn' onClick={submitForm}>Add Chore!</button>
       <NavLink to="/dashboard">
-        <button>View Schedule</button>
+        <button className='chore-btn'>View Schedule</button>
       </NavLink>
     </div>
   );
