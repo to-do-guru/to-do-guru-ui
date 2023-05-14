@@ -1,11 +1,15 @@
 .chore-form-container {
-    display: flex;
-    width: 80vw;
-    justify-content: space-around;
-    margin: 5vh 0;
+  background-color: #fcef7cb8;
+  box-shadow: 5px 5px 25px black;
+  margin-top: 5%;
+  padding: 2% 5%;
 }
 
 .chore-form {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
+}
+
+.chore-div {
+  display: flex;
 }

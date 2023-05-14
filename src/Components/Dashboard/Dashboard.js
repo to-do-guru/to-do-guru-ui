@@ -93,7 +93,7 @@ const Dashboard = () => {
         <section className="chore-container">
           {choreCards}
           {chores.length === 0 && 
-            <p>"You have the day off, no chores today!"</p>}
+            <p className="day-off">You have the day off, no chores today!</p>}
         </section>
       </div>
 

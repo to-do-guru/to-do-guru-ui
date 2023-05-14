@@ -51,3 +51,13 @@ nav {
   align-items: center;
   border-top: black solid 3px;
 }
+
+.day-off {
+  background-color: #fcef7cb8;
+  width: 40%;
+  margin-left: 30%;
+  font-size: 25pt;
+  padding: 2%;
+  box-shadow: 5px 5px 25px black;
+  margin-top: 5%;
+}
