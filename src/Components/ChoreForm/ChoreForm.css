@@ -37,7 +37,7 @@ li {
   width: 96%;
 }
 
-.chore-btn {
+.chore-btn, .house-btn {
   border: solid black 1px;
   background-color: #007838;
   color: white;
@@ -47,7 +47,7 @@ li {
   padding: 1% 2%;
 }
 
-.chore-btn:hover {
+.chore-btn:hover, .house-btn:hover {
   background-color: #fcef7c;
   color: black;
 }
