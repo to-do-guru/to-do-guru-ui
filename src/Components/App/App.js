@@ -7,10 +7,9 @@ import Dashboard from '../Dashboard/Dashboard';
 import { useQuery, gql } from "@apollo/client";
 
 const GET_HOUSEHOLD = gql`
-  query getUser($username: String!) {
-    queryUser (byNameFilter: $username) {
-      id
-      username
+  query Example {
+    getName {
+        name
     }
   }
 `
