@@ -80,35 +80,37 @@ const Dashboard = () => {
     );
   });
 
+  const daysOfWeek = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+  const weekButtons = daysOfWeek.map(day => <button key={day} className={`day-btn ${day}`} onClick={() => setDayOfWeek(day)}>{day}</button>)
+
   return (
-    <>
-      <h1>{householdName}'s Chore Schedule</h1>
+    <div className="dashboard">
+      <div>
+        <h1>{householdName}'s Chore Schedule</h1>
 
-      <button onClick={() => setDayOfWeek("Monday")}>Monday</button>
-      <button onClick={() => setDayOfWeek("Tuesday")}>Tuesday</button>
-      <button onClick={() => setDayOfWeek("Wednesday")}>Wednesday</button>
-      <button onClick={() => setDayOfWeek("Thursday")}>Thursday</button>
-      <button onClick={() => setDayOfWeek("Friday")}>Friday</button>
-      <button onClick={() => setDayOfWeek("Saturday")}>Saturday</button>
-      <button onClick={() => setDayOfWeek("Sunday")}>Sunday</button>
+      <div className="week-nav">{weekButtons}</div>
 
-      <section className="chore-container">
-        {choreCards}
-        {chores.length === 0 && 
-          <p>"You have the day off, no chores today!"</p>}
-      </section>
-      <NavLink to="/">
-        <button>Log Out</button>
-      </NavLink>
-      {/*this button below will run a function, not sure where it will live yet*/}
-      <button>Get me a new schedule</button>
-      <NavLink to="/choreform">
-        <button>Edit Chore List</button>
-      </NavLink>
-      <NavLink to="/houseform">
-        <button>Edit Household</button>
-      </NavLink>
-    </>
+        <section className="chore-container">
+          {choreCards}
+          {chores.length === 0 && 
+            <p className="day-off">You have the day off, no chores today!</p>}
+        </section>
+      </div>
+
+      <nav>
+        <NavLink to="/">
+          <button className="nav-btn">Log Out</button>
+        </NavLink>
+        {/*this button below will run a function, not sure where it will live yet*/}
+          <button className="nav-btn">Get me a new schedule</button>
+        <NavLink to="/choreform">
+          <button className="nav-btn">Edit Chore List</button>
+        </NavLink>
+        <NavLink to="/houseform">
+          <button className="nav-btn">Edit Household</button>
+        </NavLink>
+      </nav>
+    </div>
   );
 };
 

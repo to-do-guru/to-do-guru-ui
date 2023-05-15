@@ -1,11 +1,28 @@
-.house-form {
-    display: flex;
-    flex-direction: column;
-    height: 50vh;
-    width: 40vw;
-    align-items: center;
+.edit-house {
+  text-align: center;
+  background-color: #fcef7cb8;
+  width: 40%;
+  padding: 3%;
+  box-shadow: 5px 5px 25px black;
+  margin-top: 5%;
+  margin-bottom: 5%;
+  overflow-y: auto;
 }
 
-input {
-    margin: 1vh 0;
+.house-form {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.num-members {
+  width: fit-content;
+  padding-left: 5%;
+  margin-bottom: 3%;
+}
+
+.mem-input {
+  margin-bottom: 2%;
 }

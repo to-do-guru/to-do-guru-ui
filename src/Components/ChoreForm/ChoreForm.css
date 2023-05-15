@@ -1,11 +1,53 @@
 .chore-form-container {
-    display: flex;
-    width: 80vw;
-    justify-content: space-around;
-    margin: 5vh 0;
+  background-color: #fcef7cb8;
+  box-shadow: 5px 5px 25px black;
+  margin-top: 5%;
+  padding: 2% 5%;
+  width: 60%;
 }
 
 .chore-form {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+}
+
+.chore-div {
+  display: flex;
+  justify-content: space-between;
+}
+
+.chore-list {
+  background-color: white;
+  border: 1px black solid;
+  padding: 2%;
+  width: 40%;
+  text-align: center;
+}
+
+li {
+  font-size: 15pt;
+  text-align: left;
+  padding: 2%;
+  border-bottom: solid black 1px;
+  width: 75%;
+}
+
+.edit-chore {
+  width: 96%;
+}
+
+.chore-btn, .house-btn {
+  border: solid black 1px;
+  background-color: #007838;
+  color: white;
+  font-size: 15pt;
+  margin-right: 2%;
+  margin-top: 2%;
+  padding: 1% 2%;
+}
+
+.chore-btn:hover, .house-btn:hover {
+  background-color: #fcef7c;
+  color: black;
 }

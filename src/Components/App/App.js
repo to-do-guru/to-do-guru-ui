@@ -12,10 +12,6 @@ const App = ()  => {
 			<Switch>
 				<Route exact path="/">
 					<Login />
-					<input
-					type="text"
-					placeholder="Username/Email"
-					/>
 				</Route>
 
 				<Route exact path="/houseform">

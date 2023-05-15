@@ -1,0 +1,21 @@
+.login {
+  background-color: #fcef7cb8;
+  width: fit-content;
+  text-align: center;
+  margin-top: 10%;
+  padding: 5%;
+  box-shadow: 5px 5px 25px black;
+}
+
+input {
+  height: 40px;
+  width: 200px;
+  padding-left: 2%;
+}
+
+.login-btn {
+  border: 1px solid black;
+  height: 45px;
+  padding: 0 5%;
+  margin: 0 3%;
+}
