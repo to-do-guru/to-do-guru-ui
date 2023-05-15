@@ -5,17 +5,23 @@ import HouseForm from '../HouseForm/HouseForm';
 import ChoreForm from '../ChoreForm/ChoreForm';
 import Dashboard from '../Dashboard/Dashboard';
 import { useQuery, gql } from "@apollo/client";
+import { useParams } from 'react-router-dom';
 
 const GET_HOUSEHOLD = gql`
-  query Example {
-    getName {
-        name
+  query getUser($username: String!) {
+    queryUser (byNameFilter: $username) {
+        id
+        username
     }
   }
 `
 
 const App = ()  => {
-  const { loading, error, data } = useQuery(GET_HOUSEHOLD);
+  // const { loading, error, data } = useQuery(GET_HOUSEHOLD, {variables: { myVar } });
+  const { username } = useParams();
+  const { loading, error, data } = useQuery(GET_HOUSEHOLD, {
+    variables: { username },
+  });
 
 	return (
 		<main>
