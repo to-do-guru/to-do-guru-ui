@@ -80,7 +80,7 @@ const Dashboard = () => {
     );
   });
 
-  const daysOfWeek = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+  const daysOfWeek = ["Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
   const weekButtons = daysOfWeek.map(day => <button key={day} className={`day-btn ${day}`} onClick={() => setDayOfWeek(day)}>{day}</button>)
 
   return (
@@ -88,7 +88,10 @@ const Dashboard = () => {
       <div>
         <h1>{householdName}'s Chore Schedule</h1>
 
-      <div className="week-nav">{weekButtons}</div>
+      <div className="week-nav">
+        <button className="day-btn Monday" onClick={() => setDayOfWeek("Monday")} autoFocus>Monday</button>
+        {weekButtons}
+      </div>
 
         <section className="chore-container">
           {choreCards}

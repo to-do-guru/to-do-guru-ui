@@ -88,6 +88,7 @@ function ChoreForm() {
               value={input.choreDuration}
               onChange={(e) => setInput({...input, choreDuration: e.target.value})}
             />
+            <button className='chore-btn' onClick={submitForm}>Add Chore!</button>
         </form>
         <aside className='chore-list'>
           <h2>Your Chores:</h2>
@@ -96,9 +97,8 @@ function ChoreForm() {
           </ol>
         </aside>
       </div>
-      <button className='chore-btn' onClick={submitForm}>Add Chore!</button>
       <NavLink to="/dashboard">
-        <button className='chore-btn'>View Schedule</button>
+        <button className='house-btn'>View Schedule</button>
       </NavLink>
     </div>
   );
