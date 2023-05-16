@@ -89,7 +89,7 @@ const Dashboard = ({email}) => {
 
   return (
     <div className="dashboard">
-      {console.log(email)}
+      {console.log(data)}
       <div>
         <h1>{householdName}'s Chore Schedule</h1>
 
