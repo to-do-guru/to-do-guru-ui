@@ -14,4 +14,21 @@ describe('dashboard', () => {
     cy.get('.Sunday').contains('Sunday')
   })
 
+  it('should show the chores for the day that is clicked. Each chore should have the chore doer, name of chore and duration for chore', () => {
+    cy.get('.Wednesday').click()
+    cy.get(".chore-card").should("have.length", "1")
+    cy.get('.chore-container > :nth-child(1)').contains("Steve's Chore")
+    cy.get('.chore-container > :nth-child(1)').contains("Wash Dishes")
+    cy.get('.chore-container > :nth-child(1)').contains("30 minutes")
+    cy.get('.Saturday').click()
+    cy.get(".chore-card").should("have.length", "2")
+    cy.get('.chore-container > :nth-child(1)').contains("Jenny's Chore")
+    cy.get('.chore-container > :nth-child(1)').contains("Take Out Trash")
+    cy.get('.chore-container > :nth-child(1)').contains("15 minutes")
+    cy.get('.chore-container > :nth-child(2)').contains("Steve's Chore")
+    cy.get('.chore-container > :nth-child(2)').contains("Mow Lawn")
+    cy.get('.chore-container > :nth-child(2)').contains("120 minutes")
+  })
+
   
+})
