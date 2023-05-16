@@ -97,7 +97,9 @@ function ChoreForm() {
           </ol>
         </aside>
       </div>
-      <button className='house-btn'>View Schedule</button>
+      <NavLink to="/dashboard">
+        <button className='house-btn'>View Schedule</button>
+      </NavLink>
     </div>
   );
 }

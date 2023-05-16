@@ -10,7 +10,6 @@ function HouseForm() {
     membersInputs: ['newInput']
   });
   const [memberNum, setMemberNum] = useState(1);
-  const [error, setError] = useState('');
 
   const changeMemberName = (key, value) => {
     setInput({...input, membersNames:{...input.membersNames, [key]: value}});
@@ -32,19 +31,16 @@ function HouseForm() {
   }
 
   const submitForm = (event) => {
-    event.preventDefault();
     const check = checkValidity()
     if(input.houseName && check) {
+      event.preventDefault();
       const data = {
         name: input.houseName,
         members: input.membersNames
       }
-      setError('');
       console.log(data);
       clearForm();
-    } else {
-      setError('Please fill out all forms!')
-    }
+    } 
   }
 
   const clearForm = () => {
@@ -96,7 +92,6 @@ function HouseForm() {
           </label>
           {memberInputs}
           <button className='house-btn' onClick={submitForm}>Submit</button>
-        {error && <p className='error'>{error}</p>}
       </form>
       <NavLink to="/dashboard">
         <button className='house-btn'>See Schedule</button>
