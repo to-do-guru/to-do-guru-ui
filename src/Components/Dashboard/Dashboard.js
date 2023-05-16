@@ -2,8 +2,12 @@ import "./Dashboard.css";
 import ChoreCard from "../ChoreCard/ChoreCard";
 import { NavLink } from "react-router-dom";
 import { useState, useEffect } from "react";
+import { GET_HOUSEHOLD } from "../../queries";
+import { useQuery } from "@apollo/client";
 
-const Dashboard = () => {
+const Dashboard = ({email}) => {
+  const { loading, error, data } = useQuery(GET_HOUSEHOLD, { variables: { email }});
+
   const dummyData = [
     {
       member: "Steve",
@@ -85,6 +89,7 @@ const Dashboard = () => {
 
   return (
     <div className="dashboard">
+      {console.log(email)}
       <div>
         <h1>{householdName}'s Chore Schedule</h1>
 
