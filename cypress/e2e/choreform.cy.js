@@ -1,4 +1,4 @@
-describe('template spec', () => {
+describe('Chore Form', () => {
   beforeEach('', () => {
     cy.visit('https://to-do-guru-ui.vercel.app/choreform');
   });

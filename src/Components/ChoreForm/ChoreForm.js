@@ -29,8 +29,18 @@ function ChoreForm() {
 
   const choreItems = chores.map((chore, index) => <li key={index}>{chore}</li>);
 
+  const checkValidity = () => {
+    const num = input.choreDuration;
+    if(num % 15 === 0 && num > 14 && num < 241) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   const submitForm = (event) => {
-    if(input.choreName && choreDays) {
+    const check = checkValidity();
+    if(input.choreName && choreDays && check) {
       event.preventDefault();
       setChores([...chores, input.choreName]);
       const data = {
@@ -38,7 +48,7 @@ function ChoreForm() {
         duration: input.choreDuration,
         days: choreDays.map(chore => chore.value)
       }
-      console.log(data)
+      console.log(data);
       clearForm();
     }
   }
