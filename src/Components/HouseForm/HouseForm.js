@@ -23,7 +23,7 @@ function HouseForm() {
       const reducedArray = input.membersInputs.slice(0, -1);
       setInput({...input, membersInputs: reducedArray});
     }
-  setMemberNum(num);
+    setMemberNum(num);
   }
 
   const checkValidity = () => {
@@ -40,7 +40,7 @@ function HouseForm() {
         members: input.membersNames
       }
       setError('');
-      console.log(data)
+      console.log(data);
       clearForm();
     } else {
       setError('Please fill out all forms!')
@@ -95,9 +95,12 @@ function HouseForm() {
             />
           </label>
           {memberInputs}
-        <button className='house-btn' onClick={submitForm}>Submit</button>
+          <button className='house-btn' onClick={submitForm}>Submit</button>
         {error && <p className='error'>{error}</p>}
       </form>
+      <NavLink to="/dashboard">
+        <button className='house-btn'>See Schedule</button>
+      </NavLink>
     </div>
   );
 }
