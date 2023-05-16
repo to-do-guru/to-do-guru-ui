@@ -16,7 +16,7 @@ describe('Error Handling', () => {
       .get('li').should('have.length', 3);
   });
 
-  it.only('should not allow the user to submit a household with an empty form', () => {
+  it('should not allow the user to submit a household with an empty form', () => {
     cy.visit('https://to-do-guru-ui.vercel.app/houseform');
 
     cy.get('.house-form > .house-btn').click()
