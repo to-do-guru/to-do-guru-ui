@@ -15,57 +15,55 @@ function HouseForm() {
     setInput({...input, membersNames:{...input.membersNames, [key]: value}});
   }
 
-    const changeNumOfInputs = (num) => {
-      if(num > memberNum) {
-        setInput({...input, membersInputs: [...input.membersInputs, 'newInput']});
-      } else {
-        const reducedArray = input.membersInputs.slice(0, -1);
-        setInput({...input, membersInputs: reducedArray});
-      }
-      setMemberNum(num);
+  const changeNumOfInputs = (num) => {
+    if(num > memberNum) {
+      setInput({...input, membersInputs: [...input.membersInputs, 'newInput']});
+    } else {
+      const reducedArray = input.membersInputs.slice(0, -1);
+      setInput({...input, membersInputs: reducedArray});
     }
+    setMemberNum(num);
+  }
 
-    const checkValidity = () => {
-      const keys = Object.keys(input.membersNames);
-      return keys.length < input.membersInputs.length ? false : true;
-    }
+  const checkValidity = () => {
+    const keys = Object.keys(input.membersNames);
+    return keys.length < input.membersInputs.length ? false : true;
+  }
 
-    const submitForm = (event) => {
+  const submitForm = (event) => {
+    const check = checkValidity()
+    if(input.houseName && check) {
       event.preventDefault();
-      const check = checkValidity()
-      if(input.houseName && check) {
-        const data = {
-          name: input.houseName,
-          members: input.membersNames
-        }
-        console.log(data)
-        clearForm();
-      } else {
-        alert('Please fill out all fields!')
+      const data = {
+        name: input.houseName,
+        members: input.membersNames
       }
-    }
+      console.log(data);
+      clearForm();
+    } 
+  }
 
-    const clearForm = () => {
-      setInput({
-        houseName: '',
-        membersNames: {},
-        membersInputs: ['newInput']
-      });
-      setMemberNum(1);
-      // There is a bug where the first input field to enter a household members name isn't clearing
-    }
+  const clearForm = () => {
+    setInput({
+      houseName: '',
+      membersNames: {},
+      membersInputs: ['newInput']
+    });
+    setMemberNum(1);
+    // There is a bug where the first input field to enter a household members name isn't clearing
+  }
 
-    const memberInputs = input.membersInputs.map((member, index) => 
-      <input 
-        className='mem-input'
-        key={index}
-        type='text'
-        name={`memberName${index}`}
-        placeholder='Name of Chore-Doer'
-        onChange={(e) => changeMemberName(e.target.name, e.target.value)}
-        required
-      />
-    )
+  const memberInputs = input.membersInputs.map((member, index) => 
+    <input 
+      className='mem-input'
+      key={index}
+      type='text'
+      name={`memberName${index}`}
+      placeholder='Name of Chore-Doer'
+      onChange={(e) => changeMemberName(e.target.name, e.target.value)}
+      required
+    />
+  )
 
   return (
     <div className='edit-house'>
@@ -89,11 +87,12 @@ function HouseForm() {
             max='10'
             value={memberNum}
             onChange={(e) => changeNumOfInputs(e.target.value)}
-          />
-        </label>
-        {memberInputs}
+            required
+            />
+          </label>
+          {memberInputs}
+          <button className='house-btn' onClick={submitForm}>Submit</button>
       </form>
-      <button className='house-btn' onClick={submitForm}>Submit</button>
       <NavLink to="/dashboard">
         <button className='house-btn'>See Schedule</button>
       </NavLink>

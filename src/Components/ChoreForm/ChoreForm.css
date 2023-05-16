@@ -45,6 +45,12 @@ li {
   margin-right: 2%;
   margin-top: 2%;
   padding: 1% 2%;
+  width: 200px;
+  height: 50px;
+}
+
+.chore-btn {
+  margin-top: 5%;
 }
 
 .chore-btn:hover, .house-btn:hover {

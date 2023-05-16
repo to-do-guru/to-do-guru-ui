@@ -26,3 +26,8 @@
 .mem-input {
   margin-bottom: 2%;
 }
+
+.error {
+  color: red;
+  font-size: larger;
+}
