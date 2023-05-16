@@ -11,7 +11,7 @@ function Login() {
 				placeholder="Username/Email"
 			/>
       <NavLink to="/dashboard">
-      <button className='login-btn'>Login</button>
+        <button className='login-btn'>Login</button>
       </NavLink>
     </div>
   );
