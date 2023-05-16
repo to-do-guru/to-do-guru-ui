@@ -29,6 +29,29 @@ describe('dashboard', () => {
     cy.get('.chore-container > :nth-child(2)').contains("Mow Lawn")
     cy.get('.chore-container > :nth-child(2)').contains("120 minutes")
   })
+  it('should show a message if no chores are given for the day', () => {
+    cy.get('.Tuesday').click()
+    cy.get('.day-off').contains("You have the day off, no chores today!")
+  })
 
+  it('should allow a user to log out and go back to the login page', () => {
+    cy.get('.active > .nav-btn').click()
+    cy.url().should('eq', "https://to-do-guru-ui.vercel.app/")
+  })
+
+  it('should show allow a user to edit the household by bringing them back the household form page', () => {
+    cy.get('[href="/houseform"] > .nav-btn').click()
+    cy.url().should('eq', "https://to-do-guru-ui.vercel.app/houseform")
+  })
+
+  it('should show allow a user to edit the chores by bringing them back the chore form page', () => {
+    cy.get('[href="/choreform"] > .nav-btn').click()
+    cy.url().should('eq', "https://to-do-guru-ui.vercel.app/choreform")
+  })
+
+  it('should allow a user to randomize the chore schedule', () => {
+    cy.get('nav > :nth-child(2)').click()
+    //add to this when we hook up the functionality to randomize the schedule
+  })
   
 })
