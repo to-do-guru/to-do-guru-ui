@@ -66,19 +66,15 @@ const Dashboard = ({email}) => {
   
   useEffect(() => {
     if(!loading) {
-      filterChores();
+      if (data.household[dayOfWeek]) {
+        setChores(data.household[dayOfWeek])
+      } else {
+        setChores([])
+      }
+      console.log("sunday", data.household.sunday)
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dayOfWeek, loading]);
-  
-
-  
-  const filterChores = () => {
-    console.log("data", data)
-    setChores(data.household[dayOfWeek])
-    console.log("day of week", data.household[dayOfWeek])
-    console.log("chores", chores)
-  };
   
 
   const choreCards = chores.map((chore, index) => {
@@ -102,11 +98,9 @@ const Dashboard = ({email}) => {
     <div className="dashboard">
       <div>
         <h1>{data.household.name} Chore Schedule</h1>
-
       <div className="week-nav">
         {weekButtons}
       </div>
-
         <section className="chore-container">
           {choreCards}
           {chores.length === 0 && 
