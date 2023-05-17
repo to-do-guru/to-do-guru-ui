@@ -59,25 +59,28 @@ const Dashboard = ({email}) => {
     },
   ];
 
-  // const householdName = data.household.name
+  
   const daysOfWeek = ["Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
   const daysOfWeekLowercase = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"]
   
   const [dayOfWeek, setDayOfWeek] = useState("Monday");
   const [chores, setChores] = useState([]);
   
- 
   
-  // useEffect(() => {
-  //   filterChores();
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, [dayOfWeek]);
+  useEffect(() => {
+    if(!loading) {
+      filterChores();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [dayOfWeek, loading]);
   
 
   
   const filterChores = () => {
+    console.log("data", data)
     // setChores(dummyData.filter((chore) => chore.day === dayOfWeek));
     setChores(daysOfWeekLowercase.map(day => {return {[day]: data.household[day]}}).filter(day => day[dayOfWeek.toLowerCase()]))
+    console.log("chores", chores)
   };
   
 
@@ -101,7 +104,7 @@ const Dashboard = ({email}) => {
   return (
     <div className="dashboard">
       <div>
-        {/* <h1>{householdName} Chore Schedule</h1> */}
+        <h1>{data.household.name} Chore Schedule</h1>
 
       <div className="week-nav">
         <button className="day-btn Monday" onClick={() => setDayOfWeek("Monday")} autoFocus>Monday</button>
