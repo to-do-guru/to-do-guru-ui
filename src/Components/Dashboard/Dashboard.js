@@ -59,7 +59,9 @@ const Dashboard = ({email}) => {
     },
   ];
 
-  const householdName = "Turing Fam"
+  const householdName = data.household.name
+  const daysOfWeek = ["Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+  const daysOfWeekLowercase = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"]
 
   const [dayOfWeek, setDayOfWeek] = useState("Monday");
   const [chores, setChores] = useState([]);
@@ -70,30 +72,27 @@ const Dashboard = ({email}) => {
   }, [dayOfWeek]);
 
   const filterChores = () => {
-    setChores(dummyData.filter((chore) => chore.day === dayOfWeek));
+    // setChores(dummyData.filter((chore) => chore.day === dayOfWeek));
+    setChores(daysOfWeekLowercase.map(day => {return {[day]: data.household[day]}}).filter(day => day[dayOfWeek.toLowerCase()]))
   };
 
   const choreCards = chores.map((chore, index) => {
     return (
       <ChoreCard
-        member={chore.member}
-        chore={chore.chore}
+        member={chore.assignedMember}
+        chore={chore.choreName}
         duration={chore.duration}
         key={index}
       />
     );
   });
 
-  const daysOfWeek = ["Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
   const weekButtons = daysOfWeek.map(day => <button key={day} className={`day-btn ${day}`} onClick={() => setDayOfWeek(day)}>{day}</button>)
 
   return (
     <div className="dashboard">
-      {console.log('data', data)}
-      {console.log('error', error)}
-      {console.log('loading', loading)}
       <div>
-        <h1>{householdName}'s Chore Schedule</h1>
+        <h1>{householdName} Chore Schedule</h1>
 
       <div className="week-nav">
         <button className="day-btn Monday" onClick={() => setDayOfWeek("Monday")} autoFocus>Monday</button>
