@@ -5,6 +5,10 @@ export const GET_HOUSEHOLD = gql`
     household (email: $email) {
       id
       name
+      members {
+        id
+        name
+      }
       sunday {
         choreName
         assignedMember
