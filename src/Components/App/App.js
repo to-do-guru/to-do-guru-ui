@@ -7,7 +7,7 @@ import Dashboard from '../Dashboard/Dashboard';
 import { useState } from 'react';
 
 const App = ()  => {
-  const [email, setEmail] = useState('');
+  const [email, setEmail] = useState('smith@example.com');
 
 	return (
 		<main>
