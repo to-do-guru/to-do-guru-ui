@@ -73,8 +73,6 @@ const Dashboard = ({ email }) => {
 
   return (
     <div className="dashboard">
-      {console.log(data.household.name)}
-      {console.log("err", error)}
       <div>
         <h1>{data.household.name} Chore Schedule</h1>
         <div className="week-nav">{weekButtons}</div>
