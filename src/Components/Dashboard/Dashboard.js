@@ -6,7 +6,7 @@ import { GET_HOUSEHOLD } from "../../queries";
 import { useQuery } from "@apollo/client";
 
 const Dashboard = ({email}) => {
-  const { loading, error, data } = useQuery(GET_HOUSEHOLD, { variables: { email }});
+  const { loading, error, data } = useQuery(GET_HOUSEHOLD, { variables: {email} });
 
   const dummyData = [
     {
@@ -89,7 +89,9 @@ const Dashboard = ({email}) => {
 
   return (
     <div className="dashboard">
-      {console.log(data)}
+      {console.log('data', data)}
+      {console.log('error', error)}
+      {console.log('loading', loading)}
       <div>
         <h1>{householdName}'s Chore Schedule</h1>
 
