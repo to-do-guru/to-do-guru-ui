@@ -1,6 +1,8 @@
 import './HouseForm.css';
 import { NavLink } from 'react-router-dom';
 import { useState } from 'react';
+import { useQuery } from '@apollo/client';
+import { GET_HOUSE_INFO } from '../../queries';
 
 const HouseForm = ({id, email}) => {
 
@@ -10,6 +12,10 @@ const HouseForm = ({id, email}) => {
     membersInputs: ['newInput']
   });
   const [memberNum, setMemberNum] = useState(1);
+
+  const { loading, data, error }= useQuery(GET_HOUSE_INFO, {
+    variables: { email },
+  });
 
   const changeMemberName = (key, value) => {
     setInput({...input, membersNames:{...input.membersNames, [key]: value}});
@@ -38,7 +44,6 @@ const HouseForm = ({id, email}) => {
         name: input.houseName,
         members: input.membersNames
       }
-      console.log(data);
       clearForm();
     } 
   }
@@ -67,6 +72,7 @@ const HouseForm = ({id, email}) => {
 
   return (
     <div className='edit-house'>
+      {console.log(data)}
       <h1>Edit your Household!</h1>
       <form className='house-form'>
         <input 
