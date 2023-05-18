@@ -34,9 +34,42 @@
   margin: 2%;
 }
 
+.household-input {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #007838;
+  padding: 0 3%;
+  color: white;
+  font-size: 20pt;
+  width: 70%;
+}
+
+.material-symbols-outlined {
+  color: white;
+  border: white 1px solid;
+  padding: 15%;
+  border-radius: 10px;
+}
+
+.edit-household-name {
+  display: flex;
+  align-items: center;
+}
+
+.submit-name {
+  width: 120px;
+  background-color: #007838;
+  color: white;
+  padding: 4% 3%;
+  margin-left: 2%;
+  border: 1px solid black;
+}
+
 .delete {
   border: 1px solid black;
   height: 80%;
+  border-radius: 5px;
 }
 
 .delete:hover {
