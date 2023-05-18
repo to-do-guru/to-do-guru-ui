@@ -6,6 +6,7 @@ import { GET_HOUSE_INFO } from "../../queries";
 
 const HouseForm = ({ id, email }) => {
   const [members, setMembers] = useState([]);
+  const [currentMember, setCurrentMember] = useState({});
   const [householdName, setHouseholdName] = useState("");
   const [editMode, setEditMode] = useState(false);
   const [editMember, setEditMember] = useState(false);
@@ -42,13 +43,20 @@ const HouseForm = ({ id, email }) => {
   }
 
   const addMember = () => {
+    if(editMember) {
+      setMembers([...members, currentMember])
+    }
+
     editMember ? setEditMember(false) : setEditMember(true);
+
+    console.log(currentMember)
+    console.log(members)
   }
 
   const toggleEdit = () => {
     editMode ? setEditMode(false) : setEditMode(true);
     // bug happening where required attribute on HTML not working for housename edit
-    // there's probably a way to combine this and addMember but idk if it's worth it
+    // there's probably a way to combine this and line 50 but idk if it's worth it
   }
 
   return (
@@ -58,7 +66,7 @@ const HouseForm = ({ id, email }) => {
         {!editMode && 
           <div className="household-input">
             <p>{householdName}</p>
-            <button onClick={toggleEdit}><span class="material-symbols-outlined">edit</span></button>
+            <button onClick={toggleEdit}><span className="material-symbols-outlined">edit</span></button>
           </div>}
         {editMode &&           
           <div className="edit-household-name">
@@ -75,8 +83,17 @@ const HouseForm = ({ id, email }) => {
         }
         {memberInputs}
         {!editMember && <button className="house-btn" onClick={addMember}>
-          Add Member
+          Add Chore-Doer
         </button>}
+        {editMember && <div className="member-input">
+          <input 
+            type="text"
+            placeholder="Name of chore-doer"
+            onChange={(e) => setCurrentMember({'id': members[members.length - 1].id + 1,'name': e.target.value})}
+            required
+          />
+          <button className="submit-member" onClick={addMember}>Add Chore-Doer</button>
+        </div>}
         <button className="house-btn" onClick={submitForm}>
           Submit
         </button>

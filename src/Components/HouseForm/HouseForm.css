@@ -53,18 +53,22 @@
   border-radius: 10px;
 }
 
-.edit-household-name {
+.edit-household-name, .member-input {
   display: flex;
   align-items: center;
 }
 
-.submit-name {
+.submit-name, .submit-member {
   width: 120px;
   background-color: #007838;
   color: white;
   padding: 4% 3%;
   margin-left: 2%;
   border: 1px solid black;
+}
+
+.submit-member {
+  width: 150px;
 }
 
 .delete {
