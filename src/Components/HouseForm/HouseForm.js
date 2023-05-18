@@ -2,7 +2,7 @@ import './HouseForm.css';
 import { NavLink } from 'react-router-dom';
 import { useState } from 'react';
 
-function HouseForm() {
+const HouseForm = ({id, email}) => {
 
   const [input, setInput] = useState({
     houseName: '',

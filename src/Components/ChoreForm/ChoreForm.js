@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import { useState } from 'react';
 import Select from 'react-select';
 
-function ChoreForm() {
+const ChoreForm = ({id, email}) => {
 
   const [chores, setChores] = useState([
     'Wash Dishes',

@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 import { GET_HOUSEHOLD } from "../../queries";
 import { useQuery } from "@apollo/client";
 
-const Dashboard = ({ email }) => {
+const Dashboard = ({ email, setId }) => {
   const { loading, error, data } = useQuery(GET_HOUSEHOLD, {
     variables: { email },
   });
