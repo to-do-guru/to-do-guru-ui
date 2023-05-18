@@ -12,10 +12,22 @@ const HouseForm = ({id, email}) => {
     membersInputs: ['newInput']
   });
   const [memberNum, setMemberNum] = useState(1);
+  const [members, setMembers] = useState([])
+  const [householdName, setHouseholdName] = useState("")
 
-  const { loading, data, error }= useQuery(GET_HOUSE_INFO, {
+  const { loading, data, error } = useQuery(GET_HOUSE_INFO, {
     variables: { email },
   });
+
+  useEffect(() => {
+    if (!loading) {
+      setMembers(data.household.members)
+      setHouseholdName(data.household.name)
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [loading]);
+
+
 
   const changeMemberName = (key, value) => {
     setInput({...input, membersNames:{...input.membersNames, [key]: value}});
