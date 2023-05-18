@@ -6,12 +6,6 @@ import { GET_HOUSE_INFO } from "../../queries";
 import { useEffect } from "react";
 
 const HouseForm = ({ id, email }) => {
-  const [input, setInput] = useState({
-    houseName: "",
-    membersNames: {},
-    membersInputs: ["newInput"],
-  });
-  const [memberNum, setMemberNum] = useState(1);
   const [members, setMembers] = useState([]);
   const [householdName, setHouseholdName] = useState("");
 
@@ -27,58 +21,16 @@ const HouseForm = ({ id, email }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [loading]);
 
-  const changeMemberName = (key, value) => {
-    setInput({
-      ...input,
-      membersNames: { ...input.membersNames, [key]: value },
-    });
-  };
-
-  const changeNumOfInputs = (num) => {
-    if (num > memberNum) {
-      setInput({
-        ...input,
-        membersInputs: [...input.membersInputs, "newInput"],
-      });
-    } else {
-      const reducedArray = input.membersInputs.slice(0, -1);
-      setInput({ ...input, membersInputs: reducedArray });
-    }
-    setMemberNum(num);
-  };
-
-  const checkValidity = () => {
-    const keys = Object.keys(input.membersNames);
-    return keys.length < input.membersInputs.length ? false : true;
-  };
-
   const submitForm = (event) => {
-    const check = checkValidity();
-    if (input.houseName && check) {
-      event.preventDefault();
-      const data = {
-        name: input.houseName,
-        members: input.membersNames,
-      };
-      clearForm();
-    }
-  };
-
-  const clearForm = () => {
-    setInput({
-      houseName: "",
-      membersNames: {},
-      membersInputs: ["newInput"],
-    });
-    setMemberNum(1);
-    // There is a bug where the first input field to enter a household members name isn't clearing
+    event.preventDefault();
+    // this is where the post to BE with changes will eventually happen
   };
 
   const memberInputs = members.map((member) => (
-    <>
-      <p key={member.id}>{member.name}</p>
-      <button onClick={() => deleteMember(member.id)}>Delete</button>
-    </>
+    <div key={member.id} className="member">
+      <p>{member.name}</p>
+      <button onClick={() => deleteMember(member.id)} className="delete">Delete</button>
+    </div>
   ));
 
   const deleteMember = (id) => {
@@ -96,7 +48,7 @@ const HouseForm = ({ id, email }) => {
           name="householdName"
           placeholder="Name Your Household"
           value={householdName}
-          onChange={(e) => setInput({ ...input, houseName: e.target.value })}
+          onChange={(e) => setHouseholdName(e.target.value)}
           required
         />
         {memberInputs}

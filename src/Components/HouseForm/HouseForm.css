@@ -23,8 +23,25 @@
   margin-bottom: 3%;
 }
 
-.mem-input {
-  margin-bottom: 2%;
+.member {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 40%;
+  background-color: white;
+  padding: 1% 3%;
+  border: solid black 1px;
+  margin: 2%;
+}
+
+.delete {
+  border: 1px solid black;
+  height: 80%;
+}
+
+.delete:hover {
+  background-color: #007838;
+  color: white;
 }
 
 .error {
