@@ -43,6 +43,7 @@
   color: white;
   font-size: 20pt;
   width: 70%;
+  border: 1px solid black;
 }
 
 .material-symbols-outlined {

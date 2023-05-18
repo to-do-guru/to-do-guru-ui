@@ -8,6 +8,7 @@ const HouseForm = ({ id, email }) => {
   const [members, setMembers] = useState([]);
   const [householdName, setHouseholdName] = useState("");
   const [editMode, setEditMode] = useState(false);
+  const [editMember, setEditMember] = useState(false);
 
   const { loading, data, error } = useQuery(GET_HOUSE_INFO, {
     variables: { email },
@@ -22,6 +23,7 @@ const HouseForm = ({ id, email }) => {
   }, [loading]);
 
   const submitForm = (event) => {
+    // do something here to show the user that their info was successfully submitted
     event.preventDefault();
     // this is where the post to BE with changes will eventually happen
   };
@@ -39,8 +41,14 @@ const HouseForm = ({ id, email }) => {
     // eventually delete requests to backend
   }
 
+  const addMember = () => {
+    editMember ? setEditMember(false) : setEditMember(true);
+  }
+
   const toggleEdit = () => {
-    editMode ? setEditMode(false) : setEditMode(true)
+    editMode ? setEditMode(false) : setEditMode(true);
+    // bug happening where required attribute on HTML not working for housename edit
+    // there's probably a way to combine this and addMember but idk if it's worth it
   }
 
   return (
@@ -66,7 +74,9 @@ const HouseForm = ({ id, email }) => {
           </div>
         }
         {memberInputs}
-        {/* <button onClick={}>Add Member</button> */}
+        {!editMember && <button className="house-btn" onClick={addMember}>
+          Add Member
+        </button>}
         <button className="house-btn" onClick={submitForm}>
           Submit
         </button>
