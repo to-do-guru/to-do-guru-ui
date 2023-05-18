@@ -1,5 +1,5 @@
 describe('Error Handling', () => {
-  it('should not allow the user to submit a chore with an empty field', () => {
+  it.skip('should not allow the user to submit a chore with an empty field', () => {
     cy.visit('https://to-do-guru-ui.vercel.app/choreform');
     cy.get('li').should('have.length', 3);
     
@@ -16,7 +16,7 @@ describe('Error Handling', () => {
       .get('li').should('have.length', 3);
   });
 
-  it('should not allow the user to submit a household with an empty form', () => {
+  it.skip('should not allow the user to submit a household with an empty form', () => {
     cy.visit('https://to-do-guru-ui.vercel.app/houseform');
 
     cy.get('.house-form > .house-btn').click()

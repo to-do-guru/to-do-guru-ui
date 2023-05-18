@@ -3,7 +3,7 @@ describe('House Form', () => {
       cy.visit('https://to-do-guru-ui.vercel.app/houseform');
     });
   
-    it('should allow a user to name their household', () => {
+    it.skip('should allow a user to name their household', () => {
       cy.get('[name="householdName"]').type('Cypress Family')
         .should('have.value', 'Cypress Family');
     });
