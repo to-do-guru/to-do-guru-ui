@@ -1,7 +1,10 @@
+import { useState } from 'react';
 import './Login.css';
 import { NavLink } from 'react-router-dom/cjs/react-router-dom.min';
 
-function Login() {
+const Login = ({setEmail}) => {
+  const [loginInfo, setLoginInfo] = useState('')
+
   return (
     <div className='login'>
       <h1>Welcome to To-Do Guru!</h1>
@@ -9,9 +12,11 @@ function Login() {
       <input
 				type="text"
 				placeholder="Username/Email"
+        value={loginInfo}
+        onChange={(e) => setLoginInfo(e.target.value)}
 			/>
       <NavLink to="/dashboard">
-        <button className='login-btn'>Login</button>
+        <button className='login-btn' onClick={() => setEmail(loginInfo)}>Login</button>
       </NavLink>
     </div>
   );

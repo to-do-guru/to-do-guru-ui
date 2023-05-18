@@ -4,39 +4,29 @@ import Login from '../Login/Login';
 import HouseForm from '../HouseForm/HouseForm';
 import ChoreForm from '../ChoreForm/ChoreForm';
 import Dashboard from '../Dashboard/Dashboard';
-// import { useQuery, gql } from "@apollo/client";
-
-// const GET_HOUSEHOLD = gql`
-//   query GetUser {
-//     queryUser {
-//         household
-//     }
-//   }
-// `
+import { useState } from 'react';
 
 const App = ()  => {
-  // const { loading, error, data } = useQuery(GET_HOUSEHOLD);
+  const [email, setEmail] = useState('smith@example.com');
+	const [id, setId] = useState("")
 
 	return (
 		<main>
-      {/* {console.log('data', data)}
-      {console.log('error', error)}
-      {console.log('loading', loading)} */}
 			<Switch>
 				<Route exact path="/">
-					<Login />
+					<Login setEmail={setEmail}/>
 				</Route>
 
 				<Route exact path="/houseform">
-					<HouseForm />
+					<HouseForm id={id} email={email}/>
 				</Route>
 
 				<Route exact path="/choreform">
-					<ChoreForm />
+					<ChoreForm id={id} email={email}/>
 				</Route>
 
 				<Route exact path="/dashboard">
-					<Dashboard />
+					<Dashboard email={email} setId={setId} />
 				</Route>
 
 				<Route path="*">

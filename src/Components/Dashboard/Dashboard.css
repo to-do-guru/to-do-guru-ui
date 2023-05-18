@@ -20,6 +20,7 @@
   font-size: 20pt;
   height: 100px;
   width: 100%;
+  text-transform: capitalize;
 }
 
 .day-btn:hover, .day-btn:focus {
@@ -31,11 +32,11 @@
   border: black solid 3px;
 }
 
-.Monday:hover, .Monday:focus {
+.monday:hover, .monday:focus {
   border-radius: 50px 0px 0px 50px;
 }
 
-.Sunday:hover, .Sunday:focus {
+.sunday:hover, .sunday:focus {
   border-radius: 0px 50px 50px 0px;
 }
 
