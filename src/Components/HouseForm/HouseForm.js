@@ -44,19 +44,17 @@ const HouseForm = ({ id, email }) => {
 
   const addMember = () => {
     if(editMember) {
-      setMembers([...members, currentMember])
+      setMembers([...members, currentMember]);
+      setCurrentMember({});
     }
 
     editMember ? setEditMember(false) : setEditMember(true);
-
-    console.log(currentMember)
-    console.log(members)
   }
 
   const toggleEdit = () => {
     editMode ? setEditMode(false) : setEditMode(true);
-    // bug happening where required attribute on HTML not working for housename edit
-    // there's probably a way to combine this and line 50 but idk if it's worth it
+    // bug happening where required attribute on HTML not working for housename edit input or adding a new member input
+    // there's probably a way to combine this and line 51 but idk if it's worth it
   }
 
   return (
