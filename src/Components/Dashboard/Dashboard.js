@@ -24,6 +24,7 @@ const Dashboard = ({ email, setId }) => {
 
   useEffect(() => {
     if (!loading) {
+      setId(data.household.id)
       if (data.household[dayOfWeek]) {
         setChores(data.household[dayOfWeek]);
       } else {
