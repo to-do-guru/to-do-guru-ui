@@ -47,3 +47,15 @@ export const GET_HOUSEHOLD = gql`
     }
   }
 `
+
+export const GET_HOUSE_INFO = gql`
+  query getHousehold($email: String!) {
+    household (email: $email) {
+      name
+      members {
+        id
+        name
+      }
+    }
+  }
+`
