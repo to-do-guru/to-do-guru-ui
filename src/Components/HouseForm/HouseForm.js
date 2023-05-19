@@ -60,14 +60,14 @@ const HouseForm = ({ id, email }) => {
   return (
     <div className="edit-house">
       <h1>Edit your Household!</h1>
-      <form className="house-form">
+      <div className="house-form">
         {!editMode && 
           <div className="household-input">
             <p>{householdName}</p>
             <button onClick={toggleEdit}><span className="material-symbols-outlined">edit</span></button>
           </div>}
         {editMode &&           
-          <div className="edit-household-name">
+          <form className="edit-household-name" >
             <input
               type="text"
               name="householdName"
@@ -76,14 +76,14 @@ const HouseForm = ({ id, email }) => {
               onChange={(e) => setHouseholdName(e.target.value)}
               required
             />
-            <button onClick={toggleEdit} className="submit-name">Submit Name</button>
-          </div>
+            <button type="submit" onClick={toggleEdit} className="submit-name">Submit Name</button>
+          </form>
         }
         {memberInputs}
         {!editMember && <button className="house-btn" onClick={addMember}>
           Add Chore-Doer
         </button>}
-        {editMember && <div className="member-input">
+        {editMember && <form className="member-input">
           <input 
             type="text"
             placeholder="Name of chore-doer"
@@ -91,11 +91,11 @@ const HouseForm = ({ id, email }) => {
             required
           />
           <button className="submit-member" onClick={addMember}>Add Chore-Doer</button>
-        </div>}
+        </form>}
         <button className="house-btn" onClick={submitForm}>
           Submit
         </button>
-      </form>
+      </div>
       <NavLink to="/dashboard">
         <button className="house-btn">See Schedule</button>
       </NavLink>
