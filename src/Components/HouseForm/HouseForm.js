@@ -48,11 +48,9 @@ const HouseForm = ({ id, email }) => {
     console.log(currentMember)
     if (currentMember.name) {
       event.preventDefault();
-      if (editMember) {
-        setMembers([...members, currentMember]);
-        setCurrentMember({id:"", name:""});
-      }
-      editMember ? setEditMember(false) : setEditMember(true);
+      setMembers([...members, currentMember]);
+      setCurrentMember({id:"", name:""});
+      setEditMember(false);
     } 
   };
 
@@ -99,7 +97,7 @@ const HouseForm = ({ id, email }) => {
         )}
         {memberInputs}
         {!editMember && (
-          <button className="house-btn" onClick={(event) => addMember(event)}>
+          <button className="house-btn" onClick={() => setEditMember(true)}>
             Add Chore-Doer
           </button>
         )}
@@ -121,13 +119,10 @@ const HouseForm = ({ id, email }) => {
               type="submit"
               onClick={(event) => addMember(event)}
             >
-              Add Chore-Doer
+              Submit
             </button>
           </form>
         )}
-        <button className="house-btn" onClick={submitForm}>
-          Submit
-        </button>
       </div>
       <NavLink to="/dashboard">
         <button className="house-btn">See Schedule</button>
