@@ -51,20 +51,24 @@ const HouseForm = ({ id, email }) => {
     editMember ? setEditMember(false) : setEditMember(true);
   }
 
-  const toggleEdit = () => {
-    editMode ? setEditMode(false) : setEditMode(true);
+  const toggleEdit = (event) => {
+    if (householdName) {
+      event.preventDefault()
+      editMode ? setEditMode(false) : setEditMode(true);
+    }
     // bug happening where required attribute on HTML not working for housename edit input or adding a new member input
     // there's probably a way to combine this and line 51 but idk if it's worth it
   }
 
   return (
     <div className="edit-house">
+      {console.log(householdName)}
       <h1>Edit your Household!</h1>
       <div className="house-form">
         {!editMode && 
           <div className="household-input">
             <p>{householdName}</p>
-            <button onClick={toggleEdit}><span className="material-symbols-outlined">edit</span></button>
+            <button onClick={(event) => toggleEdit(event)}><span className="material-symbols-outlined">edit</span></button>
           </div>}
         {editMode &&           
           <form className="edit-household-name" >
@@ -76,7 +80,7 @@ const HouseForm = ({ id, email }) => {
               onChange={(e) => setHouseholdName(e.target.value)}
               required
             />
-            <button type="submit" onClick={toggleEdit} className="submit-name">Submit Name</button>
+            <button type="submit" onClick={(event) => toggleEdit(event)} className="submit-name">Submit Name</button>
           </form>
         }
         {memberInputs}
