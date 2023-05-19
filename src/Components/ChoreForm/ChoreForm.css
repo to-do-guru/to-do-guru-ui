@@ -53,7 +53,7 @@ li {
   margin-top: 5%;
 }
 
-.chore-btn:hover, .house-btn:hover {
+.chore-btn:hover, .house-btn:hover, .submit-name:hover {
   background-color: #fcef7c;
   color: black;
 }

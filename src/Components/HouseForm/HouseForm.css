@@ -23,8 +23,63 @@
   margin-bottom: 3%;
 }
 
-.mem-input {
-  margin-bottom: 2%;
+.member {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 40%;
+  background-color: white;
+  padding: 1% 3%;
+  border: solid black 1px;
+  margin: 2%;
+}
+
+.household-input {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #007838;
+  padding: 0 3%;
+  color: white;
+  font-size: 20pt;
+  width: 70%;
+  border: 1px solid black;
+}
+
+.material-symbols-outlined {
+  color: white;
+  border: white 1px solid;
+  padding: 15%;
+  border-radius: 10px;
+}
+
+.edit-household-name, .member-input {
+  display: flex;
+  align-items: center;
+}
+
+.submit-name, .submit-member {
+  width: 120px;
+  background-color: #007838;
+  color: white;
+  padding: 4% 3%;
+  margin-left: 2%;
+  border: 1px solid black;
+}
+
+.submit-member {
+  width: 150px;
+}
+
+.delete {
+  border: 1px solid black;
+  height: 80%;
+  border-radius: 5px;
+}
+
+.delete:hover {
+  background-color: #007838;
+  color: white;
 }
 
 .error {

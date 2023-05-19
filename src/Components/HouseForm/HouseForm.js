@@ -1,19 +1,15 @@
 import "./HouseForm.css";
 import { NavLink } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useQuery } from "@apollo/client";
 import { GET_HOUSE_INFO } from "../../queries";
-import { useEffect } from "react";
 
 const HouseForm = ({ id, email }) => {
-  const [input, setInput] = useState({
-    houseName: "",
-    membersNames: {},
-    membersInputs: ["newInput"],
-  });
-  const [memberNum, setMemberNum] = useState(1);
   const [members, setMembers] = useState([]);
+  const [currentMember, setCurrentMember] = useState({});
   const [householdName, setHouseholdName] = useState("");
+  const [editMode, setEditMode] = useState(false);
+  const [editMember, setEditMember] = useState(false);
 
   const { loading, data, error } = useQuery(GET_HOUSE_INFO, {
     variables: { email },
@@ -27,58 +23,17 @@ const HouseForm = ({ id, email }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [loading]);
 
-  const changeMemberName = (key, value) => {
-    setInput({
-      ...input,
-      membersNames: { ...input.membersNames, [key]: value },
-    });
-  };
-
-  const changeNumOfInputs = (num) => {
-    if (num > memberNum) {
-      setInput({
-        ...input,
-        membersInputs: [...input.membersInputs, "newInput"],
-      });
-    } else {
-      const reducedArray = input.membersInputs.slice(0, -1);
-      setInput({ ...input, membersInputs: reducedArray });
-    }
-    setMemberNum(num);
-  };
-
-  const checkValidity = () => {
-    const keys = Object.keys(input.membersNames);
-    return keys.length < input.membersInputs.length ? false : true;
-  };
-
   const submitForm = (event) => {
-    const check = checkValidity();
-    if (input.houseName && check) {
-      event.preventDefault();
-      const data = {
-        name: input.houseName,
-        members: input.membersNames,
-      };
-      clearForm();
-    }
-  };
-
-  const clearForm = () => {
-    setInput({
-      houseName: "",
-      membersNames: {},
-      membersInputs: ["newInput"],
-    });
-    setMemberNum(1);
-    // There is a bug where the first input field to enter a household members name isn't clearing
+    // do something here to show the user that their info was successfully submitted
+    event.preventDefault();
+    // this is where the post to BE with changes will eventually happen
   };
 
   const memberInputs = members.map((member) => (
-    <>
-      <p key={member.id}>{member.name}</p>
-      <button onClick={() => deleteMember(member.id)}>Delete</button>
-    </>
+    <div key={member.id} className="member">
+      <p>{member.name}</p>
+      <button onClick={() => deleteMember(member.id)} className="delete">Delete</button>
+    </div>
   ));
 
   const deleteMember = (id) => {
@@ -87,20 +42,56 @@ const HouseForm = ({ id, email }) => {
     // eventually delete requests to backend
   }
 
+  const addMember = () => {
+    if(editMember) {
+      setMembers([...members, currentMember]);
+      setCurrentMember({});
+    }
+
+    editMember ? setEditMember(false) : setEditMember(true);
+  }
+
+  const toggleEdit = () => {
+    editMode ? setEditMode(false) : setEditMode(true);
+    // bug happening where required attribute on HTML not working for housename edit input or adding a new member input
+    // there's probably a way to combine this and line 51 but idk if it's worth it
+  }
+
   return (
     <div className="edit-house">
       <h1>Edit your Household!</h1>
       <form className="house-form">
-        <input
-          type="text"
-          name="householdName"
-          placeholder="Name Your Household"
-          value={householdName}
-          onChange={(e) => setInput({ ...input, houseName: e.target.value })}
-          required
-        />
+        {!editMode && 
+          <div className="household-input">
+            <p>{householdName}</p>
+            <button onClick={toggleEdit}><span className="material-symbols-outlined">edit</span></button>
+          </div>}
+        {editMode &&           
+          <div className="edit-household-name">
+            <input
+              type="text"
+              name="householdName"
+              placeholder="Name Your Household"
+              value={householdName}
+              onChange={(e) => setHouseholdName(e.target.value)}
+              required
+            />
+            <button onClick={toggleEdit} className="submit-name">Submit Name</button>
+          </div>
+        }
         {memberInputs}
-        {/* <button onClick={}>Add Member</button> */}
+        {!editMember && <button className="house-btn" onClick={addMember}>
+          Add Chore-Doer
+        </button>}
+        {editMember && <div className="member-input">
+          <input 
+            type="text"
+            placeholder="Name of chore-doer"
+            onChange={(e) => setCurrentMember({'id': members[members.length - 1].id + 1,'name': e.target.value})}
+            required
+          />
+          <button className="submit-member" onClick={addMember}>Add Chore-Doer</button>
+        </div>}
         <button className="house-btn" onClick={submitForm}>
           Submit
         </button>
