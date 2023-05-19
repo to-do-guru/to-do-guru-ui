@@ -23,12 +23,6 @@ const HouseForm = ({ id, email }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [loading]);
 
-  const submitForm = (event) => {
-    // do something here to show the user that their info was successfully submitted
-    event.preventDefault();
-    // this is where the post to BE with changes will eventually happen
-  };
-
   const memberInputs = members.map((member) => (
     <div key={member.id} className="member">
       <p>{member.name}</p>
@@ -44,23 +38,22 @@ const HouseForm = ({ id, email }) => {
     // eventually delete requests to backend
   };
 
-  const addMember = (event) => {
-    console.log(currentMember)
+  const submitMember = (event) => {
     if (currentMember.name) {
       event.preventDefault();
       setMembers([...members, currentMember]);
       setCurrentMember({id:"", name:""});
       setEditMember(false);
-    } 
+    }
+    // Add mutation query for BE 
   };
 
-  const toggleEdit = (event) => {
+  const submitHouseholdName = (event) => {
     if (householdName) {
       event.preventDefault();
-      editMode ? setEditMode(false) : setEditMode(true);
+      setEditMode(false)
     }
-    // bug happening where required attribute on HTML not working for housename edit input or adding a new member input
-    // there's probably a way to combine this and line 51 but idk if it's worth it
+    // Add mutation query for BE 
   };
 
   return (
@@ -71,7 +64,7 @@ const HouseForm = ({ id, email }) => {
         {!editMode && (
           <div className="household-input">
             <p>{householdName}</p>
-            <button onClick={(event) => toggleEdit(event)}>
+            <button onClick={() => setEditMode(true)}>
               <span className="material-symbols-outlined">edit</span>
             </button>
           </div>
@@ -88,7 +81,7 @@ const HouseForm = ({ id, email }) => {
             />
             <button
               type="submit"
-              onClick={(event) => toggleEdit(event)}
+              onClick={(event) => submitHouseholdName(event)}
               className="submit-name"
             >
               Submit Name
@@ -117,7 +110,7 @@ const HouseForm = ({ id, email }) => {
             <button
               className="submit-member"
               type="submit"
-              onClick={(event) => addMember(event)}
+              onClick={(event) => submitMember(event)}
             >
               Submit
             </button>
