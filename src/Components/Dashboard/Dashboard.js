@@ -46,13 +46,12 @@ const Dashboard = ({ email, setId }) => {
   });
 
   const weekButtons = daysOfWeek.map((day) => {
-    if (day === "monday") {
+    if (day === dayOfWeek) {
       return (
         <button
           key={day}
-          className={`day-btn ${day}`}
+          className={`day-btn ${day} selected`}
           onClick={() => setDayOfWeek(day)}
-          autoFocus
         >
           {day}
         </button>
