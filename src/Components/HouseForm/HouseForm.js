@@ -1,8 +1,8 @@
 import "./HouseForm.css";
 import { NavLink } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { useQuery } from "@apollo/client";
-import { GET_HOUSE_INFO } from "../../queries";
+import { useQuery, useMutation } from "@apollo/client";
+import { CHANGE_HOUSE_NAME, GET_HOUSE_INFO } from "../../queries";
 
 const HouseForm = ({ id, email }) => {
   const [members, setMembers] = useState([]);
@@ -11,17 +11,22 @@ const HouseForm = ({ id, email }) => {
   const [editMode, setEditMode] = useState(false);
   const [editMember, setEditMember] = useState(false);
 
-  const { loading, data, error } = useQuery(GET_HOUSE_INFO, {
+  const { loading: queryLoading, data: queryData, error: queryError } = useQuery(GET_HOUSE_INFO, {
     variables: { email },
   });
 
+  const [updateHousehold, {data: mutationData, loading: mutationLoading, error: mutationError}] = useMutation(CHANGE_HOUSE_NAME);
+
   useEffect(() => {
-    if (!loading) {
-      setMembers(data.household.members);
-      setHouseholdName(data.household.name);
+    if (!queryLoading) {
+      setMembers(queryData.household.members);
+      setHouseholdName(queryData.household.name);
+    }
+    if (!mutationLoading) {
+      console.log(mutationData)
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [loading]);
+  }, [queryLoading, mutationLoading]);
 
   const memberInputs = members.map((member) => (
     <div key={member.id} className="member">
@@ -50,15 +55,15 @@ const HouseForm = ({ id, email }) => {
 
   const submitHouseholdName = (event) => {
     if (householdName) {
+      const input = {id: id, name: householdName}
       event.preventDefault();
-      setEditMode(false)
+      setEditMode(false);
+      updateHousehold({variables: { input: input }});
     }
-    // Add mutation query for BE 
   };
 
   return (
     <div className="edit-house">
-      {console.log(householdName)}
       <h1>Edit your Household!</h1>
       <div className="house-form">
         {!editMode && (
