@@ -1,6 +1,6 @@
 import "./HouseForm.css";
 import { NavLink } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useQuery, useMutation } from "@apollo/client";
 import { CHANGE_HOUSE_NAME, GET_HOUSE_INFO, DELETE_MEMBER_NAME, ADD_MEMBER_NAME } from "../../queries";
 

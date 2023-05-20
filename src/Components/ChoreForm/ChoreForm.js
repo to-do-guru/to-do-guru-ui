@@ -2,20 +2,24 @@ import './ChoreForm.css';
 import { NavLink } from 'react-router-dom';
 import { useState } from 'react';
 import Select from 'react-select';
+import { GET_CHORE_INFO } from '../../queries';
+import { useQuery, useMutation } from "@apollo/client";
 
 const ChoreForm = ({id, email}) => {
 
-  const [chores, setChores] = useState([
-    'Wash Dishes',
-    'Laundry',
-    'Sweep Floor'
-  ]);
+  const [chores, setChores] = useState([]);
 
   const [input, setInput] = useState({
     choreName: '',
     choreDuration: 15
   });
   const [choreDays, setChoreDays] = useState(null);
+
+  const {loading: choreLoading, data: choreData, error: choreError} = useQuery(GET_CHORE_INFO, {
+    fetchPolicy: "no-cache",
+    onCompleted: (choreData) => cleanChores(choreData.household.chores),
+    variables: { email },
+  });
 
   const daysOfTheWeek = [
     { value: 'Monday', label: 'Monday' },
@@ -59,6 +63,15 @@ const ChoreForm = ({id, email}) => {
       choreDuration: 15
     });
     setChoreDays(null);
+  }
+
+  const cleanChores = (chores) => {
+    setChores(chores.reduce((acc, chore) => {
+      if(!acc.includes(chore.choreName)) { 
+        acc.push(chore.choreName)
+      }
+      return acc
+    }, []))
   }
 
   return (
