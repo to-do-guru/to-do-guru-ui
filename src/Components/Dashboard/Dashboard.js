@@ -7,6 +7,7 @@ import { useQuery } from "@apollo/client";
 
 const Dashboard = ({ email, setId }) => {
   const { loading, error, data } = useQuery(GET_HOUSEHOLD, {
+    fetchPolicy: "no-cache",
     variables: { email },
   });
 
