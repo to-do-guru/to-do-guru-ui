@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { useQuery, useMutation } from "@apollo/client";
 import { CHANGE_HOUSE_NAME, GET_HOUSE_INFO, DELETE_MEMBER_NAME } from "../../queries";
 
+
 const HouseForm = ({ id, email }) => {
   const [members, setMembers] = useState([]);
   const [currentMember, setCurrentMember] = useState({id:"", name:""});
@@ -12,23 +13,30 @@ const HouseForm = ({ id, email }) => {
   const [editMember, setEditMember] = useState(false);
 
   const { loading: queryLoading, data: queryData, error: queryError } = useQuery(GET_HOUSE_INFO, {
-    variables: { email },
+      fetchPolicy: "no-cache",
+      onCompleted: (queryData) => {setMembers(queryData.household.members)
+      setHouseholdName(queryData.household.name)},
+      variables: { email },
   });
 
-  const [updateHousehold, {data: mutationData, loading: mutationLoading, error: mutationError}] = useMutation(CHANGE_HOUSE_NAME);
+  const [updateHousehold, {data: mutationData, loading: mutationLoading, error: mutationError}] = useMutation(CHANGE_HOUSE_NAME, {
+    fetchPolicy: "no-cache",
+    onCompleted: (mutationData) => setHouseholdName(mutationData.updateHousehold.household.name)
+    
+  });
   const [deleteMemberName, {data: deleteData, loading: deleteLoading, error: deleteError}] = useMutation(DELETE_MEMBER_NAME)
 
 
-  useEffect(() => {
-    if (!queryLoading && !mutationLoading) {
-      setMembers(queryData.household.members);
-      setHouseholdName(queryData.household.name);
-    }
-    if (!mutationLoading && queryLoading) {
-      setHouseholdName(mutationData.updateHousehold.household.name);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [queryLoading, mutationLoading]);
+  // useEffect(() => {
+  //   if (!queryLoading && !mutationLoading) {
+  //     setMembers(queryData.household.members);
+  //     setHouseholdName(queryData.household.name);
+  //   }
+  //   // if (!mutationLoading && queryLoading) {
+  //   //   setHouseholdName(mutationData.updateHousehold.household.name);
+  //   // }
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, [queryLoading, mutationLoading]);
 
   const memberInputs = members.map((member) => (
     <div key={member.id} className="member">
