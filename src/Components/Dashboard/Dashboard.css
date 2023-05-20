@@ -5,6 +5,8 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  margin-bottom: 0;
+  overflow-y: scroll;
 }
 
 .week-nav {
@@ -23,20 +25,21 @@
   text-transform: capitalize;
 }
 
-.day-btn:hover, .day-btn:focus {
+.day-btn:hover, .day-btn:focus, .selected {
   background-color: #007838;
   color: white;
+
 }
 
-.day-btn:focus {
+.selected {
   border: black solid 3px;
 }
 
-.monday:hover, .monday:focus {
+.monday:hover, .monday {
   border-radius: 50px 0px 0px 50px;
 }
 
-.sunday:hover, .sunday:focus {
+.sunday:hover, .sunday {
   border-radius: 0px 50px 50px 0px;
 }
 
@@ -62,3 +65,4 @@ nav {
   box-shadow: 5px 5px 25px black;
   margin-top: 5%;
 }
+
