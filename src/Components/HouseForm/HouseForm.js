@@ -15,6 +15,7 @@ const HouseForm = ({ id, email }) => {
   const { loading: queryLoading, data: queryData, error: queryError } = useQuery(GET_HOUSE_INFO, {
       fetchPolicy: "no-cache",
       onCompleted: (queryData) => {setMembers(queryData.household.members)
+        console.log("query", queryData.household.members)
       setHouseholdName(queryData.household.name)},
       variables: { email },
   });
@@ -24,7 +25,10 @@ const HouseForm = ({ id, email }) => {
     onCompleted: (mutationData) => setHouseholdName(mutationData.updateHousehold.household.name)
     
   });
-  const [deleteMemberName, {data: deleteData, loading: deleteLoading, error: deleteError}] = useMutation(DELETE_MEMBER_NAME)
+  const [deleteMemberName, {data: deleteData, loading: deleteLoading, error: deleteError}] = useMutation(DELETE_MEMBER_NAME, {
+    fetchPolicy: "no-cache",
+    onCompleted: (deleteData) => console.log(deleteData)
+  })
 
 
   // useEffect(() => {
@@ -48,9 +52,11 @@ const HouseForm = ({ id, email }) => {
   ));
 
   const deleteMember = (id) => {
+    console.log("id", id)
     const filter = members.filter((member) => member.id !== id);
     setMembers(filter);
-    deleteMemberName({variables: { id }})
+    const input = {id: id}
+    deleteMemberName({variables: { input }})
   };
 
   const submitMember = (event) => {
