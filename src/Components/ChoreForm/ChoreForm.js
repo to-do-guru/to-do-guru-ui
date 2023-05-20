@@ -23,8 +23,11 @@ const ChoreForm = ({id, email}) => {
 
   const [addChore, { data: addChoreData }] = useMutation(ADD_CHORE, {
     fetchPolicy: "no-cache",
-    onCompleted: (addChoreData) => setChores([...chores, addChoreData.createChore.chores[0].choreName])
-  })
+    onCompleted: (addChoreData) => {
+      setChores([...chores, addChoreData.createChore.chores[0].choreName]);
+      clearForm();
+    }
+  });
 
   const daysOfTheWeek = [
     { value: 'Monday', label: 'Monday' },
@@ -57,9 +60,7 @@ const ChoreForm = ({id, email}) => {
         duration: parseInt(choreInput.choreDuration),
         day: choreDays.map(chore => chore.value)
       }
-      console.log(input);
       addChore({variables: { input }});
-      clearForm();
     }
   }
 
@@ -74,10 +75,10 @@ const ChoreForm = ({id, email}) => {
   const cleanChores = (chores) => {
     setChores(chores.reduce((acc, chore) => {
       if(!acc.includes(chore.choreName)) { 
-        acc.push(chore.choreName)
+        acc.push(chore.choreName);
       }
-      return acc
-    }, []))
+      return acc;
+    }, []));
   }
 
   return (
@@ -118,6 +119,9 @@ const ChoreForm = ({id, email}) => {
               onChange={(e) => setChoreInput({...choreInput, choreDuration: e.target.value})}
             />
             <button className='chore-btn' onClick={submitForm}>Add Chore!</button>
+            <NavLink to="/dashboard">
+              <button className='house-btn'>View Schedule</button>
+            </NavLink>
         </form>
         <aside className='chore-list'>
           <h2>Your Chores:</h2>
@@ -126,9 +130,6 @@ const ChoreForm = ({id, email}) => {
           </ol>
         </aside>
       </div>
-      <NavLink to="/dashboard">
-        <button className='house-btn'>View Schedule</button>
-      </NavLink>
     </div>
   );
 }
