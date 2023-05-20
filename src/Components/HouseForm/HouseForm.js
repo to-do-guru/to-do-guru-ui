@@ -15,7 +15,6 @@ const HouseForm = ({ id, email }) => {
   const { loading: queryLoading, data: queryData, error: queryError } = useQuery(GET_HOUSE_INFO, {
       fetchPolicy: "no-cache",
       onCompleted: (queryData) => {setMembers(queryData.household.members)
-        console.log("query", queryData.household.members)
       setHouseholdName(queryData.household.name)},
       variables: { email },
   });
@@ -27,20 +26,11 @@ const HouseForm = ({ id, email }) => {
   });
   const [deleteMemberName, {data: deleteData, loading: deleteLoading, error: deleteError}] = useMutation(DELETE_MEMBER_NAME, {
     fetchPolicy: "no-cache",
-    onCompleted: (deleteData) => console.log(deleteData)
+    onCompleted: (deleteData) => {
+      const filter = members.filter((member) => member.name !== deleteData.memberDelete.member.name);
+      setMembers(filter);
+    }
   })
-
-
-  // useEffect(() => {
-  //   if (!queryLoading && !mutationLoading) {
-  //     setMembers(queryData.household.members);
-  //     setHouseholdName(queryData.household.name);
-  //   }
-  //   // if (!mutationLoading && queryLoading) {
-  //   //   setHouseholdName(mutationData.updateHousehold.household.name);
-  //   // }
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, [queryLoading, mutationLoading]);
 
   const memberInputs = members.map((member) => (
     <div key={member.id} className="member">
@@ -52,9 +42,6 @@ const HouseForm = ({ id, email }) => {
   ));
 
   const deleteMember = (id) => {
-    console.log("id", id)
-    const filter = members.filter((member) => member.id !== id);
-    setMembers(filter);
     const input = {id: id}
     deleteMemberName({variables: { input }})
   };
