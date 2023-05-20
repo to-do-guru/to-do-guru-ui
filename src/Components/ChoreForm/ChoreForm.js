@@ -2,24 +2,29 @@ import './ChoreForm.css';
 import { NavLink } from 'react-router-dom';
 import { useState } from 'react';
 import Select from 'react-select';
-import { GET_CHORE_INFO } from '../../queries';
+import { GET_CHORE_INFO, ADD_CHORE } from '../../queries';
 import { useQuery, useMutation } from "@apollo/client";
 
 const ChoreForm = ({id, email}) => {
 
   const [chores, setChores] = useState([]);
 
-  const [input, setInput] = useState({
+  const [choreInput, setChoreInput] = useState({
     choreName: '',
     choreDuration: 15
   });
   const [choreDays, setChoreDays] = useState(null);
 
-  const {loading: choreLoading, data: choreData, error: choreError} = useQuery(GET_CHORE_INFO, {
+  const { data: choreData } = useQuery(GET_CHORE_INFO, {
     fetchPolicy: "no-cache",
     onCompleted: (choreData) => cleanChores(choreData.household.chores),
     variables: { email },
   });
+
+  const [addChore, { data: addChoreData }] = useMutation(ADD_CHORE, {
+    fetchPolicy: "no-cache",
+    onCompleted: (addChoreData) => setChores([...chores, addChoreData.createChore.chores[0].choreName])
+  })
 
   const daysOfTheWeek = [
     { value: 'Monday', label: 'Monday' },
@@ -34,7 +39,7 @@ const ChoreForm = ({id, email}) => {
   const choreItems = chores.map((chore, index) => <li key={index}>{chore}</li>);
 
   const checkValidity = () => {
-    const num = input.choreDuration;
+    const num = choreInput.choreDuration;
     if(num % 15 === 0 && num > 14 && num < 241) {
       return true;
     } else {
@@ -44,21 +49,22 @@ const ChoreForm = ({id, email}) => {
 
   const submitForm = (event) => {
     const check = checkValidity();
-    if(input.choreName && choreDays && check) {
+    if(choreInput.choreName && choreDays && check) {
       event.preventDefault();
-      setChores([...chores, input.choreName]);
-      const data = {
-        name: input.choreName,
-        duration: input.choreDuration,
-        days: choreDays.map(chore => chore.value)
+      const input = {
+        householdId: id,
+        name: choreInput.choreName,
+        duration: parseInt(choreInput.choreDuration),
+        day: choreDays.map(chore => chore.value)
       }
-      console.log(data);
+      console.log(input);
+      addChore({variables: { input }});
       clearForm();
     }
   }
 
   const clearForm = () => {
-    setInput({
+    setChoreInput({
       choreName: '',
       choreDuration: 15
     });
@@ -85,8 +91,8 @@ const ChoreForm = ({id, email}) => {
             <input 
               className='edit-chore'
               type='text'
-              value={input.choreName}
-              onChange={(e) => setInput({...input, choreName: e.target.value})}
+              value={choreInput.choreName}
+              onChange={(e) => setChoreInput({...choreInput, choreName: e.target.value})}
               required
             />
           <label>
@@ -108,8 +114,8 @@ const ChoreForm = ({id, email}) => {
               step='15'
               min='15'
               max='240'
-              value={input.choreDuration}
-              onChange={(e) => setInput({...input, choreDuration: e.target.value})}
+              value={choreInput.choreDuration}
+              onChange={(e) => setChoreInput({...choreInput, choreDuration: e.target.value})}
             />
             <button className='chore-btn' onClick={submitForm}>Add Chore!</button>
         </form>
