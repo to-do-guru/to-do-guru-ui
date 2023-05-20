@@ -32,7 +32,11 @@ const HouseForm = ({ id, email }) => {
   });
   const [createMember, {data: createMemberData, loading: createMemberLoading, error: createMemberError}] = useMutation(ADD_MEMBER_NAME, {
     fetchPolicy: "no-cache",
-    onCompleted: (createMemberData) => console.log(createMemberData)
+    onCompleted: (createMemberData) => {
+      const newMember = {id: createMemberData.createMember.member.id, name: createMemberData.createMember.member.name}
+      setMembers([...members, newMember])
+      setCurrentMember({name:""})
+      setEditMember(false)}
   });
 
   const memberInputs = members.map((member) => (
@@ -50,14 +54,9 @@ const HouseForm = ({ id, email }) => {
   };
 
   const submitMember = (event) => {
-    console.log(id)
     if (currentMember.name) {
       event.preventDefault();
-      setMembers([...members, currentMember]);
-      setCurrentMember({id:"", name:""});
-      setEditMember(false);
       const input = {name: currentMember.name, householdId: id}
-      console.log(input)
       createMember({variables: { input }});
     }
   };
