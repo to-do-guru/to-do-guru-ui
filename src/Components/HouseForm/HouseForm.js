@@ -2,7 +2,7 @@ import "./HouseForm.css";
 import { NavLink } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useQuery, useMutation } from "@apollo/client";
-import { CHANGE_HOUSE_NAME, GET_HOUSE_INFO, DELETE_MEMBER_NAME } from "../../queries";
+import { CHANGE_HOUSE_NAME, GET_HOUSE_INFO, DELETE_MEMBER_NAME, ADD_MEMBER_NAME } from "../../queries";
 
 
 const HouseForm = ({ id, email }) => {
@@ -22,7 +22,6 @@ const HouseForm = ({ id, email }) => {
   const [updateHousehold, {data: mutationData, loading: mutationLoading, error: mutationError}] = useMutation(CHANGE_HOUSE_NAME, {
     fetchPolicy: "no-cache",
     onCompleted: (mutationData) => setHouseholdName(mutationData.updateHousehold.household.name)
-    
   });
   const [deleteMemberName, {data: deleteData, loading: deleteLoading, error: deleteError}] = useMutation(DELETE_MEMBER_NAME, {
     fetchPolicy: "no-cache",
@@ -30,7 +29,15 @@ const HouseForm = ({ id, email }) => {
       const filter = members.filter((member) => member.name !== deleteData.memberDelete.member.name);
       setMembers(filter);
     }
-  })
+  });
+  const [createMember, {data: createMemberData, loading: createMemberLoading, error: createMemberError}] = useMutation(ADD_MEMBER_NAME, {
+    fetchPolicy: "no-cache",
+    onCompleted: (createMemberData) => {
+      const newMember = {id: createMemberData.createMember.member.id, name: createMemberData.createMember.member.name}
+      setMembers([...members, newMember])
+      setCurrentMember({name:""})
+      setEditMember(false)}
+  });
 
   const memberInputs = members.map((member) => (
     <div key={member.id} className="member">
@@ -49,11 +56,9 @@ const HouseForm = ({ id, email }) => {
   const submitMember = (event) => {
     if (currentMember.name) {
       event.preventDefault();
-      setMembers([...members, currentMember]);
-      setCurrentMember({id:"", name:""});
-      setEditMember(false);
+      const input = {name: currentMember.name, householdId: id}
+      createMember({variables: { input }});
     }
-    // Add mutation query for BE 
   };
 
   const submitHouseholdName = (event) => {
@@ -109,7 +114,6 @@ const HouseForm = ({ id, email }) => {
               placeholder="Name of chore-doer"
               onChange={(e) =>
                 setCurrentMember({
-                  id: members[members.length - 1].id + 1,
                   name: e.target.value,
                 })
               }

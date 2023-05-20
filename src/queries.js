@@ -82,3 +82,15 @@ export const DELETE_MEMBER_NAME = gql`
     }
   }
 `
+
+export const ADD_MEMBER_NAME = gql`
+  mutation ($input: CreateMemberInput!){
+    createMember(input: $input) {
+      member {
+        id
+        name
+      }
+      errors
+    }
+  }
+`
