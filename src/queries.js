@@ -61,7 +61,7 @@ export const GET_HOUSE_INFO = gql`
 `
 
 export const CHANGE_HOUSE_NAME = gql`
-  mutation {
+  mutation ($input: UpdateHouseholdInput!) {
     updateHousehold(input: $input) {
       household {
         name

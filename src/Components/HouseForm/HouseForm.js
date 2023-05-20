@@ -18,12 +18,12 @@ const HouseForm = ({ id, email }) => {
   const [updateHousehold, {data: mutationData, loading: mutationLoading, error: mutationError}] = useMutation(CHANGE_HOUSE_NAME);
 
   useEffect(() => {
-    if (!queryLoading) {
+    if (!queryLoading && !mutationLoading && mutationLoading) {
       setMembers(queryData.household.members);
       setHouseholdName(queryData.household.name);
     }
     if (!mutationLoading) {
-      console.log(mutationData)
+      setHouseholdName(mutationData.updateHousehold.household.name);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [queryLoading, mutationLoading]);
@@ -58,7 +58,7 @@ const HouseForm = ({ id, email }) => {
       const input = {id: id, name: householdName}
       event.preventDefault();
       setEditMode(false);
-      updateHousehold({variables: { input: input }});
+      updateHousehold({variables: { input }});
     }
   };
 
