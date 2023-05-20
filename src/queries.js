@@ -70,3 +70,15 @@ export const CHANGE_HOUSE_NAME = gql`
     }
   }
 `
+
+
+export const DELETE_MEMBER_NAME = gql`
+  mutation ($id: id!){
+    memberDelete(input: {id: 1 }) {
+      member {
+          name
+          }
+          errors
+    }
+  }
+`

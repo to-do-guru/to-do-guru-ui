@@ -2,7 +2,7 @@ import "./HouseForm.css";
 import { NavLink } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useQuery, useMutation } from "@apollo/client";
-import { CHANGE_HOUSE_NAME, GET_HOUSE_INFO } from "../../queries";
+import { CHANGE_HOUSE_NAME, GET_HOUSE_INFO, DELETE_MEMBER_NAME } from "../../queries";
 
 const HouseForm = ({ id, email }) => {
   const [members, setMembers] = useState([]);
@@ -16,13 +16,15 @@ const HouseForm = ({ id, email }) => {
   });
 
   const [updateHousehold, {data: mutationData, loading: mutationLoading, error: mutationError}] = useMutation(CHANGE_HOUSE_NAME);
+  const [deleteMemberName, {data: deleteData, loading: deleteLoading, error: deleteError}] = useMutation(DELETE_MEMBER_NAME)
+
 
   useEffect(() => {
-    if (!queryLoading && !mutationLoading && mutationLoading) {
+    if (!queryLoading && !mutationLoading) {
       setMembers(queryData.household.members);
       setHouseholdName(queryData.household.name);
     }
-    if (!mutationLoading) {
+    if (!mutationLoading && queryLoading) {
       setHouseholdName(mutationData.updateHousehold.household.name);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -40,7 +42,7 @@ const HouseForm = ({ id, email }) => {
   const deleteMember = (id) => {
     const filter = members.filter((member) => member.id !== id);
     setMembers(filter);
-    // eventually delete requests to backend
+    deleteMemberName({variables: { id }})
   };
 
   const submitMember = (event) => {
