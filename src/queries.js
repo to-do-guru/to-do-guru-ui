@@ -60,6 +60,16 @@ export const GET_HOUSE_INFO = gql`
   }
 `
 
+export const GET_CHORE_INFO = gql`
+  query getHousehold($email: String!) {
+    household (email: $email) {
+      chores {
+        choreName
+      }
+    }
+  }
+`
+
 export const CHANGE_HOUSE_NAME = gql`
   mutation ($input: UpdateHouseholdInput!) {
     updateHousehold(input: $input) {
@@ -71,24 +81,34 @@ export const CHANGE_HOUSE_NAME = gql`
   }
 `
 
-
 export const DELETE_MEMBER_NAME = gql`
   mutation ($input: MemberDeleteInput!){
     memberDelete(input: $input) {
       member {
-          name
-          }
-          errors
+        name
+        }
+        errors
     }
   }
 `
 
 export const ADD_MEMBER_NAME = gql`
-  mutation ($input: CreateMemberInput!){
+  mutation ($input: CreateMemberInput!) {
     createMember(input: $input) {
       member {
         id
         name
+      }
+      errors
+    }
+  }
+`
+
+export const ADD_CHORE = gql`
+  mutation ($input: CreateChoreInput!) {
+    createChore(input: $input) {
+      chores {
+        choreName
       }
       errors
     }
