@@ -12,25 +12,25 @@ const HouseForm = ({ id, email }) => {
   const [editMode, setEditMode] = useState(false);
   const [editMember, setEditMember] = useState(false);
 
-  const { data: queryData } = useQuery(GET_HOUSE_INFO, {
+  const { data: queryData, error: queryError } = useQuery(GET_HOUSE_INFO, {
       fetchPolicy: "no-cache",
       onCompleted: (queryData) => {setMembers(queryData.household.members)
       setHouseholdName(queryData.household.name)},
       variables: { email },
   });
 
-  const [updateHousehold, { data: mutationData }] = useMutation(CHANGE_HOUSE_NAME, {
+  const [updateHousehold, { data: mutationData, error: mutationError }] = useMutation(CHANGE_HOUSE_NAME, {
     fetchPolicy: "no-cache",
     onCompleted: (mutationData) => setHouseholdName(mutationData.updateHousehold.household.name)
   });
-  const [deleteMemberName, { data: deleteData }] = useMutation(DELETE_MEMBER_NAME, {
+  const [deleteMemberName, { data: deleteData, error: deleteError }] = useMutation(DELETE_MEMBER_NAME, {
     fetchPolicy: "no-cache",
     onCompleted: (deleteData) => {
       const filter = members.filter((member) => member.name !== deleteData.memberDelete.member.name);
       setMembers(filter);
     }
   });
-  const [createMember, { data: createMemberData }] = useMutation(ADD_MEMBER_NAME, {
+  const [createMember, { data: createMemberData, error: createMemberError }] = useMutation(ADD_MEMBER_NAME, {
     fetchPolicy: "no-cache",
     onCompleted: (createMemberData) => {
       const newMember = {id: createMemberData.createMember.member.id, name: createMemberData.createMember.member.name}
@@ -72,6 +72,7 @@ const HouseForm = ({ id, email }) => {
 
   return (
     <div className="edit-house">
+      {queryError}|| {mutationError} || {deleteError} || {createMemberError} && <p>"Sorry there was an error, please try again later"</p>
       <h1>Edit your Household!</h1>
       <div className="house-form">
         {!editMode && (

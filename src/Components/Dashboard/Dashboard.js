@@ -71,6 +71,7 @@ const Dashboard = ({ email, setId }) => {
   });
 
   if (loading) return <span>loading...</span>;
+  if (error) return <p>"Sorry there was an error, please try again later"</p>
 
   return (
     <div className="dashboard">
