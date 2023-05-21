@@ -9,13 +9,19 @@
   overflow-y: scroll;
 }
 
+.chore-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
 .week-nav {
   width: 90%;
   display: flex;
   justify-content: space-evenly;
   background-color: #fcef7c;
   border-radius: 50px;
-  margin: 0 5%;
+  margin: 0 5% 1% 5%;
 }
 
 .day-btn {
@@ -66,3 +72,24 @@ nav {
   margin-top: 5%;
 }
 
+.hidden {
+  display: none;
+}
+
+@media screen and (max-width: 950px) {
+  .day-btn {
+    font-size: 10pt;
+    height: 75px;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .shown {
+    display: none;
+  }
+
+  .hidden {
+    display: contents;
+    text-transform: capitalize;
+  }
+}
