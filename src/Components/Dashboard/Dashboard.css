@@ -81,6 +81,10 @@ nav {
     font-size: 10pt;
     height: 75px;
   }
+
+  .nav-btn {
+    font-size: 15pt;
+  }
 }
 
 @media screen and (max-width: 550px) {
@@ -89,7 +93,21 @@ nav {
   }
 
   .hidden {
+    text-transform: uppercase;
     display: contents;
-    text-transform: capitalize;
+  }
+
+  .nav-btn {
+    font-size: 10pt;
+  }
+
+  h1 {
+    font-size: 15pt;
+  }
+}
+
+@media screen and (max-width: 350px) {
+  .nav-btn {
+    font-size: 8pt;
   }
 }
