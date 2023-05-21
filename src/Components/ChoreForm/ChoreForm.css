@@ -61,3 +61,69 @@ li {
 li {
   text-transform: capitalize;
 }
+
+@media screen and (max-width: 900px) {
+  .chore-form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .chore-div {
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+  }
+
+  .chore-form {
+    order: 2;
+    width: 80%;
+  }
+
+  .chore-list {
+    width: 80%;
+    margin-top: 3%;
+  }
+
+  input {
+    height: fit-content;
+    padding: 3%;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  li {
+    font-size: 10pt;
+  }
+
+  h2 {
+    font-size: 12pt;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  li {
+    font-size: 8pt;
+    margin: 0;
+    padding: 0;
+  }
+
+  ol {
+    padding: 0 0 0 15%;
+  }
+
+  h2 {
+    font-size: 10pt;
+  }
+
+  .chore-list {
+    padding: 0;
+    margin: 0;
+  }
+
+  .chore-btn, .house-btn {
+    width: 100px;
+    font-size: 10pt;
+    padding-bottom: 1%;
+  }
+}
