@@ -83,7 +83,7 @@ const ChoreForm = ({id, email}) => {
 
   return (
     <div className='chore-form-container'>
-      {choreError} || {addChoreError} && <p>"Sorry there was an error, please try again later"</p>
+      {choreError || addChoreError && <p> "Sorry there was an error, please try again later" </p>}
       <h1>Edit your Chores!</h1>
       <div className='chore-div'>
         <form className='chore-form'>
