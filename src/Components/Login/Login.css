@@ -19,3 +19,16 @@ input {
   padding: 0 5%;
   margin: 0 3%;
 }
+
+@media screen and (max-width: 600px) {
+  .login {
+    width: 75%;
+    font-size: smaller;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .login-btn {
+    margin-top: 5%;
+  }
+}
