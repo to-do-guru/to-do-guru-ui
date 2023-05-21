@@ -86,3 +86,48 @@
   color: red;
   font-size: larger;
 }
+
+@media screen and (max-width: 850px) {
+  .household-input {
+    font-size: 12pt;
+  }
+
+  h1 {
+    font-size: 15pt;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .member {
+    width: 80%;
+  }
+  
+  .edit-house {
+    width: 80%;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .member {
+    font-size: 10pt;
+  }
+
+  .house-btn, .chore-btn {
+    font-size: 8pt;
+  }
+
+  .household-input {
+    font-size: 10pt;
+  }
+
+  .material-symbols-outlined {
+    font-size: 8pt;
+  }  
+}  
+
+@media screen and (max-width: 400px) {
+  .delete {
+    font-size: 6pt;
+    padding: 1%;
+  }
+}
