@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 import { GET_HOUSEHOLD } from "../../queries";
 import { useQuery } from "@apollo/client";
 
-const Dashboard = ({ email, setId }) => {
+const Dashboard = ({ email }) => {
   const { loading, error, data } = useQuery(GET_HOUSEHOLD, {
     fetchPolicy: "no-cache",
     variables: { email },
@@ -25,7 +25,6 @@ const Dashboard = ({ email, setId }) => {
 
   useEffect(() => {
     if (!loading) {
-      setId(data.household.id)
       if (data.household[dayOfWeek]) {
         setChores(data.household[dayOfWeek]);
       } else {

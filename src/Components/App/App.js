@@ -8,7 +8,6 @@ import { useState } from 'react';
 
 const App = ()  => {
   const [email, setEmail] = useState('smith@example.com');
-	const [id, setId] = useState("")
 
 	return (
 		<main>
@@ -18,15 +17,15 @@ const App = ()  => {
 				</Route>
 
 				<Route exact path="/houseform">
-					<HouseForm id={id} email={email}/>
+					<HouseForm email={email}/>
 				</Route>
 
 				<Route exact path="/choreform">
-					<ChoreForm id={id} email={email}/>
+					<ChoreForm email={email}/>
 				</Route>
 
 				<Route exact path="/dashboard">
-					<Dashboard email={email} setId={setId} />
+					<Dashboard email={email} />
 				</Route>
 
 				<Route path="*">
