@@ -2,8 +2,10 @@ import { useState } from 'react';
 import './Login.css';
 import { NavLink } from 'react-router-dom/cjs/react-router-dom.min';
 
-const Login = ({setEmail}) => {
+const Login = ({setEmail, logInError}) => {
   const [loginInfo, setLoginInfo] = useState('')
+
+ 
 
   return (
     <div className='login'>

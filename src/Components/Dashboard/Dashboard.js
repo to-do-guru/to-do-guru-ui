@@ -5,9 +5,13 @@ import { useState, useEffect } from "react";
 import { GET_HOUSEHOLD } from "../../queries";
 import { useQuery } from "@apollo/client";
 
-const Dashboard = ({ email, setId }) => {
+const Dashboard = ({ email, setId, setLogInError }) => {
   const { loading, error, data } = useQuery(GET_HOUSEHOLD, {
     fetchPolicy: "no-cache",
+    onCompleted: (data) => {
+      // if (data.household.error)
+      console.log(data)
+    },
     variables: { email },
   });
 
@@ -73,6 +77,7 @@ const Dashboard = ({ email, setId }) => {
   });
 
   if (loading) return <span>loading...</span>;
+  if (error) return <p className="error">"Sorry there was an error, please try again later"</p>
 
   return (
     <div className="dashboard">
