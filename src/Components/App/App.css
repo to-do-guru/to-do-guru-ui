@@ -6,7 +6,7 @@ body, html, .root {
 
 main {
   height: 100%;
-  background-image: url("../../cleaning-background.jpeg");
+  background-image: url("../../images/cleaning-background.jpeg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -20,4 +20,20 @@ button {
   cursor: pointer;
   border: none;
   background: none;
+}
+
+.loading-broom-container {
+  margin: auto;
+  text-align: center;
+}
+
+.sweeping-gif {
+  width: 50vw;
+}
+
+.loading-msg {
+  position: absolute;
+  top: 5vh;
+  font-size: 3rem;
+  left: 10vw;
 }
