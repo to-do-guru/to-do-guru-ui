@@ -10,7 +10,7 @@ const Dashboard = ({ email, setId, setLogInError }) => {
     fetchPolicy: "no-cache",
     onCompleted: (data) => {
       // if (data.household.error)
-      console.log(data)
+      // console.log(data)
     },
     variables: { email },
   });

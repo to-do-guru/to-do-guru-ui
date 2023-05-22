@@ -87,6 +87,7 @@ const ChoreForm = ({id, email}) => {
 
   return (
     <div className='chore-form-container'>
+      {console.log(addChoreData)}
       <h1>Edit your Chores!</h1>
       <div className='chore-div'>
         <form className='chore-form'>
