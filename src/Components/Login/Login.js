@@ -5,7 +5,9 @@ import { NavLink } from 'react-router-dom/cjs/react-router-dom.min';
 const Login = ({setEmail, logInError}) => {
   const [loginInfo, setLoginInfo] = useState('')
 
- 
+ if (logInError) {
+  return <p>"default login is smith@example.com"</p>
+ }
 
   return (
     <div className='login'>
