@@ -5,7 +5,7 @@ import { useQuery, useMutation } from "@apollo/client";
 import { CHANGE_HOUSE_NAME, GET_HOUSE_INFO, DELETE_MEMBER_NAME, ADD_MEMBER_NAME } from "../../queries";
 
 
-const HouseForm = ({ id, email }) => {
+const HouseForm = ({ email }) => {
   const [members, setMembers] = useState([]);
   const [currentMember, setCurrentMember] = useState({id:"", name:""});
   const [householdName, setHouseholdName] = useState("");
@@ -13,11 +13,15 @@ const HouseForm = ({ id, email }) => {
   const [editMember, setEditMember] = useState(false);
   const [disabled, setDisabled] = useState(false);
   const [validName, setValidName] = useState(true);
+  const [id, setId] = useState('');
 
   const { data: queryData, loading } = useQuery(GET_HOUSE_INFO, {
       fetchPolicy: "no-cache",
-      onCompleted: (queryData) => {setMembers(queryData.household.members)
-      setHouseholdName(queryData.household.name)},
+      onCompleted: (queryData) => {
+        setMembers(queryData.household.members)
+        setHouseholdName(queryData.household.name)
+        setId(queryData.household.id)
+    },
       variables: { email },
   });
 
