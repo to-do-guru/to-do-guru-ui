@@ -15,7 +15,7 @@ const ChoreForm = ({id, email}) => {
   });
   const [choreDays, setChoreDays] = useState(null);
 
-  const { data: choreData } = useQuery(GET_CHORE_INFO, {
+  const { data: choreData, loading } = useQuery(GET_CHORE_INFO, {
     fetchPolicy: "no-cache",
     onCompleted: (choreData) => cleanChores(choreData.household.chores),
     variables: { email },
@@ -80,6 +80,13 @@ const ChoreForm = ({id, email}) => {
       return acc;
     }, []));
   }
+
+  if (loading) {
+    return <div className="loading-broom-container">
+             <img className="sweeping-gif" src={require("../../images/sweeping-broom.gif")} alt="broom sweeping while loading"/>
+             <h2 className="loading-msg">Loading...</h2>
+           </div>
+  } 
 
   return (
     <div className='chore-form-container'>

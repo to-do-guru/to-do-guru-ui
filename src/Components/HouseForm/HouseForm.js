@@ -12,7 +12,7 @@ const HouseForm = ({ id, email }) => {
   const [editMode, setEditMode] = useState(false);
   const [editMember, setEditMember] = useState(false);
 
-  const { data: queryData } = useQuery(GET_HOUSE_INFO, {
+  const { data: queryData, loading } = useQuery(GET_HOUSE_INFO, {
       fetchPolicy: "no-cache",
       onCompleted: (queryData) => {setMembers(queryData.household.members)
       setHouseholdName(queryData.household.name)},
@@ -69,6 +69,13 @@ const HouseForm = ({ id, email }) => {
       updateHousehold({variables: { input }});
     }
   };
+
+  if (loading) {
+    return <div className="loading-broom-container">
+             <img className="sweeping-gif" src={require("../../images/sweeping-broom.gif")} alt="broom sweeping while loading"/>
+             <h2 className="loading-msg">Loading...</h2>
+           </div>
+  }
 
   return (
     <div className="edit-house">
