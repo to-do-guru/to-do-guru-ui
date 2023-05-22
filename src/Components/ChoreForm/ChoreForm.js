@@ -16,7 +16,7 @@ const ChoreForm = ({ email }) => {
   const [choreDays, setChoreDays] = useState(null);
   const [id, setId] = useState('');
 
-  const { data: choreData, loading } = useQuery(GET_CHORE_INFO, {
+  const { data: choreData, error: choreError, loading } = useQuery(GET_CHORE_INFO, {
     fetchPolicy: "no-cache",
     onCompleted: (choreData) => {
       setId(choreData.household.id)
@@ -25,7 +25,7 @@ const ChoreForm = ({ email }) => {
     variables: { email },
   });
 
-  const [addChore, { data: addChoreData }] = useMutation(ADD_CHORE, {
+  const [addChore, { data: addChoreData, error: addChoreError }] = useMutation(ADD_CHORE, {
     fetchPolicy: "no-cache",
     onCompleted: (addChoreData) => {
       setChores([...chores, addChoreData.createChore.chores[0].choreName]);
@@ -83,6 +83,10 @@ const ChoreForm = ({ email }) => {
       }
       return acc;
     }, []));
+  }
+
+  if(choreError || addChoreError) {
+    return <p className='error'> "Sorry there was an error, please try again later" </p>
   }
 
   if (loading) {

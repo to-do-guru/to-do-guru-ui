@@ -44,6 +44,7 @@ export const GET_HOUSEHOLD = gql`
         assignedMember
         duration
       }
+      errors
     }
   }
 `
