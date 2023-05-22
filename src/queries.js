@@ -51,6 +51,7 @@ export const GET_HOUSEHOLD = gql`
 export const GET_HOUSE_INFO = gql`
   query getHousehold($email: String!) {
     household (email: $email) {
+      id
       name
       members {
         id
@@ -63,6 +64,7 @@ export const GET_HOUSE_INFO = gql`
 export const GET_CHORE_INFO = gql`
   query getHousehold($email: String!) {
     household (email: $email) {
+      id
       chores {
         choreName
       }
