@@ -6,7 +6,7 @@ import { BrowserRouter } from 'react-router-dom/cjs/react-router-dom.min';
 import { ApolloProvider, ApolloClient, InMemoryCache } from "@apollo/client";
 
 const client = new ApolloClient({
-  uri: "https://to-do-guru-api.onrender.com/graphql",
+  uri: "https://salty-tundra-49252.herokuapp.com",
   cache: new InMemoryCache()
 });
 

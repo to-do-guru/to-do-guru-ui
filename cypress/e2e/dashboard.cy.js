@@ -2,7 +2,7 @@ import { aliasOperation } from "../utils/utilityfunctions.cy";
 
 describe('dashboard', () => {
   beforeEach('', () => {
-    cy.intercept('https://to-do-guru-api.onrender.com/graphql', (req) => {
+    cy.intercept('https://salty-tundra-49252.herokuapp.com', (req) => {
       aliasOperation(req, 'getHousehold', {
         "data": {
           "household": {
@@ -28,7 +28,7 @@ describe('dashboard', () => {
         }
       });
     })
-    cy.visit('https://to-do-guru-ui.vercel.app/dashboard') 
+    cy.visit('http://localhost:3000/dashboard') 
   })
 
   it('should show a header and the days of the week', () => {
