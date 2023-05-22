@@ -1,6 +1,3 @@
-import { GET_HOUSEHOLD } from "../../src/queries";
-import { aliasOperation } from "../utils/utilityfunctions.cy";
-
 describe('Chore Form', () => {
   beforeEach('', () => {
     cy.intercept('POST', 'https://to-do-guru-api.onrender.com/graphql', (req) => {
@@ -38,14 +35,7 @@ describe('Chore Form', () => {
       )
     }
   })
-    //   aliasOperation(req, 'createChore', { 
-    //     "createChore": {
-    //       "chores": [{"choreName": "Mopping"}],
-    //       "errors": []
-    //     }
-    //   });
-      
-    // })
+
     cy.visit('https://to-do-guru-ui.vercel.app/choreform');
   });
 
@@ -106,4 +96,4 @@ describe('Chore Form', () => {
         .get('.css-19bb58m').should('have.value', '')
         .get('[type="number"]').should('have.value', '15');
   });
-})
+});
