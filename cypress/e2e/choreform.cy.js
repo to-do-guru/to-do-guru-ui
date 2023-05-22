@@ -1,6 +1,6 @@
 describe('Chore Form', () => {
   beforeEach('', () => {
-    cy.intercept('POST', 'https://to-do-guru-api.onrender.com/graphql', (req) => {
+    cy.intercept('POST', 'https://salty-tundra-49252.herokuapp.com/graphql', (req) => {
     if(req.body.query.includes('getHousehold')) {
       req.reply({"body": {"data": {
         "household": {
@@ -36,7 +36,7 @@ describe('Chore Form', () => {
     }
   })
 
-    cy.visit('https://to-do-guru-ui.vercel.app/choreform');
+    cy.visit('http://localhost:3000/choreform');
   });
 
   it('should allow a user to name their chore', () => {
@@ -47,16 +47,16 @@ describe('Chore Form', () => {
   it('should allow a user to select at least one day to do this chore', () => {
     cy.get('.css-13cymwt-control').click()
       .get('#react-select-2-option-1').click()
-      .get('.css-1dyz3mf').contains('Tuesday');
+      .get('.css-3w2yfm-ValueContainer').contains('Tuesday');
   });
 
   it('should allow a user to select multiple days to do this chore', () => {
     cy.get('.css-13cymwt-control').click()
       .get('#react-select-2-option-1').click()
-      .get('.css-1wy0on6 > :nth-child(3)').click()
+      .get('.css-1hb7zxy-IndicatorsContainer > :nth-child(3)').click()
       .get('#react-select-2-option-3').click()
-      .get('.css-1dyz3mf').contains('Tuesday')
-      .get('.css-1dyz3mf').contains('Thursday');
+      .get('.css-3w2yfm-ValueContainer').contains('Tuesday')
+      .get('.css-3w2yfm-ValueContainer').contains('Thursday');
   });
 
   it('should allow a user to change the number of minutes a task takes', () => {
@@ -93,7 +93,7 @@ describe('Chore Form', () => {
       .get('.chore-btn').click();
 
       cy.get('[type="text"][required=""]').should('have.value', '')
-        .get('.css-19bb58m').should('have.value', '')
+        .get('.css-qbdosj-Input').should('have.value', '')
         .get('[type="number"]').should('have.value', '15');
   });
-});
+})
