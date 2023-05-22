@@ -54,7 +54,8 @@ const Dashboard = ({ email, setId }) => {
           className={`day-btn ${day} selected`}
           onClick={() => setDayOfWeek(day)}
         >
-          {day}
+          <span className="shown">{day}</span>
+          <span className="hidden">{day.slice(0, 3)}</span>
         </button>
       );
     } else {
@@ -64,7 +65,8 @@ const Dashboard = ({ email, setId }) => {
           className={`day-btn ${day}`}
           onClick={() => setDayOfWeek(day)}
         >
-          {day}
+          <span className="shown">{day}</span>
+          <span className="hidden">{day.slice(0, 3)}</span>
         </button>
       );
     }

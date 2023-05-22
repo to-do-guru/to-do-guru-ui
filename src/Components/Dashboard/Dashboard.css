@@ -9,13 +9,19 @@
   overflow-y: scroll;
 }
 
+.chore-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
 .week-nav {
   width: 90%;
   display: flex;
   justify-content: space-evenly;
   background-color: #fcef7c;
   border-radius: 50px;
-  margin: 0 5%;
+  margin: 0 5% 1% 5%;
 }
 
 .day-btn {
@@ -66,3 +72,42 @@ nav {
   margin-top: 5%;
 }
 
+.hidden {
+  display: none;
+}
+
+@media screen and (max-width: 950px) {
+  .day-btn {
+    font-size: 10pt;
+    height: 75px;
+  }
+
+  .nav-btn {
+    font-size: 15pt;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .shown {
+    display: none;
+  }
+
+  .hidden {
+    text-transform: uppercase;
+    display: contents;
+  }
+
+  .nav-btn {
+    font-size: 10pt;
+  }
+
+  h1 {
+    font-size: 15pt;
+  }
+}
+
+@media screen and (max-width: 350px) {
+  .nav-btn {
+    font-size: 8pt;
+  }
+}
