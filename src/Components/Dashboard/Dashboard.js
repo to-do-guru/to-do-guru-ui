@@ -9,9 +9,10 @@ const Dashboard = ({ email, setId, setLogInError }) => {
   const { loading, error, data } = useQuery(GET_HOUSEHOLD, {
     fetchPolicy: "no-cache",
     onCompleted: (data) => {
-      if (data.household.errors) {
-        console.log(data.household.errors)
+      if (data.household.errors.length) {
         setLogInError(true)
+      } else {
+        setLogInError(false)
       }
     },
     variables: { email },
