@@ -12,6 +12,7 @@ const HouseForm = ({ id, email }) => {
   const [editMode, setEditMode] = useState(false);
   const [editMember, setEditMember] = useState(false);
   const [disabled, setDisabled] = useState(false);
+  const [validName, setValidName] = useState(true);
 
   const { data: queryData, loading } = useQuery(GET_HOUSE_INFO, {
       fetchPolicy: "no-cache",
@@ -51,16 +52,31 @@ const HouseForm = ({ id, email }) => {
 
   const deleteMember = (id) => {
     const input = {id: id}
-    deleteMemberName({variables: { input }})
+    deleteMemberName({variables: { input }});
   };
 
   const submitMember = (event) => {
-    if (currentMember.name) {
+    const check = isValidName();
+    if (currentMember.name && check) {
       event.preventDefault();
       const input = {name: currentMember.name, householdId: id}
       createMember({variables: { input }});
     }
+    if (currentMember.name && !check) {
+      event.preventDefault();
+    }
   };
+
+  const isValidName = () => {
+    const names = members.map(member => member.name.toLowerCase());
+    if(names.includes(currentMember.name.toLowerCase())) {
+      setValidName(false);
+      return false;
+    } else {
+      setValidName(true);
+      return true;
+    }
+  }
 
   const submitHouseholdName = (event) => {
     if (householdName) {
@@ -144,6 +160,7 @@ const HouseForm = ({ id, email }) => {
             </button>
           </form>
         )}
+        {!validName && <p>Please enter a unique name!</p>}
       </div>
       <NavLink to="/dashboard">
         <button className="house-btn">See Schedule</button>
