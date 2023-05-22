@@ -13,7 +13,6 @@ const App = ()  => {
 
 	return (
 		<main>
-			{console.log(email, id)}
 			<Switch>
 				<Route exact path="/">
 					<Login setEmail={setEmail} logInError={logInError}/>

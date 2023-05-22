@@ -11,7 +11,6 @@ const Login = ({ setEmail, logInError }) => {
   }
   return (
     <div className="login">
-      {console.log(loginInfo)}
       <h1>Welcome to To-Do Guru!</h1>
       <p>Try logging in with smith@example.com</p>
       <h2>Login to view your chore schedule!</h2>
