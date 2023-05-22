@@ -11,6 +11,7 @@ const HouseForm = ({ id, email }) => {
   const [householdName, setHouseholdName] = useState("");
   const [editMode, setEditMode] = useState(false);
   const [editMember, setEditMember] = useState(false);
+  const [disabled, setDisabled] = useState(true);
 
   const { data: queryData, loading } = useQuery(GET_HOUSE_INFO, {
       fetchPolicy: "no-cache",
@@ -42,7 +43,7 @@ const HouseForm = ({ id, email }) => {
   const memberInputs = members.map((member) => (
     <div key={member.id} className="member">
       <p>{member.name}</p>
-      <button onClick={() => deleteMember(member.id)} className="delete">
+      <button onClick={() => deleteMember(member.id)} className="delete" disabled={disabled}>
         Delete
       </button>
     </div>
