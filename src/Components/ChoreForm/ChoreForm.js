@@ -5,7 +5,7 @@ import Select from 'react-select';
 import { GET_CHORE_INFO, ADD_CHORE } from '../../queries';
 import { useQuery, useMutation } from "@apollo/client";
 
-const ChoreForm = ({id, email}) => {
+const ChoreForm = ({ email }) => {
 
   const [chores, setChores] = useState([]);
 
@@ -14,10 +14,14 @@ const ChoreForm = ({id, email}) => {
     choreDuration: 15
   });
   const [choreDays, setChoreDays] = useState(null);
+  const [id, setId] = useState('');
 
-  const { data: choreData, error: choreError } = useQuery(GET_CHORE_INFO, {
+  const { data: choreData, error: choreError, loading } = useQuery(GET_CHORE_INFO, {
     fetchPolicy: "no-cache",
-    onCompleted: (choreData) => cleanChores(choreData.household.chores),
+    onCompleted: (choreData) => {
+      setId(choreData.household.id)
+      cleanChores(choreData.household.chores)
+    },
     variables: { email },
   });
 
@@ -84,6 +88,13 @@ const ChoreForm = ({id, email}) => {
   if(choreError || addChoreError) {
     return <p className='error'> "Sorry there was an error, please try again later" </p>
   }
+
+  if (loading) {
+    return <div className="loading-broom-container">
+             <img className="sweeping-gif" src={require("../../images/sweeping-broom.gif")} alt="broom sweeping while loading"/>
+             <h2 className="loading-msg">Loading...</h2>
+           </div>
+  } 
 
   return (
     <div className='chore-form-container'>

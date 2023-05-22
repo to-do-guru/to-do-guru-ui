@@ -1,21 +1,27 @@
 import "./HouseForm.css";
 import { NavLink } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useQuery, useMutation } from "@apollo/client";
 import { CHANGE_HOUSE_NAME, GET_HOUSE_INFO, DELETE_MEMBER_NAME, ADD_MEMBER_NAME } from "../../queries";
 
 
-const HouseForm = ({ id, email }) => {
+const HouseForm = ({ email }) => {
   const [members, setMembers] = useState([]);
   const [currentMember, setCurrentMember] = useState({id:"", name:""});
   const [householdName, setHouseholdName] = useState("");
   const [editMode, setEditMode] = useState(false);
   const [editMember, setEditMember] = useState(false);
+  const [disabled, setDisabled] = useState(false);
+  const [validName, setValidName] = useState(true);
+  const [id, setId] = useState('');
 
-  const { data: queryData, error: queryError } = useQuery(GET_HOUSE_INFO, {
+  const { data: queryData, loading, error: queryError } = useQuery(GET_HOUSE_INFO, {
       fetchPolicy: "no-cache",
-      onCompleted: (queryData) => {setMembers(queryData.household.members)
-      setHouseholdName(queryData.household.name)},
+      onCompleted: (queryData) => {
+        setMembers(queryData.household.members)
+        setHouseholdName(queryData.household.name)
+        setId(queryData.household.id)
+    },
       variables: { email },
   });
 
@@ -42,7 +48,7 @@ const HouseForm = ({ id, email }) => {
   const memberInputs = members.map((member) => (
     <div key={member.id} className="member">
       <p>{member.name}</p>
-      <button onClick={() => deleteMember(member.id)} className="delete">
+      <button onClick={() => deleteMember(member.id)} className="delete" disabled={disabled}>
         Delete
       </button>
     </div>
@@ -50,16 +56,31 @@ const HouseForm = ({ id, email }) => {
 
   const deleteMember = (id) => {
     const input = {id: id}
-    deleteMemberName({variables: { input }})
+    deleteMemberName({variables: { input }});
   };
 
   const submitMember = (event) => {
-    if (currentMember.name) {
+    const check = isValidName();
+    if (currentMember.name && check) {
       event.preventDefault();
       const input = {name: currentMember.name, householdId: id}
       createMember({variables: { input }});
     }
+    if (currentMember.name && !check) {
+      event.preventDefault();
+    }
   };
+
+  const isValidName = () => {
+    const names = members.map(member => member.name.toLowerCase());
+    if(names.includes(currentMember.name.toLowerCase())) {
+      setValidName(false);
+      return false;
+    } else {
+      setValidName(true);
+      return true;
+    }
+  }
 
   const submitHouseholdName = (event) => {
     if (householdName) {
@@ -69,6 +90,21 @@ const HouseForm = ({ id, email }) => {
       updateHousehold({variables: { input }});
     }
   };
+
+  useEffect(() => {
+    if(members.length < 2) {
+      setDisabled(true);
+    } else {
+      setDisabled(false);
+    }
+  }, [members]);
+
+  if (loading) {
+    return <div className="loading-broom-container">
+             <img className="sweeping-gif" src={require("../../images/sweeping-broom.gif")} alt="broom sweeping while loading"/>
+             <h2 className="loading-msg">Loading...</h2>
+           </div>
+  }
 
   if(queryError || mutationError || deleteError || createMemberError) {
     return  <p className="error"> "Sorry there was an error, please try again later" </p>
@@ -132,6 +168,7 @@ const HouseForm = ({ id, email }) => {
             </button>
           </form>
         )}
+        {!validName && <p>Please enter a unique name!</p>}
       </div>
       <NavLink to="/dashboard">
         <button className="house-btn">See Schedule</button>

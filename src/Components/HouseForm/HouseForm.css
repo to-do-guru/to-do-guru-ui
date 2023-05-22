@@ -82,6 +82,11 @@
   color: white;
 }
 
+.delete:disabled:hover {
+  background-color: white;
+  color: #B7B7B7;
+}
+
 .error {
   color: red;
   font-size: larger;
