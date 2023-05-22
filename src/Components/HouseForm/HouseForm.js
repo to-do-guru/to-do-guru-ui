@@ -70,9 +70,12 @@ const HouseForm = ({ id, email }) => {
     }
   };
 
+  if(queryError || mutationError || deleteError || createMemberError) {
+    return  <p className="error"> "Sorry there was an error, please try again later" </p>
+  }
+  
   return (
     <div className="edit-house">
-      {queryError || mutationError || deleteError || createMemberError && <p> "Sorry there was an error, please try again later" </p>}
       <h1>Edit your Household!</h1>
       <div className="house-form">
         {!editMode && (

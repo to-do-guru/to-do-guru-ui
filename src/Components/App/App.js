@@ -9,12 +9,13 @@ import { useState } from 'react';
 const App = ()  => {
   const [email, setEmail] = useState('smith@example.com');
 	const [id, setId] = useState("")
+	const [logInError, setLogInError] = useState(false)
 
 	return (
 		<main>
 			<Switch>
 				<Route exact path="/">
-					<Login setEmail={setEmail}/>
+					<Login setEmail={setEmail} logInError={logInError}/>
 				</Route>
 
 				<Route exact path="/houseform">
@@ -26,7 +27,7 @@ const App = ()  => {
 				</Route>
 
 				<Route exact path="/dashboard">
-					<Dashboard email={email} setId={setId} />
+					<Dashboard email={email} setId={setId} setLogInError={setLogInError}/>
 				</Route>
 
 				<Route path="*">
