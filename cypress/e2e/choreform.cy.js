@@ -36,7 +36,7 @@ describe('Chore Form', () => {
     }
   })
 
-    cy.visit('http://localhost:3000/choreform');
+    cy.visit('https://to-do-guru-ui.vercel.app/choreform');
   });
 
   it('should allow a user to name their chore', () => {
