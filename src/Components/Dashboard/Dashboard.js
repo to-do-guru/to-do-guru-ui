@@ -72,8 +72,13 @@ const Dashboard = ({ email, setId }) => {
     }
   });
 
-  if (loading) return <span>loading...</span>;
-
+  if (loading) {
+    return <div className="loading-broom-container">
+             <img className="sweeping-gif" src={require("../../images/sweeping-broom.gif")} alt="broom sweeping while loading"/>
+             <h2 className="loading-msg">Loading...</h2>
+           </div>
+  } 
+    
   return (
     <div className="dashboard">
       <div>
