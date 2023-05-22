@@ -1,6 +1,5 @@
 import { aliasOperation } from "../utils/utilityfunctions.cy";
 
-
 describe('dashboard', () => {
   beforeEach('', () => {
     cy.intercept('https://to-do-guru-api.onrender.com/graphql', (req) => {
@@ -51,6 +50,7 @@ describe('dashboard', () => {
     cy.get('.chore-container > :nth-child(1)').contains("30 minutes")
     
   })
+  
   it('should show a message if no chores are given for the day', () => {
     cy.get('.tuesday').click()
     cy.get('.day-off').contains("You have the day off, no chores today!")

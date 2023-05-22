@@ -27,14 +27,6 @@ describe('login page', () => {
           }
         }
       });
-
-      // aliasOperation(req, 'createChore', { 
-      //   "createChore": {
-      //     "chores": [{"choreName": "Mopping"}],
-      //     "errors": []
-      //   }
-      // });
-      
     })
   })
 
