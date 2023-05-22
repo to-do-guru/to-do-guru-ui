@@ -77,14 +77,14 @@ describe('Chore Form', () => {
 
   it.only('should allow user to add chore to list', () => {
 
-    cy.get('li').should('have.length', 1);
+    cy.get('li').should('have.length', 0);
 
     cy.get('[type="text"][required=""]').type('Mopping')
       .get('.css-13cymwt-control').click()
       .get('#react-select-2-option-1').click()
       .get('.chore-btn').click();
 
-    cy.get('li').should('have.length', 2);
+    cy.get('li').should('have.length', 1);
   });
 
   it('should clear the form after the user adds their chore', () => {

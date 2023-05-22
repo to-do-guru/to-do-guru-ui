@@ -17,6 +17,8 @@ export const aliasOperation = (
 ) => {
   const operation = getOperation(req.body.query);
 
+  console.log(req.body)
+
   if (!operation.name) {
     throw new Error("Anonymous operations aren't allowed. Operation must have an operation name.");
   }
