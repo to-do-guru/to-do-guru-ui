@@ -116,7 +116,7 @@ const HouseForm = ({ email }) => {
       <div className="house-form">
         {!editMode && (
           <div className="household-input">
-            <p>{householdName}</p>
+            <h2>{householdName}</h2>
             <button onClick={() => setEditMode(true)}>
               <span className="material-symbols-outlined">edit</span>
             </button>
@@ -126,19 +126,22 @@ const HouseForm = ({ email }) => {
           <form className="edit-household-name">
             <input
               type="text"
+              id='householdName'
               name="householdName"
               placeholder="Name Your Household"
               value={householdName}
               onChange={(e) => setHouseholdName(e.target.value)}
               required
             />
-            <button
-              type="submit"
-              onClick={(event) => submitHouseholdName(event)}
-              className="submit-name"
-            >
-              Submit Name
-            </button>
+            <label for='householdName'>
+              <button
+                type="submit"
+                onClick={(event) => submitHouseholdName(event)}
+                className="submit-name"
+              >
+                Submit Name
+              </button>
+            </label>
           </form>
         )}
         {memberInputs}
@@ -151,6 +154,7 @@ const HouseForm = ({ email }) => {
           <form className="member-input">
             <input
               type="text"
+              id='memberInput'
               placeholder="Name of chore-doer"
               onChange={(e) =>
                 setCurrentMember({
@@ -159,13 +163,15 @@ const HouseForm = ({ email }) => {
               }
               required
             />
-            <button
-              className="submit-member"
-              type="submit"
-              onClick={(event) => submitMember(event)}
-            >
-              Submit
-            </button>
+            <label for='memberInput'>
+              <button
+                className="submit-member"
+                type="submit"
+                onClick={(event) => submitMember(event)}
+              >
+                Submit
+              </button>
+            </label>
           </form>
         )}
         {!validName && <p>Please enter a unique name!</p>}

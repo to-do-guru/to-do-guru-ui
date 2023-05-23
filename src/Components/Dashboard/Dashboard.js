@@ -72,10 +72,12 @@ const Dashboard = ({ email }) => {
   });
 
   if (loading) {
-    return <div className="loading-broom-container">
-             <img className="sweeping-gif" src={require("../../images/sweeping-broom.gif")} alt="broom sweeping while loading"/>
-             <h2 className="loading-msg">Loading...</h2>
-           </div>
+    return (
+      <div className="loading-broom-container">
+        <img className="sweeping-gif" src={require("../../images/sweeping-broom.gif")} alt="broom sweeping while loading"/>
+        <h2 className="loading-msg">Loading...</h2>
+      </div>
+    )
   } 
   if (error) return <p className="error">"Sorry there was an error, please try again later"</p>
     
