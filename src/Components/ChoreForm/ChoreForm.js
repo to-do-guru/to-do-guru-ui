@@ -98,6 +98,7 @@ const ChoreForm = ({ email }) => {
 
   return (
     <div className='chore-form-container'>
+      {console.log(addChoreData)}
       <h1>Edit your Chores!</h1>
       <div className='chore-div'>
         <form className='chore-form'>
@@ -120,6 +121,12 @@ const ChoreForm = ({ email }) => {
               value={choreDays}
               onChange={setChoreDays}
               required
+              classNames={{
+                control: () => 'select-control', 
+                valueContainer: () => 'select-value-container', 
+                indicatorsContainer: () => 'select-indicators-container',
+                input: () => 'select-input',
+              }}
             />
           <label>
             Amount of time this chore takes in minutes:
