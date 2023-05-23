@@ -102,21 +102,22 @@ const ChoreForm = ({ email }) => {
       <h1>Edit your Chores!</h1>
       <div className='chore-div'>
         <form className='chore-form'>
-          <label>
+          <label for='editChore'>
             Chore Name:
           </label>
             <input 
               className='edit-chore'
+              id='editChore'
               type='text'
               value={choreInput.choreName}
               onChange={(e) => setChoreInput({...choreInput, choreName: e.target.value})}
               required
             />
-          <label>
+          <label for='react-select-2-input'>
             Days of the week for this chore:
           </label>
             <Select
-              isMulti 
+              isMulti
               options={daysOfTheWeek}
               value={choreDays}
               onChange={setChoreDays}
@@ -128,11 +129,12 @@ const ChoreForm = ({ email }) => {
                 input: () => 'select-input',
               }}
             />
-          <label>
+          <label for='choreMins'>
             Amount of time this chore takes in minutes:
           </label>
             <input 
               className='edit-chore'
+              id='choreMins'
               type='number'
               step='15'
               min='15'
