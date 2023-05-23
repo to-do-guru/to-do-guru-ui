@@ -1,70 +1,110 @@
-# Getting Started with Create React App
+# [To-Do Guru](https://to-do-guru-ui.vercel.app/)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## Abstract:
 
-In the project directory, you can run:
+[//]: <>
 
-### `npm start`
+*To-Do Guru* is an application built to help anyone looking to divide and track chores among their household. A user is able to add chores to their household with the name and duration. They are also able to edit the amount of household members. After that To-Do Guru will build you out a weeks schedule of chores and randomly assign them to each member keeping the total duration for each household member as fair as possible. If you are tired of the weeks schedule you can hit the random button to build you out a new randomly curated weeks worth of chores. To-Do Guru is here to help keep your household running efficiently.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
+## Installation Instructions:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+[//]: <>
 
-### `npm run build`
+#### **Deployed Link:**
+[To-Do Guru](https://to-do-guru-ui.vercel.app/)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+##### OR
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+#### **Local Installation**:
+1. Fork this repository.
+1. Create a local repository.
+1. Follow the Github on-screen commands to connect your local repository to your newly forked repository.
+1. Run `npm install`, then `npm start` to start the application locally.
+1. Navigate to `http://localhost:3000` in your browser to use the application. 
+  
+## Preview of App:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+[//]: <>
+![]()
 
-### `npm run eject`
+## Context:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+[//]: <>
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+This application was completed as part of the Turing School of Software and Design Module 4 curriculum.  This app is a full stack application that was built with a backend team. We were tasked with implementing a new technology and chose to use GraphQL with Apollo for this application. Our time frame to complete was 2 1/2 weeks.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Technologies Used:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+[//]: <>
+- React (JS, HTML, CSS)
+- React Router for a multi-page interface.
+- Cypress for E2E testing.
+- GraphQL with Apollo
+- CircleCI
 
-## Learn More
+## Contributers
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+<img alt="Kara Anderson" width="100" src="https://avatars.githubusercontent.com/u/114871395?v=4"/>&nbsp;&nbsp;  <img alt="Chris Baum" width="100" src="https://avatars.githubusercontent.com/u/24902544?v=4"/>&nbsp;  <img alt="Travis Parks" width="100" src="https://avatars.githubusercontent.com/u/116752855?v=4"/> <br>
+Kara Anderson &nbsp;&nbsp;  Chris Baum &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  Travis Parks <br>
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+[![GitHub][github-shield]][github-kara]&nbsp;&nbsp;&nbsp;&nbsp; [![GitHub][github-shield]][github-chris]&nbsp;&nbsp;&nbsp;&nbsp; [![GitHub][github-shield]][github-travis] <br>
+[![LinkedIn][linkedin-shield]][linkedin-kara]&nbsp;&nbsp;[![LinkedIn][linkedin-shield]][linkedin-chris]&nbsp;&nbsp;[![LinkedIn][linkedin-shield]][linkedin-travis]
+  
 
-### Code Splitting
+## Learning Goals:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+[//]: <>
 
-### Analyzing the Bundle Size
+- Demonstrate knowledge you’ve gained throughout Turing
+- Use an agile process to turn well defined requirements into deployed and production ready software
+- Gain experience dividing applications into components and domains of responsibilities to facilitate multi-developer teams. Service oriented architecture concepts and patterns are highly encouraged.
+- Explore and implement new concepts, patterns, or libraries that have not been explicitly taught while at Turing
+- Practice an advanced, professional git workflow including a Pull Request Review
+- Gain experience using continuous integration tools to build and automate the deployment of features
+- Build applications that execute in development, test, CI, and production environments
+- Focus on communication between front-end and back-end teams in order to complete and deploy features that have been outlined by the project spec
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-### Making a Progressive Web App
+## Wins + Challenges:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+[//]: <>
 
-### Advanced Configuration
+### Wins:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+- Implementing GraphQL with Apollo and connecting with BE for queries and mutations 
+- Successfully completing MVP in a large team format of FE and BE developers
 
-### Deployment
+### Challenges:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+- Finding the right balance and workflow working with a BE team 
+- Intercepting and stubbing graphQL mutations with Cypress
 
-### `npm run build` fails to minify
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### Project Spec: 
+
+[Capstone Project](https://mod4.turing.edu/projects/capstone/)
+
+### Github Links
+[Organization Link](https://github.com/to-do-guru) <br>
+[Frontend Link](https://github.com/to-do-guru/to-do-guru-ui)<br>
+[Backend Link](https://github.com/to-do-guru/to-do-guru-api) 
+
+
+
+
+[github-shield]: https://img.shields.io/badge/GitHub-181717.svg?style=for-the-badge&logo=GitHub&logoColor=white
+[github-travis]: https://github.com/LeftyLincoln
+[github-kara]: https://github.com/Kanderson58
+[github-chris]: https://github.com/qrispi
+
+[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
+[linkedin-travis]: https://www.linkedin.com/in/travis-l-parks/
+[linkedin-kara]: https://www.linkedin.com/in/kara-anderson8/
+[linkedin-chris]: https://www.linkedin.com/in/c-baum/
+
+
+[GitHub Pages](https://pages.github.com)
+[GitHub Badges](https://home.aveek.io/GitHub-Profile-Badges/)
