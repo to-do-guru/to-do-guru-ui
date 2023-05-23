@@ -34,7 +34,7 @@
 
 [//]: <>
 
-This application was completed as part of the Turing School of Software and Design Module 4 curriculum. This was our capstone project which tested our mastery of everything we have learned during the 7 months we have been here. This app is a full stack application that was built with a backend team. We were tasked with implementing a new technology and chose to use GraphQL with Apollo for this application. Our time frame to complete was 2 1/2 weeks overall.
+This application was completed as part of the Turing School of Software and Design Module 4 curriculum.  This app is a full stack application that was built with a backend team. We were tasked with implementing a new technology and chose to use GraphQL with Apollo for this application. Our time frame to complete was 2 1/2 weeks.
 
 ## Technologies Used:
 
@@ -43,6 +43,7 @@ This application was completed as part of the Turing School of Software and Desi
 - React Router for a multi-page interface.
 - Cypress for E2E testing.
 - GraphQL with Apollo
+- CircleCI
 
 ## Contributors:
 
@@ -58,7 +59,23 @@ This application was completed as part of the Turing School of Software and Desi
 
 [//]: <>
 
+- Demonstrate knowledge you’ve gained throughout Turing
+- Use an agile process to turn well defined requirements into deployed and production ready software
+- Gain experience dividing applications into components and domains of responsibilities to facilitate multi-developer teams. Service oriented architecture concepts and patterns are highly encouraged.
+- Explore and implement new concepts, patterns, or libraries that have not been explicitly taught while at Turing
+- Practice an advanced, professional git workflow including a Pull Request Review
+- Gain experience using continuous integration tools to build and automate the deployment of features
+- Build applications that execute in development, test, CI, and production environments
+- Focus on communication between front-end and back-end teams in order to complete and deploy features that have been outlined by the project spec
 
+## Contributers
+
+| <img alt="Kara Anderson" width="75" src="https://avatars.githubusercontent.com/u/114871395?v=4"/> | <img alt="Chris Baum" width="75" src="https://avatars.githubusercontent.com/u/24902544?v=4"/> | | <img alt="Travis Parks" width="75" src="https://avatars.githubusercontent.com/u/116752855?v=4"/> 
+| ------------------ | ------------ | -------------- | ----------- | -------------- | ----------- |
+| Kara Anderson | Chris Baum | Travis Parks
+| Collaborator | Collaborator | Collaborator 
+| [![GitHub][github-shield]][github-kara] | [![GitHub][github-shield]][github-chris] | [![GitHub][github-shield]][github-travis] 
+| [![LinkedIn][linkedin-shield]][linkedin-kara] |  [![LinkedIn][linkedin-shield]][linkedin-chris] | [![LinkedIn][linkedin-shield]][linkedin-travis]
   
 ## Wins + Challenges:
 
@@ -66,6 +83,38 @@ This application was completed as part of the Turing School of Software and Desi
 
 ### Wins:
 
+- Implementing GraphQL with Apollo and connecting with BE for queries and mutations 
+- Successfully completing MVP in a large team format of FE and BE developers
 
 ### Challenges:
 
+- Finding the right balance and workflow working with a BE team for the first time
+- Intercepting and stubbing graphQL mutations with Cypress
+
+
+### Project Spec: 
+
+[Capstone Project](https://mod4.turing.edu/projects/capstone/)
+
+### Github Links
+[Organization Link](https://github.com/to-do-guru) <br>
+[Frontend Link](https://github.com/to-do-guru/to-do-guru-ui)<br>
+[Backend Link](https://github.com/to-do-guru/to-do-guru-api) 
+
+
+
+
+[github-shield]: https://img.shields.io/badge/GitHub-181717.svg?style=for-the-badge&logo=GitHub&logoColor=white
+[github-travis]: https://github.com/LeftyLincoln
+[github-kara]: href="https://github.com/Kanderson58
+[github-chris]: https://github.com/qrispy
+
+[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
+[linkedin-travis]: https://www.linkedin.com/in/travis-l-parks/
+[linkedin-kara]: https://www.linkedin.com/in/kara-anderson8/
+[linkedin-chris]: https://www.linkedin.com/in/c-baum/
+
+
+* [GitHub Pages](https://pages.github.com)
+
+* [GitHub Badges](https://home.aveek.io/GitHub-Profile-Badges/)
