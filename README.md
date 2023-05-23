@@ -5,7 +5,7 @@
 
 [//]: <>
 
-*To-Do Guru* is an application built to help anyone looking to divide and track chores among their household. To-Do Guru will build you out a weeks schedule of chores that you input and then it will assign them randomly to each member keeping the total duration for each household member as fair as possible. If you are tired of the weeks schedule you can hit the random button to build you out a new randomly curated weeks worth of chores. 
+*To-Do Guru* is an application built to help anyone looking to divide and track chores among their household. A user is able to add chores to their household with the name and duration. They are also able to edit the amount of household members. After that To-Do Guru will build you out a weeks schedule of chores and randomly assign them to each member keeping the total duration for each household member as fair as possible. If you are tired of the weeks schedule you can hit the random button to build you out a new randomly curated weeks worth of chores. To-Do Guru is here to help keep your household running efficiently.
 
 
 
@@ -54,7 +54,6 @@ This application was completed as part of the Turing School of Software and Desi
 [Travis Parks](https://github.com/LeftyLincoln)
 
 
-  
 ## Learning Goals:
 
 [//]: <>
@@ -70,12 +69,12 @@ This application was completed as part of the Turing School of Software and Desi
 
 ## Contributers
 
-| <img alt="Kara Anderson" width="75" src="https://avatars.githubusercontent.com/u/114871395?v=4"/> | <img alt="Chris Baum" width="75" src="https://avatars.githubusercontent.com/u/24902544?v=4"/> | | <img alt="Travis Parks" width="75" src="https://avatars.githubusercontent.com/u/116752855?v=4"/> 
-| ------------------ | ------------ | -------------- | ----------- | -------------- | ----------- |
-| Kara Anderson | Chris Baum | Travis Parks
-| Collaborator | Collaborator | Collaborator 
+| <img alt="Kara Anderson" width="75" src="https://avatars.githubusercontent.com/u/114871395?v=4"/> | <img alt="Chris Baum" width="75" src="https://avatars.githubusercontent.com/u/24902544?v=4"/> | | <img alt="Travis Parks" width="75" src="https://avatars.githubusercontent.com/u/116752855?v=4"/> <br>
+| ------------------ | ------------ | -------------- | ----------- | -------------- | ----------- | <br>
+| Kara Anderson | Chris Baum | Travis Parks <br>
+| Collaborator | Collaborator | Collaborator <br>
 | [![GitHub][github-shield]][github-kara] | [![GitHub][github-shield]][github-chris] | [![GitHub][github-shield]][github-travis] 
-| [![LinkedIn][linkedin-shield]][linkedin-kara] |  [![LinkedIn][linkedin-shield]][linkedin-chris] | [![LinkedIn][linkedin-shield]][linkedin-travis]
+| [![LinkedIn][linkedin-shield]][linkedin-kara] | [![LinkedIn][linkedin-shield]][linkedin-chris] | [![LinkedIn][linkedin-shield]][linkedin-travis]
   
 ## Wins + Challenges:
 
@@ -88,7 +87,7 @@ This application was completed as part of the Turing School of Software and Desi
 
 ### Challenges:
 
-- Finding the right balance and workflow working with a BE team for the first time
+- Finding the right balance and workflow working with a BE team 
 - Intercepting and stubbing graphQL mutations with Cypress
 
 
@@ -103,11 +102,11 @@ This application was completed as part of the Turing School of Software and Desi
 
 
 
-
+// Shields and Links
 [github-shield]: https://img.shields.io/badge/GitHub-181717.svg?style=for-the-badge&logo=GitHub&logoColor=white
 [github-travis]: https://github.com/LeftyLincoln
-[github-kara]: href="https://github.com/Kanderson58
-[github-chris]: https://github.com/qrispy
+[github-kara]: https://github.com/Kanderson58
+[github-chris]: https://github.com/qrispi
 
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-travis]: https://www.linkedin.com/in/travis-l-parks/
@@ -115,6 +114,5 @@ This application was completed as part of the Turing School of Software and Desi
 [linkedin-chris]: https://www.linkedin.com/in/c-baum/
 
 
-* [GitHub Pages](https://pages.github.com)
-
-* [GitHub Badges](https://home.aveek.io/GitHub-Profile-Badges/)
+[GitHub Pages](https://pages.github.com)
+[GitHub Badges](https://home.aveek.io/GitHub-Profile-Badges/)
