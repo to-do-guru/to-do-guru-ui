@@ -69,11 +69,11 @@ This application was completed as part of the Turing School of Software and Desi
 
 ## Contributers
 
-<img alt="Kara Anderson" width="125" src="https://avatars.githubusercontent.com/u/114871395?v=4"/>&nbsp;  <img alt="Chris Baum" width="125" src="https://avatars.githubusercontent.com/u/24902544?v=4"/>&nbsp;  <img alt="Travis Parks" width="125" src="https://avatars.githubusercontent.com/u/116752855?v=4"/> <br>
+<img alt="Kara Anderson" width="100" src="https://avatars.githubusercontent.com/u/114871395?v=4"/>&nbsp;  <img alt="Chris Baum" width="100" src="https://avatars.githubusercontent.com/u/24902544?v=4"/>&nbsp;  <img alt="Travis Parks" width="100" src="https://avatars.githubusercontent.com/u/116752855?v=4"/> <br>
 Kara Anderson | Chris Baum | Travis Parks <br>
 
 [![GitHub][github-shield]][github-kara]&nbsp;&nbsp;&nbsp;&nbsp; [![GitHub][github-shield]][github-chris]&nbsp;&nbsp;&nbsp;&nbsp; [![GitHub][github-shield]][github-travis] <br>
-[![LinkedIn][linkedin-shield]][linkedin-kara] [![LinkedIn][linkedin-shield]][linkedin-chris] [![LinkedIn][linkedin-shield]][linkedin-travis]
+[![LinkedIn][linkedin-shield]][linkedin-kara]&nbsp;&nbsp;[![LinkedIn][linkedin-shield]][linkedin-chris]&nbsp;&nbsp;[![LinkedIn][linkedin-shield]][linkedin-travis]
   
 ## Wins + Challenges:
 
