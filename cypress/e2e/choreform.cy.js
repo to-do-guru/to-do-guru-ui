@@ -45,18 +45,18 @@ describe('Chore Form', () => {
   });
 
   it('should allow a user to select at least one day to do this chore', () => {
-    cy.get('.css-13cymwt-control').click()
+    cy.get('.select-control').click()
       .get('#react-select-2-option-1').click()
-      .get('.css-3w2yfm-ValueContainer').contains('Tuesday');
+      cy.get('.select-value-container').contains('Tuesday');
   });
 
   it('should allow a user to select multiple days to do this chore', () => {
-    cy.get('.css-13cymwt-control').click()
+    cy.get('.select-control').click()
       .get('#react-select-2-option-1').click()
-      .get('.css-1hb7zxy-IndicatorsContainer > :nth-child(3)').click()
+      .get('.select-indicators-container').click()
       .get('#react-select-2-option-3').click()
-      .get('.css-3w2yfm-ValueContainer').contains('Tuesday')
-      .get('.css-3w2yfm-ValueContainer').contains('Thursday');
+    cy.get('.select-value-container').contains('Tuesday')
+    cy.get('.select-value-container').contains('Thursday');
   });
 
   it('should allow a user to change the number of minutes a task takes', () => {
@@ -72,14 +72,14 @@ describe('Chore Form', () => {
   it('should limit the tasks to 240 minutes or less', () => {
     cy.get('[type="number"]').click()
       .type('{upArrow}').type('{upArrow}').type('{upArrow}').type('{upArrow}').type('{upArrow}').type('{upArrow}').type('{upArrow}').type('{upArrow}').type('{upArrow}').type('{upArrow}').type('{upArrow}').type('{upArrow}').type('{upArrow}').type('{upArrow}').type('{upArrow}').type('{upArrow}').type('{upArrow}').type('{upArrow}').type('{upArrow}').type('{upArrow}')
-    .get('[type="number"]').should('have.value', '240');
+      .get('[type="number"]').should('have.value', '240');
   });
 
   it('should allow user to add chore to list', () => {
     cy.get('li').should('have.length', 1);
 
     cy.get('[type="text"][required=""]').type('Mopping')
-      .get('.css-13cymwt-control').click()
+      .get('.select-control').click()
       .get('#react-select-2-option-1').click()
       .get('.chore-btn').click();
 
@@ -88,12 +88,12 @@ describe('Chore Form', () => {
 
   it('should clear the form after the user adds their chore', () => {
     cy.get('[type="text"][required=""]').type('Mopping')
-      .get('.css-13cymwt-control').click()
+      .get('.select-control').click()
       .get('#react-select-2-option-1').click()
       .get('.chore-btn').click();
 
       cy.get('[type="text"][required=""]').should('have.value', '')
-        .get('.css-qbdosj-Input').should('have.value', '')
+        .get('.select-input').should('have.value', '')
         .get('[type="number"]').should('have.value', '15');
   });
 })
