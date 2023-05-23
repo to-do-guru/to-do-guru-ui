@@ -6,7 +6,7 @@ import { BrowserRouter } from 'react-router-dom/cjs/react-router-dom.min';
 import { ApolloProvider, ApolloClient, InMemoryCache } from "@apollo/client";
 
 const client = new ApolloClient({
-  uri: "https://salty-tundra-49252.herokuapp.com/qraphql",
+  uri: "https://salty-tundra-49252.herokuapp.com/graphql",
   cache: new InMemoryCache()
 });
 

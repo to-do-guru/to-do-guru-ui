@@ -5,16 +5,9 @@ import { useState, useEffect } from "react";
 import { GET_HOUSEHOLD } from "../../queries";
 import { useQuery } from "@apollo/client";
 
-const Dashboard = ({ email, setLogInError }) => {
+const Dashboard = ({ email }) => {
   const { loading, error, data } = useQuery(GET_HOUSEHOLD, {
     fetchPolicy: "no-cache",
-    onCompleted: (data) => {
-      if (data.household.errors.length) {
-        setLogInError(true)
-      } else {
-        setLogInError(false)
-      }
-    },
     variables: { email },
   });
 
