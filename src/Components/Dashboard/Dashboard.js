@@ -13,7 +13,10 @@ const Dashboard = ({ email }) => {
 
   const [randomizeChoresMutation, { data: randomizeData, error: randomizeError }] = useMutation(RANDOMIZE_CHORES, {
     fetchPolicy: "no-cache",
-    onCompleted: (randomizeData) => console.log(randomizeData)
+    onCompleted: () => {
+      refetch()
+      console.log('refetch', data.household)
+    }
   });
 
   const daysOfWeek = [
@@ -37,7 +40,7 @@ const Dashboard = ({ email }) => {
       }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [dayOfWeek, loading, refetch]);
+  }, [dayOfWeek, loading]);
 
   const choreCards = chores.map((chore, index) => {
     return (
