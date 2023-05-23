@@ -110,6 +110,12 @@ const ChoreForm = ({id, email}) => {
               value={choreDays}
               onChange={setChoreDays}
               required
+              classNames={{
+                control: () => 'select-control', 
+                valueContainer: () => 'select-value-container', 
+                indicatorsContainer: () => 'select-indicators-container',
+                input: () => 'select-input',
+              }}
             />
           <label>
             Amount of time this chore takes in minutes:
