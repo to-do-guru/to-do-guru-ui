@@ -69,8 +69,8 @@ This application was completed as part of the Turing School of Software and Desi
 
 ## Contributers
 
-| <img alt="Kara Anderson" width="75" src="https://avatars.githubusercontent.com/u/114871395?v=4"/> | <img alt="Chris Baum" width="75" src="https://avatars.githubusercontent.com/u/24902544?v=4"/> | | <img alt="Travis Parks" width="75" src="https://avatars.githubusercontent.com/u/116752855?v=4"/> <br>
-| ------------------ | ------------ | -------------- | ----------- | -------------- | ----------- | <br>
+| <img alt="Kara Anderson" width="75" src="https://avatars.githubusercontent.com/u/114871395?v=4"/>  <img alt="Chris Baum" width="75" src="https://avatars.githubusercontent.com/u/24902544?v=4"/>  <img alt="Travis Parks" width="75" src="https://avatars.githubusercontent.com/u/116752855?v=4"/> <br>
+| ------------------ | ------------ | --------------  <br>
 | Kara Anderson | Chris Baum | Travis Parks <br>
 | Collaborator | Collaborator | Collaborator <br>
 | [![GitHub][github-shield]][github-kara] | [![GitHub][github-shield]][github-chris] | [![GitHub][github-shield]][github-travis] 
@@ -102,7 +102,7 @@ This application was completed as part of the Turing School of Software and Desi
 
 
 
-// Shields and Links
+
 [github-shield]: https://img.shields.io/badge/GitHub-181717.svg?style=for-the-badge&logo=GitHub&logoColor=white
 [github-travis]: https://github.com/LeftyLincoln
 [github-kara]: https://github.com/Kanderson58
