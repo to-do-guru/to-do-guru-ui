@@ -1,19 +1,16 @@
 import { useState } from "react";
 import "./Login.css";
-import { NavLink } from "react-router-dom/cjs/react-router-dom.min";
+import { NavLink } from "react-router-dom";
 
-const Login = ({ setEmail, logInError }) => {
+const Login = ({ setEmail }) => {
   const [loginInfo, setLoginInfo] = useState("");
   const [error, setError] = useState(false)
 
-  if (logInError) {
-    return <p>"default login is smith@example.com"</p>;
-  }
   return (
     <div className="login">
       <h1>Welcome to To-Do Guru!</h1>
-      <p>Try logging in with smith@example.com</p>
       <h2>Login to view your chore schedule!</h2>
+      <p>Try logging in with smith@example.com</p>
       <form>
         <input
           type="text"
