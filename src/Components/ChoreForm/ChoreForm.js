@@ -2,7 +2,7 @@ import './ChoreForm.css';
 import { NavLink } from 'react-router-dom';
 import { useState } from 'react';
 import Select from 'react-select';
-import { GET_CHORE_INFO, ADD_CHORE } from '../../queries';
+import { GET_CHORE_INFO, ADD_CHORE, RANDOMIZE_CHORES } from '../../queries';
 import { useQuery, useMutation } from "@apollo/client";
 
 const ChoreForm = ({ email }) => {
@@ -29,9 +29,18 @@ const ChoreForm = ({ email }) => {
     fetchPolicy: "no-cache",
     onCompleted: (addChoreData) => {
       setChores([...chores, addChoreData.createChore.chores[0].choreName]);
+      randomizeChores();
       clearForm();
     }
   });
+  const [randomizeChoresMutation] = useMutation(RANDOMIZE_CHORES, {
+    fetchPolicy: "no-cache"
+  });
+
+  const randomizeChores = () => {
+    const input = {id: choreData.household.id };
+    randomizeChoresMutation({ variables: {input} });
+  }
 
   const daysOfTheWeek = [
     { value: 'Monday', label: 'Monday' },
