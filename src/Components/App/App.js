@@ -7,27 +7,25 @@ import Dashboard from '../Dashboard/Dashboard';
 import { useState } from 'react';
 
 const App = ()  => {
-  const [email, setEmail] = useState('smith@example.com');
-	const [id, setId] = useState("")
-	const [logInError, setLogInError] = useState(false)
+	const [email, setEmail] = useState('smith@example.com');
 
 	return (
 		<main>
 			<Switch>
 				<Route exact path="/">
-					<Login setEmail={setEmail} logInError={logInError}/>
+					<Login setEmail={setEmail} />
 				</Route>
 
 				<Route exact path="/houseform">
-					<HouseForm id={id} email={email}/>
+					<HouseForm email={email} />
 				</Route>
 
 				<Route exact path="/choreform">
-					<ChoreForm id={id} email={email}/>
+					<ChoreForm email={email} />
 				</Route>
 
 				<Route exact path="/dashboard">
-					<Dashboard email={email} setId={setId} setLogInError={setLogInError}/>
+					<Dashboard email={email} />
 				</Route>
 
 				<Route path="*">

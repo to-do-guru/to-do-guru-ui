@@ -5,13 +5,9 @@ import { useState, useEffect } from "react";
 import { GET_HOUSEHOLD } from "../../queries";
 import { useQuery } from "@apollo/client";
 
-const Dashboard = ({ email, setId, setLogInError }) => {
+const Dashboard = ({ email }) => {
   const { loading, error, data } = useQuery(GET_HOUSEHOLD, {
     fetchPolicy: "no-cache",
-    onCompleted: (data) => {
-      // if (data.household.error)
-      console.log(data)
-    },
     variables: { email },
   });
 
@@ -29,7 +25,6 @@ const Dashboard = ({ email, setId, setLogInError }) => {
 
   useEffect(() => {
     if (!loading) {
-      setId(data.household.id)
       if (data.household[dayOfWeek]) {
         setChores(data.household[dayOfWeek]);
       } else {
