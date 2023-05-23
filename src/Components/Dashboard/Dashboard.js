@@ -9,13 +9,28 @@ const Dashboard = ({ email }) => {
   const { loading, error, data, refetch } = useQuery(GET_HOUSEHOLD, {
     fetchPolicy: "no-cache",
     variables: { email },
+    onCompleted: (data, loading) => {
+      if(!loading) {
+        if (data.household[dayOfWeek]) {
+            setChores(data.household[dayOfWeek]);
+          } else {
+            setChores([]);
+          }
+      }
+    }
   });
 
-  const [randomizeChoresMutation, { data: randomizeData, error: randomizeError }] = useMutation(RANDOMIZE_CHORES, {
+  const [randomizeChoresMutation, { data: randomizeData, loading: randomizeLoading }] = useMutation(RANDOMIZE_CHORES, {
     fetchPolicy: "no-cache",
-    onCompleted: () => {
+    onCompleted: (randomizeLoading) => {
       refetch()
-      console.log('refetch', data.household)
+      if(!randomizeLoading) {
+        if (data.household[dayOfWeek]) {
+            setChores(data.household[dayOfWeek]);
+          } else {
+            setChores([]);
+          }
+      }
     }
   });
 
@@ -82,7 +97,6 @@ const Dashboard = ({ email }) => {
   const randomizeChores = () => {
     const input = {id: data.household.id };
     randomizeChoresMutation({ variables: {input} });
-    refetch();
   }
 
   if (loading) {
