@@ -2,7 +2,7 @@ import "./HouseForm.css";
 import { NavLink } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useQuery, useMutation } from "@apollo/client";
-import { CHANGE_HOUSE_NAME, GET_HOUSE_INFO, DELETE_MEMBER_NAME, ADD_MEMBER_NAME } from "../../queries";
+import { CHANGE_HOUSE_NAME, GET_HOUSE_INFO, DELETE_MEMBER_NAME, ADD_MEMBER_NAME, RANDOMIZE_CHORES } from "../../queries";
 
 
 const HouseForm = ({ email }) => {
@@ -44,6 +44,14 @@ const HouseForm = ({ email }) => {
       setCurrentMember({name:""})
       setEditMember(false)}
   });
+  const [randomizeChoresMutation] = useMutation(RANDOMIZE_CHORES, {
+    fetchPolicy: "no-cache"
+  });
+
+  const randomizeChores = () => {
+    const input = {id: queryData.household.id };
+    randomizeChoresMutation({ variables: {input} });
+  }
 
   const memberInputs = members.map((member) => (
     <div key={member.id} className="member">
@@ -57,6 +65,7 @@ const HouseForm = ({ email }) => {
   const deleteMember = (id) => {
     const input = {id: id}
     deleteMemberName({variables: { input }});
+    randomizeChores();
   };
 
   const submitMember = (event) => {
@@ -65,6 +74,7 @@ const HouseForm = ({ email }) => {
       event.preventDefault();
       const input = {name: currentMember.name, householdId: id}
       createMember({variables: { input }});
+      randomizeChores();
     }
     if (currentMember.name && !check) {
       event.preventDefault();
