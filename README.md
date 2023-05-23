@@ -45,14 +45,14 @@ This application was completed as part of the Turing School of Software and Desi
 - GraphQL with Apollo
 - CircleCI
 
-## Contributors:
+## Contributers
 
-[//]: <>
+<img alt="Kara Anderson" width="100" src="https://avatars.githubusercontent.com/u/114871395?v=4"/>&nbsp;  <img alt="Chris Baum" width="100" src="https://avatars.githubusercontent.com/u/24902544?v=4"/>&nbsp;  <img alt="Travis Parks" width="100" src="https://avatars.githubusercontent.com/u/116752855?v=4"/> <br>
+Kara Anderson  Chris Baum &nbsp;&nbsp;&nbsp;  Travis Parks <br>
 
-[Kara Anderson](https://github.com/Kanderson58)
-[Chris Baum](https://github.com/qrispi)
-[Travis Parks](https://github.com/LeftyLincoln)
-
+[![GitHub][github-shield]][github-kara]&nbsp;&nbsp;&nbsp;&nbsp; [![GitHub][github-shield]][github-chris]&nbsp;&nbsp;&nbsp;&nbsp; [![GitHub][github-shield]][github-travis] <br>
+[![LinkedIn][linkedin-shield]][linkedin-kara]&nbsp;&nbsp;[![LinkedIn][linkedin-shield]][linkedin-chris]&nbsp;&nbsp;[![LinkedIn][linkedin-shield]][linkedin-travis]
+  
 
 ## Learning Goals:
 
@@ -67,14 +67,7 @@ This application was completed as part of the Turing School of Software and Desi
 - Build applications that execute in development, test, CI, and production environments
 - Focus on communication between front-end and back-end teams in order to complete and deploy features that have been outlined by the project spec
 
-## Contributers
 
-<img alt="Kara Anderson" width="100" src="https://avatars.githubusercontent.com/u/114871395?v=4"/>&nbsp;  <img alt="Chris Baum" width="100" src="https://avatars.githubusercontent.com/u/24902544?v=4"/>&nbsp;  <img alt="Travis Parks" width="100" src="https://avatars.githubusercontent.com/u/116752855?v=4"/> <br>
-Kara Anderson | Chris Baum | Travis Parks <br>
-
-[![GitHub][github-shield]][github-kara]&nbsp;&nbsp;&nbsp;&nbsp; [![GitHub][github-shield]][github-chris]&nbsp;&nbsp;&nbsp;&nbsp; [![GitHub][github-shield]][github-travis] <br>
-[![LinkedIn][linkedin-shield]][linkedin-kara]&nbsp;&nbsp;[![LinkedIn][linkedin-shield]][linkedin-chris]&nbsp;&nbsp;[![LinkedIn][linkedin-shield]][linkedin-travis]
-  
 ## Wins + Challenges:
 
 [//]: <>
