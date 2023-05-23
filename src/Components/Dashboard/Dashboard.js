@@ -2,13 +2,18 @@ import "./Dashboard.css";
 import ChoreCard from "../ChoreCard/ChoreCard";
 import { NavLink } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { GET_HOUSEHOLD } from "../../queries";
-import { useQuery } from "@apollo/client";
+import { GET_HOUSEHOLD, RANDOMIZE_CHORES } from "../../queries";
+import { useQuery, useMutation } from "@apollo/client";
 
 const Dashboard = ({ email }) => {
-  const { loading, error, data } = useQuery(GET_HOUSEHOLD, {
+  const { loading, error, data, refetch } = useQuery(GET_HOUSEHOLD, {
     fetchPolicy: "no-cache",
     variables: { email },
+  });
+
+  const [randomizeChoresMutation, { data: randomizeData, error: randomizeError }] = useMutation(RANDOMIZE_CHORES, {
+    fetchPolicy: "no-cache",
+    onCompleted: (randomizeData) => console.log(randomizeData)
   });
 
   const daysOfWeek = [
@@ -32,7 +37,7 @@ const Dashboard = ({ email }) => {
       }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [dayOfWeek, loading]);
+  }, [dayOfWeek, loading, refetch]);
 
   const choreCards = chores.map((chore, index) => {
     return (
@@ -71,6 +76,12 @@ const Dashboard = ({ email }) => {
     }
   });
 
+  const randomizeChores = () => {
+    const input = {id: data.household.id };
+    randomizeChoresMutation({ variables: {input} });
+    refetch();
+  }
+
   if (loading) {
     return (
       <div className="loading-broom-container">
@@ -97,8 +108,7 @@ const Dashboard = ({ email }) => {
         <NavLink to="/">
           <button className="nav-btn">Log Out</button>
         </NavLink>
-        {/*this button below will run a function, not sure where it will live yet*/}
-        <button className="nav-btn">Get me a new schedule</button>
+        <button className="nav-btn" onClick={randomizeChores}>Get me a new schedule</button>
         <NavLink to="/choreform">
           <button className="nav-btn">Edit Chore List</button>
         </NavLink>

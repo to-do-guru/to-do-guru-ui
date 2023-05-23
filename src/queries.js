@@ -117,3 +117,14 @@ export const ADD_CHORE = gql`
     }
   }
 `
+
+export const RANDOMIZE_CHORES = gql`
+  mutation ($input: RandomizeChoresInput!) {
+    randomizeChores(input: $input) {
+      household {
+        id
+      }
+      errors
+    }
+  }
+`
