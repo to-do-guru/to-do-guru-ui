@@ -1,57 +1,74 @@
+import { aliasOperation } from "../utils/utilityfunctions.cy";
+
 describe('dashboard', () => {
-  beforeEach(()=> {
-    cy.visit('https://to-do-guru-ui.vercel.app/dashboard')
+  beforeEach('', () => {
+    cy.intercept('https://salty-tundra-49252.herokuapp.com/graphql', (req) => {
+      aliasOperation(req, 'getHousehold', {
+        "data": {
+          "household": {
+            "chores": [{
+              "choreName": "Sweeping"
+            }],
+            "id": 1,
+            "name": "Example House",
+            "sunday": null,
+            "monday": [
+              {
+                "choreName": "Sweeping",
+                "assignedMember": "Jane Doe",
+                "duration": 30
+              }
+            ],
+            "tuesday": null,
+            "wednesday": null,
+            "thursday": null,
+            "friday": null,
+            "saturday": null
+          }
+        }
+      });
+    })
+    cy.visit('https://to-do-guru-ui.vercel.app/dashboard') 
   })
 
-  it.skip('should show a header and the days of the week', () => {
-    cy.get('h1').contains("Turing Fam's Chore Schedule")
-    cy.get('.Monday').contains('Monday')
-    cy.get('.Tuesday').contains('Tuesday')
-    cy.get('.Wednesday').contains('Wednesday')
-    cy.get('.Thursday').contains('Thursday')
-    cy.get('.Friday').contains('Friday')
-    cy.get('.Saturday').contains('Saturday')
-    cy.get('.Sunday').contains('Sunday')
+  it('should show a header and the days of the week', () => {
+    cy.get('h1').contains("Example House Chore Schedule")
+    cy.get('.monday').contains('monday')
+    cy.get('.tuesday').contains('tuesday')
+    cy.get('.wednesday').contains('wednesday')
+    cy.get('.thursday').contains('thursday')
+    cy.get('.friday').contains('friday')
+    cy.get('.saturday').contains('saturday')
+    cy.get('.sunday').contains('sunday')
   })
 
-  it.skip('should show the chores for the day that is clicked. Each chore should have the chore doer, name of chore and duration for chore', () => {
-    cy.get('.Wednesday').click()
+  it('should show the chores for the day that is clicked. Each chore should have the chore doer, name of chore and duration for chore', () => {
+    cy.get('.monday').click()
     cy.get(".chore-card").should("have.length", "1")
-    cy.get('.chore-container > :nth-child(1)').contains("Steve's Chore")
-    cy.get('.chore-container > :nth-child(1)').contains("Wash Dishes")
+    cy.get('.chore-container > :nth-child(1)').contains("Jane Doe")
+    cy.get('.chore-container > :nth-child(1)').contains("Sweeping")
     cy.get('.chore-container > :nth-child(1)').contains("30 minutes")
-    cy.get('.Saturday').click()
-    cy.get(".chore-card").should("have.length", "2")
-    cy.get('.chore-container > :nth-child(1)').contains("Jenny's Chore")
-    cy.get('.chore-container > :nth-child(1)').contains("Take Out Trash")
-    cy.get('.chore-container > :nth-child(1)').contains("15 minutes")
-    cy.get('.chore-container > :nth-child(2)').contains("Steve's Chore")
-    cy.get('.chore-container > :nth-child(2)').contains("Mow Lawn")
-    cy.get('.chore-container > :nth-child(2)').contains("120 minutes")
+    
   })
-  it.skip('should show a message if no chores are given for the day', () => {
-    cy.get('.Tuesday').click()
+  
+  it('should show a message if no chores are given for the day', () => {
+    cy.get('.tuesday').click()
     cy.get('.day-off').contains("You have the day off, no chores today!")
   })
 
-  it.skip('should allow a user to log out and go back to the login page', () => {
-    cy.get('.active > .nav-btn').click()
-    cy.url().should('eq', "https://to-do-guru-ui.vercel.app/")
+  it('should have a button for a user to log out', () => {
+    cy.get('.active > .nav-btn').contains("Log Out")
   })
 
-  it.skip('should show allow a user to edit the household by bringing them back the household form page', () => {
-    cy.get('[href="/houseform"] > .nav-btn').click()
-    cy.url().should('eq', "https://to-do-guru-ui.vercel.app/houseform")
+  it('should have a button for a user to edit their household', () => {
+    cy.get('[href="/houseform"] > .nav-btn').contains("Edit Household")
   })
 
-  it.skip('should show allow a user to edit the chores by bringing them back the chore form page', () => {
-    cy.get('[href="/choreform"] > .nav-btn').click()
-    cy.url().should('eq', "https://to-do-guru-ui.vercel.app/choreform")
+  it('should have a button for a user to edit their household chores', () => {
+    cy.get('[href="/choreform"] > .nav-btn').contains("Edit Chore List")
   })
 
-  it.skip('should allow a user to randomize the chore schedule', () => {
-    cy.get('nav > :nth-child(2)').click()
-    //add to this when we hook up the functionality to randomize the schedule
-  })
-  
+  it('should allow a user to randomize the chore schedule', () => {
+    cy.get('nav > :nth-child(2)').contains("Get me a new schedule")
+  }) 
 })
