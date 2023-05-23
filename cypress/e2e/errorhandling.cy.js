@@ -1,34 +1,52 @@
 describe('Error Handling', () => {
-  it.skip('should not allow the user to submit a chore with an empty field', () => {
+  beforeEach('', () => {
+    cy.intercept('POST', 'https://salty-tundra-49252.herokuapp.com/graphql', (req) => {
+      if(req.body.query.includes('getHousehold')) {
+        req.reply({
+          "body": {
+            "data": {
+              "household": {
+              "name": "Example House",
+                "chores": [{
+                  "choreName": "Sweeping"
+                }],
+                "id": 1,
+                "members": [
+                  {
+                    "name": "Jane Doe",
+                    "id": 1
+                  }
+                ]
+              }
+            }
+          }
+        });
+      }
+    })
+  });
+
+  it('should not allow the user to submit a chore with an empty field', () => {
     cy.visit('https://to-do-guru-ui.vercel.app/choreform');
-    cy.get('li').should('have.length', 3);
+    cy.get('li').should('have.length', 1);
     
     cy.get('.chore-btn').click()
-      .get('li').should('have.length', 3);
+      .get('li').should('have.length', 1);
 
     cy.get('[type="text"][required=""]').type('Mopping')
       .get('.chore-btn').click()
-      .get('li').should('have.length', 3);
+      .get('li').should('have.length', 1);
 
     cy.get('[type="text"][required=""]').clear()
       .get('.css-13cymwt-control').click()
       .get('#react-select-2-option-1').click()
-      .get('li').should('have.length', 3);
+      .get('li').should('have.length', 1);
   });
 
-  it.skip('should not allow the user to submit a household with an empty form', () => {
+  it('should not allow the user to submit a household with an empty form', () => {
     cy.visit('https://to-do-guru-ui.vercel.app/houseform');
 
-    cy.get('.house-form > .house-btn').click()
-    // test the feedback once we get it set up
+    cy.get('.material-symbols-outlined').click().get('input').clear().get('.submit-name').click().get('.household-input > p').should('not.exist');
 
-    cy.get('[name="householdName"]').type('Household Name')
-      .get('.house-form > .house-btn').click()
-    // test the feedback once we get it set up
-
-    cy.get('[name="householdName"]').clear()
-      .get('.mem-input').type('Kara')
-      .get('.house-form > .house-btn').click()
-    // test the feedback once we get it set up
-  })
+    cy.get('.house-form > .house-btn').click().get('.submit-member').click().get('.house-form > .house-btn').should('not.exist').get('.member').should('have.length', 1);
+  });
 });
