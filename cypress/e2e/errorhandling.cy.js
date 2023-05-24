@@ -37,7 +37,7 @@ describe('Error Handling', () => {
       .get('li').should('have.length', 1);
 
     cy.get('[type="text"][required=""]').clear()
-      .get('.css-13cymwt-control').click()
+      .get('.select-control').click()
       .get('#react-select-2-option-1').click()
       .get('li').should('have.length', 1);
   });
