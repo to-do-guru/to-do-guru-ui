@@ -108,27 +108,27 @@ const Dashboard = ({ email }) => {
     randomizeChoresMutation({ variables: {input} });
   }
 
+  const loadingImage = <div className="loading-broom-container">
+    <img className="sweeping-gif" src={require("../../images/sweeping-broom.gif")} alt="broom sweeping while loading"/>
+    <h2 className="loading-msg">Loading...</h2>
+  </div>
+
   if (loading) {
-    return (
-      <div className="loading-broom-container">
-        <img className="sweeping-gif" src={require("../../images/sweeping-broom.gif")} alt="broom sweeping while loading"/>
-        <h2 className="loading-msg">Loading...</h2>
-      </div>
-    )
+    return loadingImage
   } 
   if (error) return <p className="error">"Sorry there was an error, please try again later"</p>
     
-  return (
+    return (
     <div className="dashboard">
       <div>
         <h1>{data.household.name} Chore Schedule</h1>
         <div className="week-nav">{weekButtons}</div>
-        <section className="chore-container">
+        {!randomizeLoading && <section className="chore-container">
           {choreCards}
           {chores.length === 0 && (
             <p className="day-off">You have the day off, no chores today!</p>
           )}
-        </section>
+        </section>}
       </div>
       <nav>
         <NavLink to="/">
