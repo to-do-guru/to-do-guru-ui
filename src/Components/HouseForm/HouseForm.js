@@ -143,7 +143,7 @@ const HouseForm = ({ email }) => {
               onChange={(e) => setHouseholdName(e.target.value)}
               required
             />
-            <label for='householdName'>
+            <label htmlFor='householdName'>
               <button
                 type="submit"
                 onClick={(event) => submitHouseholdName(event)}
@@ -173,7 +173,7 @@ const HouseForm = ({ email }) => {
               }
               required
             />
-            <label for='memberInput'>
+            <label htmlFor='memberInput'>
               <button
                 className="submit-member"
                 type="submit"

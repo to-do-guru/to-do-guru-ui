@@ -107,11 +107,10 @@ const ChoreForm = ({ email }) => {
 
   return (
     <div className='chore-form-container'>
-      {console.log(addChoreData)}
       <h1>Edit your Chores!</h1>
       <div className='chore-div'>
         <form className='chore-form'>
-          <label for='editChore'>
+          <label htmlFor='editChore'>
             Chore Name:
           </label>
             <input 
@@ -122,7 +121,7 @@ const ChoreForm = ({ email }) => {
               onChange={(e) => setChoreInput({...choreInput, choreName: e.target.value})}
               required
             />
-          <label for='react-select-2-input'>
+          <label htmlFor='react-select-2-input'>
             Days of the week for this chore:
           </label>
             <Select
@@ -138,7 +137,7 @@ const ChoreForm = ({ email }) => {
                 input: () => 'select-input',
               }}
             />
-          <label for='choreMins'>
+          <label htmlFor='choreMins'>
             Amount of time this chore takes in minutes:
           </label>
             <input 
