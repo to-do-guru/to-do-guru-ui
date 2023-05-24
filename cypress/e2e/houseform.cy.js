@@ -43,7 +43,7 @@ describe('House Form', () => {
       }
     })
     
-    cy.visit('https://to-do-guru-ui.vercel.app/choreform');
+    cy.visit('https://to-do-guru-ui.vercel.app/houseform');
   });
   
   it('should allow a user to re-name their household', () => {
