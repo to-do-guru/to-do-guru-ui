@@ -6,6 +6,9 @@ import { GET_HOUSEHOLD, RANDOMIZE_CHORES } from "../../queries";
 import { useQuery, useMutation } from "@apollo/client";
 
 const Dashboard = ({ email }) => {
+  const [members, setMembers] = useState([]);
+  const hexCodes = ['#564787', '#004BA8', '#04724D', '#43AA8B', '#28587B', '#C52184', '#5A1807', '#F17300','#695958', '#38023B'];
+
   const { loading, error, data, refetch } = useQuery(GET_HOUSEHOLD, {
     fetchPolicy: "no-cache",
     variables: { email },
@@ -13,6 +16,10 @@ const Dashboard = ({ email }) => {
       if(!loading) {
         if (data.household[dayOfWeek]) {
             setChores(data.household[dayOfWeek]);
+            const memberColors = data.household.members.map((member, index) => 
+              { return { color: hexCodes[index], name: member.name, id: member.id } } 
+            );
+            setMembers(memberColors);
           } else {
             setChores([]);
           }
@@ -61,6 +68,7 @@ const Dashboard = ({ email }) => {
     return (
       <ChoreCard
         member={chore.assignedMember}
+        allMembers={members}
         chore={chore.choreName}
         duration={chore.duration}
         key={index}
@@ -111,6 +119,7 @@ const Dashboard = ({ email }) => {
     
   return (
     <div className="dashboard">
+      {console.log(members)}
       <div>
         <h1>{data.household.name} Chore Schedule</h1>
         <div className="week-nav">{weekButtons}</div>

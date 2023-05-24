@@ -155,7 +155,7 @@ const HouseForm = ({ email }) => {
           </form>
         )}
         {memberInputs}
-        {!editMember && (
+        {!editMember && members.length < 10 && (
           <button className="house-btn" onClick={() => setEditMember(true)}>
             Add Chore-Doer
           </button>
