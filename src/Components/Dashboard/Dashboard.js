@@ -27,6 +27,7 @@ const Dashboard = ({ email }) => {
     }
   });
 
+  // eslint-disable-next-line
   const [randomizeChoresMutation, { data: randomizeData, loading: randomizeLoading }] = useMutation(RANDOMIZE_CHORES, {
     fetchPolicy: "no-cache",
     onCompleted: (randomizeLoading) => {
