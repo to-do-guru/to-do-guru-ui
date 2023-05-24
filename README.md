@@ -45,14 +45,16 @@ This application was completed as part of the Turing School of Software and Desi
 - GraphQL with Apollo
 - CircleCI
 
+
 ## Contributers
 
-<img alt="Kara Anderson" width="100" src="https://avatars.githubusercontent.com/u/114871395?v=4"/>&nbsp;&nbsp;  <img alt="Chris Baum" width="100" src="https://avatars.githubusercontent.com/u/24902544?v=4"/>&nbsp;  <img alt="Travis Parks" width="100" src="https://avatars.githubusercontent.com/u/116752855?v=4"/> <br>
-Kara Anderson &nbsp;&nbsp;  Chris Baum &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  Travis Parks <br>
+<img alt="Kara Anderson" width="100" src="https://avatars.githubusercontent.com/u/114871395?v=4"/>&nbsp;&nbsp;&nbsp;&nbsp;  <img alt="Chris Baum" width="100" src="https://avatars.githubusercontent.com/u/24902544?v=4"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img alt="Travis Parks" width="100" src="https://avatars.githubusercontent.com/u/116752855?v=4"/> <br>
+Kara Anderson &nbsp;&nbsp;&nbsp;&nbsp;  Chris Baum &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  Travis Parks <br>
 
-[![GitHub][github-shield]][github-kara]&nbsp;&nbsp;&nbsp;&nbsp; [![GitHub][github-shield]][github-chris]&nbsp;&nbsp;&nbsp;&nbsp; [![GitHub][github-shield]][github-travis] <br>
-[![LinkedIn][linkedin-shield]][linkedin-kara]&nbsp;&nbsp;[![LinkedIn][linkedin-shield]][linkedin-chris]&nbsp;&nbsp;[![LinkedIn][linkedin-shield]][linkedin-travis]
+[![GitHub][github-shield]][github-kara]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [![GitHub][github-shield]][github-chris]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [![GitHub][github-shield]][github-travis] <br>
+[![LinkedIn][linkedin-shield]][linkedin-kara]&nbsp;&nbsp;&nbsp;[![LinkedIn][linkedin-shield]][linkedin-chris]&nbsp;&nbsp;&nbsp;[![LinkedIn][linkedin-shield]][linkedin-travis]
   
+
 
 ## Learning Goals:
 
