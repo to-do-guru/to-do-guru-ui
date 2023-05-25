@@ -13,6 +13,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  text-align: center;
 }
 
 .week-nav {
@@ -78,7 +79,7 @@ nav {
 .day-off {
   background-color: #fcef7cb8;
   width: 40%;
-  margin-left: 30%;
+  border-radius: 15px;
   font-size: 25pt;
   padding: 2%;
   box-shadow: 5px 5px 25px black;

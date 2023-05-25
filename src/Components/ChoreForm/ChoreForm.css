@@ -70,11 +70,11 @@ li {
   margin-top: 10px;
 }
 
-label > input {
+.label > input {
   margin-top: 10px;
 }
 
-label {
+.label {
   margin-bottom: 8%;
 }
 

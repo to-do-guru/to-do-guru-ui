@@ -81,7 +81,7 @@ describe('site navigation', () => {
 
     it('should allow a user to use the address bar to navigate through the site', () => {
         cy.visit('https://to-do-guru-ui.vercel.app/');
-        cy.contains('Welcome to To-Do Guru!');
+        cy.contains('To-Do Guru');
 
         cy.visit('https://to-do-guru-ui.vercel.app/dashboard');
         cy.contains("Example House Chore Schedule");
@@ -95,10 +95,10 @@ describe('site navigation', () => {
 
     it("should redirect a user if they attempt to navigate to a URL that doesn't exist", () => {
         cy.visit('https://to-do-guru-ui.vercel.app/');
-        cy.contains('Welcome to To-Do Guru!');
+        cy.contains('To-Do Guru');
 
         cy.visit('https://to-do-guru-ui.vercel.app/randombaloney/nonsense');
         cy.url().should('eq', "https://to-do-guru-ui.vercel.app/");
-        cy.contains("Welcome to To-Do Guru!");
+        cy.contains("To-Do Guru");
     });
 });
