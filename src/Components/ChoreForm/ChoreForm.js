@@ -113,7 +113,7 @@ const ChoreForm = ({ email }) => {
       <h1>Edit your Chores!</h1>
       <div className='chore-div'>
         <form className='chore-form'>
-          <label htmlFor='editChore'>
+          <label htmlFor='editChore' className='label'>
             Chore Name:
             <input 
               className='edit-chore'
@@ -124,7 +124,7 @@ const ChoreForm = ({ email }) => {
               required
             />
           </label>
-          <label htmlFor='react-select-2-input'>
+          <label htmlFor='react-select-2-input' className='label'>
             Days of the week for this chore:
             <Select
               isMulti
@@ -150,7 +150,7 @@ const ChoreForm = ({ email }) => {
               })}
             />
           </label>
-          <label htmlFor='choreMins'>
+          <label htmlFor='choreMins' className='label'>
             Amount of time this chore takes in minutes:
             <input 
               className='edit-chore'
