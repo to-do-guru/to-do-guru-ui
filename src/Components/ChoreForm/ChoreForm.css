@@ -1,9 +1,11 @@
 .chore-form-container {
   background-color: #fcef7cb8;
-  box-shadow: 5px 5px 25px black;
-  margin-top: 5%;
+  box-shadow: 5px 5px 15px black;
+  margin: 3%;
   padding: 2% 5%;
   width: 60%;
+  overflow: auto;
+  border-radius: 15px;
 }
 
 .chore-form {
@@ -23,6 +25,7 @@
   padding: 2%;
   width: 40%;
   text-align: center;
+  border-radius: 15px;
 }
 
 li {
@@ -50,7 +53,8 @@ li {
 }
 
 .chore-btn {
-  margin-top: 5%;
+  margin-bottom: 8%;
+  border-radius: 15px;
 }
 
 .chore-btn:hover, .house-btn:hover, .submit-name:hover {
@@ -60,6 +64,18 @@ li {
 
 li {
   text-transform: capitalize;
+}
+
+.select-control {
+  margin-top: 10px;
+}
+
+label > input {
+  margin-top: 10px;
+}
+
+label {
+  margin-bottom: 8%;
 }
 
 @media screen and (max-width: 900px) {
