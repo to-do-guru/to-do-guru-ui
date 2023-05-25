@@ -34,7 +34,6 @@
 .day-btn:hover, .day-btn:focus, .selected {
   background-color: #007838;
   color: white;
-
 }
 
 .selected {
@@ -49,9 +48,23 @@
   border-radius: 0px 50px 50px 0px;
 }
 
-.nav-btn {
+.nav-link {
   font-size: 25pt;
-  margin: 1% 0;
+  margin: 0;
+  padding: 1% 2%;
+  color: black;
+}
+
+.nav-btn {
+  color: inherit;
+  font-size: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-link:hover {
+  background-color: #007838;
+  color: white;
 }
 
 nav {
@@ -76,6 +89,14 @@ nav {
   display: none;
 }
 
+.house-title {
+  font-size: 2.5rem;
+}
+
+h2 {
+  margin: 1.5vh 0;
+}
+
 @media screen and (max-width: 950px) {
   .day-btn {
     font-size: 10pt;
@@ -83,6 +104,10 @@ nav {
   }
 
   .nav-btn {
+    font-size: 15pt;
+  }
+
+  .nav-link {
     font-size: 15pt;
   }
 }
@@ -101,6 +126,10 @@ nav {
     font-size: 10pt;
   }
 
+  .nav-link {
+    font-size: 10pt;
+  }
+
   h1 {
     font-size: 15pt;
   }
@@ -108,6 +137,10 @@ nav {
 
 @media screen and (max-width: 350px) {
   .nav-btn {
+    font-size: 8pt;
+  }
+
+  .nav-link {
     font-size: 8pt;
   }
 }
