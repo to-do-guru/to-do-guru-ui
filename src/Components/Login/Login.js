@@ -8,8 +8,8 @@ const Login = ({ setEmail }) => {
 
   return (
     <div className="login">
-      <h1>Welcome to To-Do Guru!</h1>
-      <h2>Login to view your chore schedule!</h2>
+      <h1 className="title">To-Do Guru</h1>
+      <h2>Got a lot of chores? The Guru is here to help!</h2>
       <p>Try logging in with smith@example.com</p>
       <form>
         <input
@@ -18,7 +18,6 @@ const Login = ({ setEmail }) => {
           value={loginInfo}
           onChange={(e) => setLoginInfo(e.target.value)}
         />
-        {error && <p className="error">Login info is incorrect</p>}
         <NavLink
           to="/dashboard"
           onClick={(event) => {
@@ -30,11 +29,12 @@ const Login = ({ setEmail }) => {
               setError(false)
             }
           }}
-        >
+          >
           <button className="login-btn">
             Login
           </button>
         </NavLink>
+        {error && <p className="error">Login info is incorrect</p>}
       </form>
     </div>
   );
