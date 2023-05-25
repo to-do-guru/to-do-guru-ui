@@ -110,6 +110,10 @@ h2 {
   .nav-link {
     font-size: 15pt;
   }
+
+  .house-title {
+    font-size: 2rem;
+  }
 }
 
 @media screen and (max-width: 550px) {
@@ -130,8 +134,8 @@ h2 {
     font-size: 10pt;
   }
 
-  h1 {
-    font-size: 15pt;
+  .house-title {
+    font-size: 1.5rem;
   }
 }
 
