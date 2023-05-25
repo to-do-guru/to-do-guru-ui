@@ -25,10 +25,12 @@ const HouseForm = ({ email }) => {
       variables: { email },
   });
 
+  // eslint-disable-next-line
   const [updateHousehold, { data: mutationData, error: mutationError }] = useMutation(CHANGE_HOUSE_NAME, {
     fetchPolicy: "no-cache",
     onCompleted: (mutationData) => setHouseholdName(mutationData.updateHousehold.household.name)
   });
+  // eslint-disable-next-line
   const [deleteMemberName, { data: deleteData, error: deleteError }] = useMutation(DELETE_MEMBER_NAME, {
     fetchPolicy: "no-cache",
     onCompleted: (deleteData) => {
@@ -36,6 +38,7 @@ const HouseForm = ({ email }) => {
       setMembers(filter);
     }
   });
+  // eslint-disable-next-line
   const [createMember, { data: createMemberData, error: createMemberError }] = useMutation(ADD_MEMBER_NAME, {
     fetchPolicy: "no-cache",
     onCompleted: (createMemberData) => {
@@ -155,7 +158,7 @@ const HouseForm = ({ email }) => {
           </form>
         )}
         {memberInputs}
-        {!editMember && (
+        {!editMember && members.length < 10 && (
           <button className="house-btn" onClick={() => setEditMember(true)}>
             Add Chore-Doer
           </button>

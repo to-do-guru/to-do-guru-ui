@@ -6,6 +6,9 @@ import { GET_HOUSEHOLD, RANDOMIZE_CHORES } from "../../queries";
 import { useQuery, useMutation } from "@apollo/client";
 
 const Dashboard = ({ email }) => {
+  const [members, setMembers] = useState([]);
+  const hexCodes = ['#564787', '#004BA8', '#04724D', '#43AA8B', '#28587B', '#C52184', '#5A1807', '#F17300','#695958', '#38023B'];
+
   const { loading, error, data, refetch } = useQuery(GET_HOUSEHOLD, {
     fetchPolicy: "no-cache",
     variables: { email },
@@ -13,6 +16,10 @@ const Dashboard = ({ email }) => {
       if(!loading) {
         if (data.household[dayOfWeek]) {
             setChores(data.household[dayOfWeek]);
+            const memberColors = data.household.members.map((member, index) => 
+              { return { color: hexCodes[index], name: member.name, id: member.id } } 
+            );
+            setMembers(memberColors);
           } else {
             setChores([]);
           }
@@ -20,6 +27,7 @@ const Dashboard = ({ email }) => {
     }
   });
 
+  // eslint-disable-next-line
   const [randomizeChoresMutation, { data: randomizeData, loading: randomizeLoading }] = useMutation(RANDOMIZE_CHORES, {
     fetchPolicy: "no-cache",
     onCompleted: (randomizeLoading) => {
@@ -61,6 +69,7 @@ const Dashboard = ({ email }) => {
     return (
       <ChoreCard
         member={chore.assignedMember}
+        allMembers={members}
         chore={chore.choreName}
         duration={chore.duration}
         key={index}
@@ -99,27 +108,27 @@ const Dashboard = ({ email }) => {
     randomizeChoresMutation({ variables: {input} });
   }
 
+  const loadingImage = <div className="loading-broom-container">
+    <img className="sweeping-gif" src={require("../../images/sweeping-broom.gif")} alt="broom sweeping while loading"/>
+    <h2 className="loading-msg">Loading...</h2>
+  </div>
+
   if (loading) {
-    return (
-      <div className="loading-broom-container">
-        <img className="sweeping-gif" src={require("../../images/sweeping-broom.gif")} alt="broom sweeping while loading"/>
-        <h2 className="loading-msg">Loading...</h2>
-      </div>
-    )
+    return loadingImage
   } 
   if (error) return <p className="error">"Sorry there was an error, please try again later"</p>
     
-  return (
+    return (
     <div className="dashboard">
       <div>
         <h1>{data.household.name} Chore Schedule</h1>
         <div className="week-nav">{weekButtons}</div>
-        <section className="chore-container">
+        {!randomizeLoading && <section className="chore-container">
           {choreCards}
           {chores.length === 0 && (
             <p className="day-off">You have the day off, no chores today!</p>
           )}
-        </section>
+        </section>}
       </div>
       <nav>
         <NavLink to="/">

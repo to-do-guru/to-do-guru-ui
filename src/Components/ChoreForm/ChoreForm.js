@@ -25,6 +25,7 @@ const ChoreForm = ({ email }) => {
     variables: { email },
   });
 
+  // eslint-disable-next-line
   const [addChore, { data: addChoreData, error: addChoreError }] = useMutation(ADD_CHORE, {
     fetchPolicy: "no-cache",
     onCompleted: (addChoreData) => {
@@ -100,9 +101,9 @@ const ChoreForm = ({ email }) => {
 
   if (loading) {
     return <div className="loading-broom-container">
-             <img className="sweeping-gif" src={require("../../images/sweeping-broom.gif")} alt="broom sweeping while loading"/>
-             <h2 className="loading-msg">Loading...</h2>
-           </div>
+        <img className="sweeping-gif" src={require("../../images/sweeping-broom.gif")} alt="broom sweeping while loading"/>
+        <h2 className="loading-msg">Loading...</h2>
+      </div>
   } 
 
   return (
