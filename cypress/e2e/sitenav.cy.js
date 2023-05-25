@@ -4,28 +4,27 @@ describe('site navigation', () => {
             if(req.body.query.includes('getHousehold')) {
                 req.reply({"body": {"data": {
                     "household": {
-                    "members": [
-                        {"id": "10", "name": "Jerry"},
-                        {"id": "12", "name": "Morty"},
+                        "members": [
+                            {"id": "10", "name": "Jane Doe"},
+                            ],
+                        "chores": [{
+                            "choreName": "Sweeping"
+                        }],
+                        "id": 1,
+                        "name": "Example House",
+                        "sunday": null,
+                        "monday": [
+                            {
+                            "choreName": "Sweeping",
+                            "assignedMember": "Jane Doe",
+                            "duration": 30
+                            }
                         ],
-                    "chores": [{
-                        "choreName": "Sweeping"
-                    }],
-                    "id": 1,
-                    "name": "Example House",
-                    "sunday": null,
-                    "monday": [
-                        {
-                        "choreName": "Sweeping",
-                        "assignedMember": "Jane Doe",
-                        "duration": 30
-                        }
-                    ],
-                    "tuesday": null,
-                    "wednesday": null,
-                    "thursday": null,
-                    "friday": null,
-                    "saturday": null
+                        "tuesday": null,
+                        "wednesday": null,
+                        "thursday": null,
+                        "friday": null,
+                        "saturday": null
                     }
                 }}})
             }
