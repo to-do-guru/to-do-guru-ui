@@ -1,16 +1,19 @@
 .login {
   background-color: #fcef7cb8;
-  width: fit-content;
+  width: 40vw;
   text-align: center;
   margin-top: 10%;
   padding: 5%;
-  box-shadow: 5px 5px 25px black;
+  box-shadow: 5px 5px 15px black;
+  border-radius: 15px;
 }
 
 input {
   height: 40px;
   width: 200px;
   padding-left: 2%;
+  border-radius: 15px;
+  border: 1px solid black;
 }
 
 .login-btn {
@@ -18,12 +21,21 @@ input {
   height: 45px;
   padding: 0 5%;
   margin: 0 3%;
+  border-radius: 15px;
 }
 
-@media screen and (max-width: 600px) {
+.title {
+  font-size: 3.5rem;
+  margin-bottom: 3vh;
+}
+
+@media screen and (max-width: 800px) {
   .login {
     width: 75%;
     font-size: smaller;
+  }
+  .title {
+    font-size: 2.5rem;
   }
 }
 

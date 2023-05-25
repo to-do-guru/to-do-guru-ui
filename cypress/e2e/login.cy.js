@@ -6,6 +6,9 @@ describe('login page', () => {
       aliasOperation(req, 'getHousehold', {
         "data": {
           "household": {
+            "members": [
+              {"id": "10", "name": "Jane Doe"},
+            ],
             "chores": [{
               "choreName": "Sweeping"
             }],

@@ -12,17 +12,15 @@ const Dashboard = ({ email }) => {
   const { loading, error, data, refetch } = useQuery(GET_HOUSEHOLD, {
     fetchPolicy: "no-cache",
     variables: { email },
-    onCompleted: (data, loading) => {
-      if(!loading) {
-        if (data.household[dayOfWeek]) {
-            setChores(data.household[dayOfWeek]);
-            const memberColors = data.household.members.map((member, index) => 
-              { return { color: hexCodes[index], name: member.name, id: member.id } } 
-            );
-            setMembers(memberColors);
-          } else {
-            setChores([]);
-          }
+    onCompleted: (data) => {
+      if (data.household[dayOfWeek]) {
+        setChores(data.household[dayOfWeek]);
+        const memberColors = data.household.members.map((member, index) => 
+          { return { color: hexCodes[index], name: member.name, id: member.id } } 
+        );
+        setMembers(memberColors);
+      } else {
+        setChores([]);
       }
     }
   });
@@ -30,15 +28,8 @@ const Dashboard = ({ email }) => {
   // eslint-disable-next-line
   const [randomizeChoresMutation, { data: randomizeData, loading: randomizeLoading }] = useMutation(RANDOMIZE_CHORES, {
     fetchPolicy: "no-cache",
-    onCompleted: (randomizeLoading) => {
-      refetch()
-      if(!randomizeLoading) {
-        if (data.household[dayOfWeek]) {
-            setChores(data.household[dayOfWeek]);
-          } else {
-            setChores([]);
-          }
-      }
+    onCompleted: () => {
+      refetch();
     }
   });
 
@@ -113,15 +104,14 @@ const Dashboard = ({ email }) => {
     <h2 className="loading-msg">Loading...</h2>
   </div>
 
-  if (loading) {
-    return loadingImage
-  } 
+  if (loading) return loadingImage
+
   if (error) return <p className="error">"Sorry there was an error, please try again later"</p>
     
-    return (
+  return (
     <div className="dashboard">
       <div>
-        <h1>{data.household.name} Chore Schedule</h1>
+        <h1 className="house-title">{data.household.name} Chore Schedule</h1>
         <div className="week-nav">{weekButtons}</div>
         {!randomizeLoading && <section className="chore-container">
           {choreCards}
@@ -131,14 +121,14 @@ const Dashboard = ({ email }) => {
         </section>}
       </div>
       <nav>
-        <NavLink to="/">
+        <NavLink to="/" className="nav-link">
           <button className="nav-btn">Log Out</button>
         </NavLink>
-        <button className="nav-btn" onClick={randomizeChores}>Get me a new schedule</button>
-        <NavLink to="/choreform">
+        <button className="nav-link" onClick={randomizeChores}>Get me a new schedule</button>
+        <NavLink to="/choreform" className="nav-link">
           <button className="nav-btn">Edit Chore List</button>
         </NavLink>
-        <NavLink to="/houseform">
+        <NavLink to="/houseform" className="nav-link">
           <button className="nav-btn">Edit Household</button>
         </NavLink>
       </nav>

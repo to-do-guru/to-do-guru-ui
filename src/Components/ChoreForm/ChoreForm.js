@@ -100,10 +100,12 @@ const ChoreForm = ({ email }) => {
   }
 
   if (loading) {
-    return <div className="loading-broom-container">
+    return (
+      <div className="loading-broom-container">
         <img className="sweeping-gif" src={require("../../images/sweeping-broom.gif")} alt="broom sweeping while loading"/>
         <h2 className="loading-msg">Loading...</h2>
       </div>
+    )
   } 
 
   return (
@@ -113,7 +115,6 @@ const ChoreForm = ({ email }) => {
         <form className='chore-form'>
           <label htmlFor='editChore'>
             Chore Name:
-          </label>
             <input 
               className='edit-chore'
               id='editChore'
@@ -122,9 +123,9 @@ const ChoreForm = ({ email }) => {
               onChange={(e) => setChoreInput({...choreInput, choreName: e.target.value})}
               required
             />
+          </label>
           <label htmlFor='react-select-2-input'>
             Days of the week for this chore:
-          </label>
             <Select
               isMulti
               options={daysOfTheWeek}
@@ -137,10 +138,20 @@ const ChoreForm = ({ email }) => {
                 indicatorsContainer: () => 'select-indicators-container',
                 input: () => 'select-input',
               }}
+              theme={(theme) => ({
+                ...theme,
+                borderRadius: 15,
+                colors: {
+                  ...theme.colors,
+                  primary: '-webkit-focus-ring-color',
+                  neutral20: 'black',
+                  neutral30: 'black',
+                },
+              })}
             />
+          </label>
           <label htmlFor='choreMins'>
             Amount of time this chore takes in minutes:
-          </label>
             <input 
               className='edit-chore'
               id='choreMins'
@@ -151,10 +162,11 @@ const ChoreForm = ({ email }) => {
               value={choreInput.choreDuration}
               onChange={(e) => setChoreInput({...choreInput, choreDuration: e.target.value})}
             />
-            <button className='chore-btn' onClick={submitForm}>Add Chore!</button>
-            <NavLink to="/dashboard">
-              <button className='house-btn'>View Schedule</button>
-            </NavLink>
+          </label>
+          <button className='chore-btn' onClick={submitForm}>Add Chore!</button>
+          <NavLink to="/dashboard">
+            <button className='house-btn'>View Schedule</button>
+          </NavLink>
         </form>
         <aside className='chore-list'>
           <h2>Your Chores:</h2>

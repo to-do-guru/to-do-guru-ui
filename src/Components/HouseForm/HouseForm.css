@@ -3,10 +3,11 @@
   background-color: #fcef7cb8;
   width: 40%;
   padding: 3%;
-  box-shadow: 5px 5px 25px black;
+  box-shadow: 5px 5px 15px black;
   margin-top: 5%;
   margin-bottom: 5%;
   overflow-y: auto;
+  border-radius: 15px;
 }
 
 .house-form {
@@ -32,6 +33,7 @@
   padding: 1% 3%;
   border: solid black 1px;
   margin: 2%;
+  border-radius: 15px;
 }
 
 .household-input {
@@ -44,6 +46,7 @@
   font-size: 20pt;
   width: 70%;
   border: 1px solid black;
+  border-radius: 15px;
 }
 
 .material-symbols-outlined {
@@ -65,6 +68,11 @@
   padding: 4% 3%;
   margin-left: 2%;
   border: 1px solid black;
+  border-radius: 8px;
+}
+
+.house-btn {
+  border-radius: 15px;
 }
 
 .submit-member {
@@ -74,7 +82,7 @@
 .delete {
   border: 1px solid black;
   height: 80%;
-  border-radius: 5px;
+  border-radius: 8px;
 }
 
 .delete:hover {

@@ -6,6 +6,10 @@ describe('dashboard', () => {
       aliasOperation(req, 'getHousehold', {
         "data": {
           "household": {
+            "members": [{
+              "name": "Jane Doe",
+              "id": 1
+            }],
             "chores": [{
               "choreName": "Sweeping"
             }],
