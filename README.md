@@ -5,7 +5,7 @@
 
 [//]: <>
 
-*To-Do Guru* is an application built to help anyone looking to divide and track chores among their household. A user is able to add chores to their household with the chore name, chore doer, and duration of chore. They are also able to the household members that are to do chore. After that To-Do Guru will build you out a weeks schedule of chores and randomly assign them to each member while keeping the total amount of time on chores as fair as possible. If you are tired of the weeks schedule you can hit the random button to build you out a new randomly curated weeks worth of your chores. To-Do Guru is here to help keep your household running efficiently.
+*To-Do Guru* is an application built to help anyone looking to divide and track chores among their household. A user is able to add chores to their household with the chore name, chore doer, and duration of chore. They are also able to add the household members that are doing chores. After that To-Do Guru will build you out a weeks schedule of chores and randomly assign them to each member while keeping the total amount of time on chores as fair as possible. If you are tired of the weeks schedule you can hit the randomize button to build you out a new randomly curated weeks worth of your chores. To-Do Guru is here to help keep your household running efficiently.
 
 
 
@@ -34,7 +34,7 @@
 
 [//]: <>
 
-This application was completed as part of the Turing School of Software and Design Module 4 curriculum.  This app is a full stack application that was built with a backend team. We were tasked with implementing a new technology and chose to implement GraphQL with Apollo for this application. Our time frame to complete was 2 1/2 weeks.
+This application was completed as part of the Turing School of Software and Design Module 4 curriculum.  This app is a full stack application with a front end and back end team working together using agile workflow practices. We were tasked with implementing a new technology and chose GraphQL with Apollo for this application. Our time frame to complete was 2 1/2 weeks.
 
 ## Technologies Used:
 
@@ -46,7 +46,7 @@ This application was completed as part of the Turing School of Software and Desi
 - CircleCI
 
 
-## Contributers
+## Contributors
 
 <img alt="Kara Anderson" width="100" src="https://avatars.githubusercontent.com/u/114871395?v=4"/>&nbsp;&nbsp;&nbsp;&nbsp;  <img alt="Chris Baum" width="100" src="https://avatars.githubusercontent.com/u/24902544?v=4"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img alt="Travis Parks" width="100" src="https://avatars.githubusercontent.com/u/116752855?v=4"/> <br>
 Kara Anderson &nbsp;&nbsp;&nbsp;&nbsp;  Chris Baum &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  Travis Parks <br>
