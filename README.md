@@ -28,7 +28,19 @@
 ## Preview of App:
 
 [//]: <>
-![]()
+
+### Login & Dashboard
+
+![login-compressed](https://github.com/to-do-guru/to-do-guru-ui/assets/24902544/20148b9d-6785-461a-8460-61b2ad6f18e7)
+
+### Creating a New Chore
+
+![chore-compressed](https://github.com/to-do-guru/to-do-guru-ui/assets/24902544/dd380495-7cb8-4644-8aca-4fc39170e0d2)
+
+### Editing the Household
+
+![household-compressed](https://github.com/to-do-guru/to-do-guru-ui/assets/24902544/1797ffc3-bda7-4fb5-99f9-1aac9d8d86c7)
+
 
 ## Context:
 
